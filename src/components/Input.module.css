@@ -1,0 +1,33 @@
+form {
+}
+
+input {
+  width: 460px;
+  height: 56px;
+  border-radius: 16px;
+  border: 1px solid #b5b5b5;
+  padding: 24px;
+}
+
+input::placeholder {
+  color: #929292;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  font-family: Neue Montreal;
+}
+
+input:focus {
+  outline: none;
+  border: 1px solid #5353AA;
+}
+
+.red {
+  color: #FF5656;
+}
+
+.text__sm {
+  font-size: 16px;
+  line-height: 20px;
+  color: #606060;
+}
