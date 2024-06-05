@@ -8,8 +8,8 @@ import EmailVerification from "./components/EmailVerification";
 const App: FC = () => {
   return (
     <div>
-      {/* <Home /> */}
-      <EmailVerification />
+      <Home />
+      {/* <EmailVerification /> */}
     </div>
   );
 };
