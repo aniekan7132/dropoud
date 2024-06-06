@@ -1,11 +1,13 @@
 // import { FC } from "react";
+import React from "react";
 
 type ButtonProps = {
   size?: "sm" | "md" | "lg";
   color?: "primary" | "secondary";
   children: string;
   type?: "submit";
-  onClick?: () => {};
+  // onClick?: () => {};
+  onClick?: (e: React.MouseEvent<HTMLButtonElement,  MouseEvent>) => void;
 };
 
 function Button({size = "sm", color = "primary", children, type, onClick}: ButtonProps) {
@@ -52,6 +54,6 @@ function Button({size = "sm", color = "primary", children, type, onClick}: Butto
       {children}
     </button>
   );
-};
+}
 
 export default Button;
