@@ -5,6 +5,7 @@ type ButtonProps = {
   size?: "sm" | "md" | "lg";
   color?: "primary" | "secondary";
   children: string;
+  className?: string;
   type?: "submit";
   // onClick?: () => {};
   onClick?: (e: React.MouseEvent<HTMLButtonElement,  MouseEvent>) => void;

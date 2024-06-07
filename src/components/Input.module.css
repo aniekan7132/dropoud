@@ -6,7 +6,7 @@ input {
   height: 56px;
   border-radius: 16px;
   border: 1px solid #b5b5b5;
-  padding: 24px;
+  padding: 16px;
 }
 
 input::placeholder {
@@ -14,7 +14,8 @@ input::placeholder {
   font-weight: 400;
   font-size: 16px;
   line-height: 20px;
-  font-family: Neue Montreal;
+    font-family: "Lato", sans-serif;
+
 }
 
 input:focus {
