@@ -32,3 +32,10 @@ input:focus {
   line-height: 20px;
   color: #606060;
 }
+
+
+@media (max-width: 768px) {
+  input {
+    width: 350px
+  }
+}

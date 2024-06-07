@@ -111,3 +111,33 @@ form {
   height: 20px;
   margin-right: 10px;
 }
+
+
+@media screen and (max-width: 768px) {
+ 
+
+  .main-image {
+  display: none;
+  }
+
+  .image-container {
+    display: none;
+  }
+
+  .form-container {
+    width: 100%;
+  }
+
+  .image-container {
+    display: none;
+  }
+
+  .submit-btn {
+    width: 100%;
+  }
+
+  .google-btn {
+    width: 100%;
+  }
+ 
+}
