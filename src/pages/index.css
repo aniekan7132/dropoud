@@ -73,7 +73,7 @@ form {
 
 .submit-btn:hover {
   background-color: #3b3b90;
-  transition: all 0.3s ease;
+  transition: all 0.8s ease;
 }
 
 .forgot {
@@ -104,6 +104,12 @@ form {
   font-weight: 400;
   line-height: 20px;
   text-align: left;
+}
+
+.google-btn:hover {
+  background-color: #3b3b90;
+  transition: all 0.8s ease;
+
 }
 
 .google-logo {
