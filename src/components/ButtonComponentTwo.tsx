@@ -1,10 +1,11 @@
 // import { FC } from "react";
+import React from "react";
 
 type ButtonProps = {
   size?: "sm" | "md" | "lg";
   color?: "primary" | "secondary";
   children: string;
-  type?: "submit" | "button";
+  type?: "submit";
   onClick?: () => {};
 };
 
@@ -56,6 +57,6 @@ function Button({size = "sm", color = "primary", children, type, onClick}: Butto
       {children}
     </button>
   );
-};
+}
 
 export default Button;
