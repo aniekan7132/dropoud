@@ -6,6 +6,7 @@ import classes from "./Home.module.css";
 import { useRef, useState } from "react";
 import axios from "axios";
 
+// Default state for form data
 interface DefaultState {
   user: {
     first_name: string;
@@ -16,6 +17,7 @@ interface DefaultState {
   };
 }
 
+// Default state for input errors
 const defaultErrorState = {
   firstNameError: null,
   lastNameError: null,
@@ -24,6 +26,7 @@ const defaultErrorState = {
   phoneError: null,
 };
 
+// Default state for signup error message if input fields is empty
 interface SignupError {
   firstNameError: null | string;
   lastNameError: null | string;
@@ -32,6 +35,7 @@ interface SignupError {
   phoneError: null | string;
 }
 
+// base url to the dropoud backend
 const baseUrl = "https://drop-apis.firsta.tech";
 
 const Home = () => {
@@ -48,6 +52,7 @@ const Home = () => {
   const formRef = useRef(null);
   const [error, setError] = useState<SignupError>(defaultErrorState);
 
+  // Function that handles every change on input field and update input value accordingly
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setError(defaultErrorState);
     setFormData({
@@ -58,9 +63,11 @@ const Home = () => {
     });
   };
 
+  // Function that handles the submit action
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    // Validating input fields
     if (formData.user.first_name === "") {
       setError({ ...error, firstNameError: "First name is required." });
       console.log(error.firstNameError);
@@ -81,6 +88,7 @@ const Home = () => {
       setError({ ...error, phoneError: "Phone number is required." });
     }
 
+    // Data is sent to backend if validation conditions are met
     axios
       .post(`${baseUrl}/api/v1/users`, {
         ...formData.user,
@@ -188,67 +196,3 @@ const Home = () => {
 
 export default Home;
 
-// if (!formData.confirmPassword.trim()) {
-//   formRef.current.confirmPassword.classList.add("error");
-//   setErrors({ confirmPassword: "Password is required." });
-//   return isError;
-// } else if (formData.password !== formData.confirmPassword) {
-//   formRef.current.confirmPassword.classList.add("error");
-//   setErrors({
-//     confirmPassword: "Password do not match.",
-//   });
-//   return isError;
-// }
-
-/*
-    const validateForm = (formData, formRef, setErrors) => {
-    // if there is any error
-    let isError = true;
-
-    if (!formData.firstName.trim()) {
-      formRef.current.firstName.classlist.add("error");
-      setErrors({ firstName: "First name is Required." });
-      return isError;
-    }
-
-    if (!formData.email) {
-      formRef.current.email.classlist.add("error");
-      setErrors({ email: "Email is required" });
-      return isError;
-    } else if (!isEmailValid(formData.email)) {
-      formRef.current.email.classList.add("error");
-      setErrors({ email: "Email is  required."})
-      return isError;
-    }
-
-    if(!formData.password.trim()){
-      formRef.current.password.classList.add("error");
-      setErrors({ password: "Password is  required." });
-      return isError;
-    }else if(formData.password.length < 8) {
-      formRef.current.password.classList.add("error");
-      setErrors({ password: "Password must be be atleast 8 characters blong." });
-      return isError;
-    }
-
-
-    return (isError = false);
-  };
-
-  const isEmailValid = (email) => {
-    return /\S+@\S+\.\S+/.test(email);
-  };
-
- */
-
-// Must be at least 8 characters.
-
-//   async function sendData() {
-//   fetch("", {
-//     method: "PUT",
-//     body: JSON.stringify()
-//     headers: {
-//       "Content-Type": "application/json",
-//     }
-//   })
-// }

@@ -4,7 +4,7 @@ type ButtonProps = {
   size?: "sm" | "md" | "lg";
   color?: "primary" | "secondary";
   children: string;
-  type?: "submit";
+  type?: "submit" | "button";
   onClick?: () => {};
 };
 
@@ -12,15 +12,19 @@ function Button({size = "sm", color = "primary", children, type, onClick}: Butto
   const functionForSize = (size: string) => {
     if(size === "sm") {
     return {
-      height:"30px",
-      width:"40px"
-    }
+      height: "36px",
+      width: "52px",
+    };
     }
     if(size === 'md'){
       return {
-        height:"60px",
-        width:"120px"
-      }
+        height: "56px",
+        width: "452px",
+        borderRadius: "16px",
+        border: "1px solid #5353AA",
+        color: "#F8F8F8",
+        cursor: "pointer"
+      };
     }
     if(size === "lg"){
       return {
