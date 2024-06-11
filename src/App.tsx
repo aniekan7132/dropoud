@@ -12,10 +12,17 @@ import React from 'react';
 
 const App: FC = () => {
   return (
-    <div>
-      {/* <Home /> */}
-      <EmailVerification />
-    </div>
+
+    <>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/sign-in" element={<LoginForm onSubmit={()=>{}} />} />
+          <Route path="/email-verification" element={<EmailVerification />} />
+        </Routes>
+      </Router>
+    
+    </>
   );
 };
 
