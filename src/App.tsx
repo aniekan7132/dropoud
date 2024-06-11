@@ -10,6 +10,11 @@ import EmailVerification from "./components/EmailVerification";
 import LoginForm from "./pages/Login";
 
 const App: FC = () => {
+
+
+
+
+  
   return (
     // <EmailVerification />
     <>
