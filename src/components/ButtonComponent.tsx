@@ -5,8 +5,8 @@ type ButtonProps = {
   size?: "sm" | "md" | "lg";
   color?: "primary" | "secondary";
   children: string;
-  type?: "submit";
-  onClick?: () => {};
+  type?: "submit" | "button";
+  onClick?: (e: any) => void;
 };
 
 function Button({size = "sm", color = "primary", children, type, onClick}: ButtonProps) {
@@ -34,7 +34,10 @@ function Button({size = "sm", color = "primary", children, type, onClick}: Butto
         borderRadius: "16px",
         border: "1px solid #5353AA",
         color: "#F8F8F8",
-        cursor: 'pointer'
+        cursor: 'pointer',
+        fontSize: "16px",
+        lineHeight: "20px",
+        fontWeight: "400"
       };
     }
   }
