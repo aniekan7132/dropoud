@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import Image from "../assets/dropoud-image.png";
 import Logo from "../assets/header-logo.png";
-import "./index.css";
 import { Link } from "react-router-dom";
 import Input from "../components/Input";
 import google from "../assets/google.png";
+import classes from "./Login.module.css";
 
 interface LoginForm {
-  onSubmit: (username: string, password: string) => void;
+  onSubmit?: (username: string, password: string) => void;
 }
 
 const LoginForm: React.FC<LoginForm> = ({ onSubmit }) => {
@@ -24,26 +24,28 @@ const LoginForm: React.FC<LoginForm> = ({ onSubmit }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit(username, password);
+    // onSubmit(username, password);
+
+
   };
 
   return (
-    <div className="login">
-      <div className="image-container">
-        <img src={Image} className="main-image" alt="" />
+    <div className={classes.login}>
+      <div className={classes["image-container"]}>
+        <img src={Image} className={classes["main-image"]} alt="banner" />
       </div>
-      <div className="form-container">
-  
-        <form onSubmit={handleSubmit}>
-          <img src={Logo} alt="" className="logo" />
+      <div className={classes["form-container"]}>
+        <form onSubmit={handleSubmit} className={classes["form__submit"]}>
+          <img src={Logo} alt="" className={classes.logo} />
           <h2>Login</h2>
           <p style={{ color: "  #B5B5B5" }}>
             Don't have an account?{" "}
-            <Link to="/" className="forgot">
+            <Link to="/" className={classes.forgot}>
               Sign up
             </Link>
           </p>
-          <div>
+
+          <div className={classes["input__div"]}>
             <Input
               type="text"
               id="username"
@@ -61,16 +63,21 @@ const LoginForm: React.FC<LoginForm> = ({ onSubmit }) => {
               placeholder="password"
             />
           </div>
-          <Link to="" className="forgot">
+
+          <Link to="" className={classes.forgot}>
             Forgot password?
           </Link>
-          <button className="submit-btn" type="submit">
+          <button className={classes["submit-btn"]} type="submit">
             Login
           </button>
-          <p className="or">or</p>
+          <p className={classes.or}>or</p>
 
-          <button className="google-btn">
-            <img src={google} alt="Google logo" className="google-logo" />
+          <button className={classes["google-btn"]}>
+            <img
+              src={google}
+              alt="Google logo"
+              className={classes["google-logo"]}
+            />
             Login with Google
           </button>
         </form>

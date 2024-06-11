@@ -1,3 +1,4 @@
+import React from "react";
 import "./Input.module.css";
 
 type Props = React.DetailedHTMLProps<
@@ -12,9 +13,10 @@ interface InputProps extends Props {
 const Input = (props: InputProps) => {
   return (
     <>
-      <input {...props}/>
+      <input {...props} />
     </>
-  );
+  );   
+
 };
 
 export default Input;

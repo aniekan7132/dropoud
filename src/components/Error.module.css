@@ -1,0 +1,29 @@
+.error__container {
+ position: absolute;
+ top: 164px;
+ left: 620px;
+ width: 576px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ gap: 8px;
+ border-radius: 8px;
+ padding: 8px 24px 8px 24px;
+ background: #E84747;
+}
+
+.error__container div {
+ width: 526px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ gap: 32px;
+}
+
+.error__container p {
+ color: #FFFFFF;
+ font-family: Mulish;
+ font-weight: 400;
+ font-size: 16px;
+ line-height: 20px;
+}
