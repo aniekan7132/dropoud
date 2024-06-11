@@ -5,25 +5,27 @@ type ButtonProps = {
   size?: "sm" | "md" | "lg";
   color?: "primary" | "secondary";
   children: string;
-  className?: string;
-  type?: "submit";
-  // onClick?: () => {};
-  onClick?: (e: React.MouseEvent<HTMLButtonElement,  MouseEvent>) => void;
+  type?: "submit" | "button";
+  onClick?: (e: any) => void;
 };
 
 function Button({size = "sm", color = "primary", children, type, onClick}: ButtonProps) {
   const functionForSize = (size: string) => {
     if(size === "sm") {
     return {
-      height:"30px",
-      width:"40px"
-    }
+      height: "36px",
+      width: "52px",
+    };
     }
     if(size === 'md'){
       return {
-        height:"60px",
-        width:"120px"
-      }
+        height: "56px",
+        width: "452px",
+        borderRadius: "16px",
+        border: "1px solid #5353AA",
+        color: "#F8F8F8",
+        cursor: "pointer"
+      };
     }
     if(size === "lg"){
       return {
@@ -32,7 +34,10 @@ function Button({size = "sm", color = "primary", children, type, onClick}: Butto
         borderRadius: "16px",
         border: "1px solid #5353AA",
         color: "#F8F8F8",
-        cursor: 'pointer'
+        cursor: 'pointer',
+        fontSize: "16px",
+        lineHeight: "20px",
+        fontWeight: "400"
       };
     }
   }
