@@ -1,11 +1,12 @@
-.overall__container {
+.main__container {
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
-.otp__container {
+.sub__container {
   width: 537px;
   height: 268px;
   display: flex;
@@ -20,7 +21,7 @@ h5 {
   font-size: 24px;
   line-height: 28px;
   color: #414141;
-  text-align: center; 
+  margin-left: 10px;
 }
 
 .otp__text-bg {
@@ -35,8 +36,6 @@ h5 {
   top: 50px;
   left: 30px;
 }
-
-
 
 .container__sm-text {
   display: flex;
@@ -53,34 +52,52 @@ h5 {
 
 .otp__text-sm span {
   color: #5353aa;
+}
+
+.otp__text-sm button {
+  color: #5353aa;
   cursor: pointer;
+  border: none;
+  background-color: transparent;
 }
 
 .input__container{
+  /* width: 224px;
+  height: 112px; */
+  position: absolute;
+  top: 120px;
+  left: 160px;
   display: flex;
   flex-direction: column;
   gap: 28px;
-  position: absolute;
-  top: 120px;
-  left: 145px;
 }
 
-form {
+.otp__form {
+  width: 208px;
+  height: 40px;
   display: flex;
   gap: 16px;
-}
+} 
 
 .otp__input {
   width: 40px;
   height: 40px;
   border-radius: 12px;
   border: 1px solid #b5b5b5;
+  text-align: center;
+  padding: 4px;
 }
 
 .otp__input:focus {
   outline: none;
   text-align: center;
   border: 1px solid #5353AA;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 
