@@ -42,13 +42,15 @@
 }
 
 .input__div {
+  margin: 10px 0 !important ;
   margin-bottom: 1rem;
 }
 
-.form__submit div {
+.form__submit {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  
 }
 
 /* form div {
@@ -98,12 +100,14 @@
 
 .forgot {
   text-decoration: none;
+  margin: 5px 0;
   color: #5353aa;
 }
 
 .or {
   text-align: center;
   color: #b5b5b5;
+  margin: 5px 0;
 }
 
 .google-btn {

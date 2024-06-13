@@ -8,6 +8,7 @@ import "./App.css";
 import EmailVerification from "./components/EmailVerification";
 // import { BrowserRouter } from "react-router-dom";
 import LoginForm from "./pages/Login";
+import ThankYou from "./components/ThankYou";
 
 const App: FC = () => {
   return (
@@ -21,6 +22,7 @@ const App: FC = () => {
             path="/email-verification/:email"
             element={<EmailVerification />}
           />
+          <Route path="thank" element={<ThankYou/>} />
         </Routes>
       </Router>
     </>

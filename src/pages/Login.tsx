@@ -1,36 +1,52 @@
-import React, { useState } from "react";
+import React, { useState,  } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import Image from "../assets/dropoud-image.png";
 import Logo from "../assets/header-logo.png";
 import { Link } from "react-router-dom";
 import Input from "../components/Input";
-import google from "../assets/google.png";
 import classes from "./Login.module.css";
 
-interface LoginForm {
-  onSubmit?: (username: string, password: string) => void;
-}
+const baseUrl = "https://drop-apis.firsta.tech";
 
-const LoginForm: React.FC<LoginForm> = ({ onSubmit }) => { 
-  const [username, setUsername] = useState("");
+const LoginForm: React.FC = () => {
+  const [userEmail, setUserEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
-  const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUsername(e.target.value);
+  const handleUserEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUserEmail(e.target.value);
   };
 
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // onSubmit(username, password);
-
-
+    
+    try {
+      const response = await axios.post(`${baseUrl}/login`, {
+        email: userEmail,
+        password: password
+      });
+      
+      if (response.data.success) {
+        // Navigate to the dashboard if login is successful
+        navigate("/dashboard");
+      } else {
+        toast.error("Invalid credentials. Please try again.");
+      }
+    } catch (error) {
+      toast.error("An error occurred. Please try again.");
+    }
   };
 
   return (
     <div className={classes.login}>
+      <ToastContainer />
       <div className={classes["image-container"]}>
         <img src={Image} className={classes["main-image"]} alt="banner" />
       </div>
@@ -38,7 +54,7 @@ const LoginForm: React.FC<LoginForm> = ({ onSubmit }) => {
         <form onSubmit={handleSubmit} className={classes["form__submit"]}>
           <img src={Logo} alt="" className={classes.logo} />
           <h2>Login</h2>
-          <p style={{ color: "  #B5B5B5" }}>
+          <p style={{ color: "#B5B5B5", padding: '10px 0', }}>
             Don't have an account?{" "}
             <Link to="/" className={classes.forgot}>
               Sign up
@@ -49,18 +65,18 @@ const LoginForm: React.FC<LoginForm> = ({ onSubmit }) => {
             <Input
               type="text"
               id="username"
-              value={username}
-              onChange={handleUsernameChange}
-              placeholder="email or username"
+              value={userEmail}
+              onChange={handleUserEmailChange}
+              placeholder="Email or Username"
             />
           </div>
-          <div>
+          <div className={classes["input__div"]}>
             <Input
               type="password"
               id="password"
               value={password}
               onChange={handlePasswordChange}
-              placeholder="password"
+              placeholder="Password"
             />
           </div>
 
@@ -69,16 +85,6 @@ const LoginForm: React.FC<LoginForm> = ({ onSubmit }) => {
           </Link>
           <button className={classes["submit-btn"]} type="submit">
             Login
-          </button>
-          <p className={classes.or}>or</p>
-
-          <button className={classes["google-btn"]}>
-            <img
-              src={google}
-              alt="Google logo"
-              className={classes["google-logo"]}
-            />
-            Login with Google
           </button>
         </form>
       </div>
