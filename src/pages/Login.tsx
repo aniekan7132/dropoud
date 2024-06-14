@@ -1,19 +1,27 @@
-import React, { useState,  } from "react";
+import React, { useState,} from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 import Image from "../assets/dropoud-image.png";
 import Logo from "../assets/header-logo.png";
 import { Link } from "react-router-dom";
 import Input from "../components/Input";
 import classes from "./Login.module.css";
 
+
+// Spinner component
+const Spinner: React.FC = () => (
+  <div className={classes.spinner}></div>
+);
+
+
 const baseUrl = "https://drop-apis.firsta.tech";
 
 const LoginForm: React.FC = () => {
   const [userEmail, setUserEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false )
   const navigate = useNavigate();
 
   const handleUserEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -24,23 +32,42 @@ const LoginForm: React.FC = () => {
     setPassword(e.target.value);
   };
 
+
+  
+  
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+    setIsLoading(true)
+
     try {
-      const response = await axios.post(`${baseUrl}/login`, {
+      const response = await axios.post(`${baseUrl}/api/v1/auth/login`, {
         email: userEmail,
-        password: password
+        password: password,
       });
-      
+
       if (response.data.success) {
         // Navigate to the dashboard if login is successful
         navigate("/dashboard");
       } else {
-        toast.error("Invalid credentials. Please try again.");
+        toast.error("An error occurred. Please try again.");
       }
     } catch (error) {
-      toast.error("An error occurred. Please try again.");
+      if (axios.isAxiosError(error)) {
+        switch (error.request.status) {
+          case 401:
+            toast.error("Invalid Email Or Password. Please try again");
+            break;
+          case 404:
+            toast.error("User does not exist. Please create an account before signing up");
+            break;
+          default:
+            toast.error("An error occurred. Please try again.");
+        }
+      } else {
+        toast.error("An unexpected error occurred. Please try again.");
+      }
+    }finally{
+      setIsLoading(false)
     }
   };
 
@@ -54,7 +81,7 @@ const LoginForm: React.FC = () => {
         <form onSubmit={handleSubmit} className={classes["form__submit"]}>
           <img src={Logo} alt="" className={classes.logo} />
           <h2>Login</h2>
-          <p style={{ color: "#B5B5B5", padding: '10px 0', }}>
+          <p style={{ color: "#B5B5B5", padding: "10px 0" }}>
             Don't have an account?{" "}
             <Link to="/" className={classes.forgot}>
               Sign up
@@ -83,8 +110,11 @@ const LoginForm: React.FC = () => {
           <Link to="" className={classes.forgot}>
             Forgot password?
           </Link>
-          <button className={classes["submit-btn"]} type="submit">
+          {/* <button className={classes["submit-btn"]} type="submit">
             Login
+          </button> */}
+          <button className={classes["submit-btn"]} type="submit" disabled={isLoading}>
+            {isLoading ? <Spinner /> : "Login"}
           </button>
         </form>
       </div>
