@@ -15,7 +15,6 @@ const Spinner: React.FC = () => (
   <div className={classes.spinner}></div>
 );
 
-
 const baseUrl = "https://drop-apis.firsta.tech";
 
 const LoginForm: React.FC = () => {
@@ -47,28 +46,17 @@ const LoginForm: React.FC = () => {
 
       if (response.data.success) {
         // Navigate to the dashboard if login is successful
+        toast.success("Login Successful")
         navigate("/dashboard");
       } else {
         toast.error("An error occurred. Please try again.");
       }
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        switch (error.request.status) {
-          case 401:
-            toast.error("Invalid Email Or Password. Please try again");
-            break;
-          case 404:
-            toast.error("User does not exist. Please create an account before signing up");
-            break;
-          default:
-            toast.error("An error occurred. Please try again.");
-        }
-      } else {
-        toast.error("An unexpected error occurred. Please try again.");
-      }
-    }finally{
+    }  catch (error){
+      toast.error(error.response.data.message)
+      console.log(error)
+    } finally{
       setIsLoading(false)
-    }
+     }
   };
 
   return (
@@ -110,9 +98,6 @@ const LoginForm: React.FC = () => {
           <Link to="" className={classes.forgot}>
             Forgot password?
           </Link>
-          {/* <button className={classes["submit-btn"]} type="submit">
-            Login
-          </button> */}
           <button className={classes["submit-btn"]} type="submit" disabled={isLoading}>
             {isLoading ? <Spinner /> : "Login"}
           </button>
