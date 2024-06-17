@@ -34,7 +34,7 @@ interface SignupError {
   phoneError: null | string;
 }
 
-const baseUrl = "https://drop-apis.firsta.tech";
+const baseUrl = "http://drop-apis.firsta.tech";
 
 const SignUp = () => {
   const [formData, setFormData] = useState<DefaultState>({
@@ -96,8 +96,8 @@ const SignUp = () => {
         navigate("/email-verification/" + formData.user.email);
       })
       .catch((error) => {
-        console.log(error?.response?.data);
-        navigate("/email-verification/" + formData.user.email);
+        console.log(error);
+     
       });
 
     //   sessionStorage.setItem("email", JSON.stringify(formData.user.email));
