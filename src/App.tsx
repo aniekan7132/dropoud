@@ -11,6 +11,11 @@ import LoginForm from "./pages/Login";
 import Home from "./pages/home/Home";
 
 const App: FC = () => {
+
+
+
+
+
   return (
     // <EmailVerification />
     // <Empty  />
