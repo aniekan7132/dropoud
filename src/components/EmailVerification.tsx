@@ -11,7 +11,7 @@ const EmailVerification = () => {
   const [minutes, setMinutes] = useState(0);
   const [sendOtp, setSendOtp] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
-  
+
   const inputRef = useRef<HTMLInputElement | null>(null);
   const inputRef2 = useRef<HTMLInputElement | null>(null);
   const inputRef3 = useRef<HTMLInputElement | null>(null);
@@ -20,7 +20,7 @@ const EmailVerification = () => {
   const baseUrl = "https://drop-apis.firsta.tech";
 
   const params = useParams();
-  const email = params.email;
+  const emailUrl = params.email;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -55,10 +55,23 @@ const EmailVerification = () => {
     }
   }, []);
 
-  const inputEmail = sessionStorage.getItem("email");
-  //console.log(inputEmail);
+  //const inputEmail = sessionStorage.getItem("email");
 
-  useEffect(() => {}, []);
+  const onOtpSubmit = (e: React.ChangeEvent<HTMLInputElement>, value: string) => {
+    e.preventDefault();
+
+    axios
+      .post(`${baseUrl}/api/v1/auth/verify`, {
+        email: emailUrl,
+        code: value,
+      })
+      .then((response) => {
+        console.log("Posting OTD code...", response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -105,23 +118,27 @@ const EmailVerification = () => {
     setOtp(otp + value);
 
     if (value && inputRef4.current) {
-      onOtpSubmit();
+      onOtpSubmit(e, value)
     }
   };
 
-  const onOtpSubmit = () => {};
-
   const resendOtp = () => {
+    setSeconds(10);
+    setMinutes(0);
+    setSendOtp(false);
+    //drop-apis.firsta.tech/api/v1/auth/verify/saniekan32@gmail.com
+
     axios
-      .get(`${baseUrl}/api/v1/auth/verify/${email}`)
+      .get(`${baseUrl}/api/v1/auth/verify/${emailUrl}`)
       .then((response) => {
-        console.log("Getting Otp", response.data);
+        console.log("Getting Otp", response);
       })
       .catch((error) => {
         console.log(error);
         setErrorMsg(error?.message);
+        //setSendOtp(false);
       });
-  }
+  };
 
   return (
     <div className={classes["main__container"]}>
@@ -129,12 +146,12 @@ const EmailVerification = () => {
       <div className={classes["sub__container"]}>
         <h5>Enter the 4 digit code</h5>
         <p className={classes["otp__text-bg"]}>
-          We've sent a verification code to {`${inputEmail}`} Please check your
+          We've sent a verification code to {`${emailUrl}`}. Please check your
           email, including the spam folder
         </p>
 
         <div className={classes["input__container"]}>
-          <form onSubmit={onOtpSubmit} className={classes["otp__form"]}>
+          <form onSubmit={(e) => onOtpSubmit(e)} className={classes["otp__form"]}>
             <input
               type="text"
               className={classes["otp__input"]}
@@ -166,15 +183,21 @@ const EmailVerification = () => {
           </form>
 
           <div className={classes["container__sm-text"]}>
-            {!sendOtp ? (
+            {seconds === 0 ||
+              (minutes === 0 && (
+                <p className={classes["otp__text-sm"]}>
+                  This code will expire in{" "}
+                  <span>{minutes < 10 ? `0${minutes}` : minutes}</span>:
+                  <span>{seconds < 10 ? `0${seconds}` : seconds}</span>
+                </p>
+              ))}
+
+            {sendOtp && (
               <p className={classes["otp__text-sm"]}>
-                This code will expire in{" "}
-                <span>{minutes < 10 ? `0${minutes}` : minutes}</span>:
-                <span>{seconds < 10 ? `0${seconds}` : seconds}</span>
-              </p>
-            ) : (
-              <p className={classes["otp__text-sm"]}>
-                Didn't recieve a code, <button type="button" onClick={resendOtp}>Resend Code</button>
+                Didn't recieve a code,{" "}
+                <button type="button" onClick={resendOtp}>
+                  Resend Code
+                </button>
               </p>
             )}
           </div>

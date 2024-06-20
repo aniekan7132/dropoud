@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Image from "../assets/dropoud-image.png";
-import Logo from "../assets/header-logo.png";
+import Logo from "../assets/dropoud-logo.svg";
 import { Link } from "react-router-dom";
 import Input from "../components/Input";
 import google from "../assets/google.png";

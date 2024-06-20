@@ -1,0 +1,572 @@
+.home {
+  display: flex;
+}
+
+/* Styles for the nav sidebar */
+.side__nav-bar {
+  width: 180px;
+  height: 100vh;
+  /* height: 769px; */
+  background-color: #111111;
+  position: relative;
+}
+
+.navbar__logo {
+  width: 112.2px;
+  height: 31.65px;
+  position: absolute;
+  top: 32px;
+  left: 32px;
+}
+
+.nav__links-container {
+  position: absolute;
+  top: 90px;
+}
+
+.nav__links {
+  height: 40px;
+  padding: 8px 24px 8px 24px;
+  display: flex;
+  gap: 10px;
+}
+
+.nav__links img {
+  width: 16px;
+}
+
+.nav__link-item {
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.nav__links-2 {
+  margin-top: 1rem;
+}
+
+.nav__links-3 {
+  /* width: 208px; */
+  height: 120px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+.border__bottom {
+  width: 180px;
+  height: 1px;
+  background: #b5b5b5;
+  margin-top: 2rem;
+}
+
+/* Styles for the top Navbar*/
+
+.top__navbar {
+  height: 80px;
+  display: flex;
+  flex: 1;
+  position: relative;
+}
+
+.search__bar {
+  width: 785px;
+  height: 36px;
+  position: absolute;
+  top: 12px;
+  left: 28px;
+  display: flex;
+  gap: 16px;
+}
+
+.search__logo {
+  position: absolute;
+  top: 17px;
+  left: 19px;
+  width: 22px;
+  height: 22px;
+}
+
+.top__bar-input {
+  border: none;
+  /* width: 785px; */
+  border-radius: 16px;
+  background-color: none;
+  background: #f8f8f8;
+  padding-left: 3rem;
+}
+
+.top__bar-input:focus {
+  border: none;
+}
+
+.top__right-nav {
+  position: absolute;
+  top: 12px;
+  left: 800px;
+  display: flex;
+  gap: 18px;
+}
+
+.top__right-nav_button {
+  position: relative;
+}
+
+.button__logo {
+  position: absolute;
+  top: 12px;
+  left: 19px;
+  width: 24px;
+  height: 24px;
+}
+
+.profile__container {
+  display: flex;
+  gap: 12px;
+  width: 170px;
+  height: 42px;
+  margin-top: 0.4rem;
+}
+
+.profile__picture-container {
+  position: relative;
+}
+
+.profile__picture {
+  width: 40px;
+  height: 40px;
+}
+
+.verified-icon {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 25px;
+  left: 25px;
+}
+
+.profile__title-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.profile__name {
+  color: #414141;
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 500;
+}
+
+.profile__title {
+  color: #606060;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+}
+
+/* Styles for main body */
+body {
+  /* overflow: hidden; */
+}
+
+.main__container {
+  background: #f8f8f8;
+  padding: 1rem 1.3rem;
+}
+
+.text-bg {
+  font-weight: 500;
+  size: 24px;
+  line-height: 28px;
+  color: #414141;
+}
+
+.overview__container {
+  display: grid;
+  grid-template-columns: 362px 364px 362px;
+  grid-template-rows: 160px 301px 232px;
+  width: 1136px;
+  gap: 8px;
+}
+
+.grid__col-span_2 {
+  grid-column: span 2;
+}
+
+.grid__row-span_2 {
+  grid-column-start: 3;
+  grid-row-start: 2;
+  grid-row-end: 4;
+  /* height: 646px; */
+}
+
+.grid__row-span {
+  background: #ffffff;
+}
+
+/* Grid first row start here */
+.sub__overview-container-sub {
+  width: 362px;
+  border-radius: 8px;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: .7rem;
+  height: 140px;
+}
+
+.overview__header {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: #606060;
+}
+
+.overview__score {
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 40px;
+  color: #414141;
+}
+
+.main__arrow-container {
+  display: flex;
+  gap: 8px;
+}
+
+.sub__arrow-container {
+  width: 24px;
+  height: 24px;
+  background: #72cb72;
+  border-radius: 50%;
+  position: relative;
+}
+
+.sub__arrow-container_red {
+  background: #FF5656;
+}
+
+.arrow {
+  position: absolute;
+  top: 6px;
+  left: 7px;
+  color: #ffffff;
+}
+
+.percentage {
+  font-weight: 400;
+  font-weight: 16px;
+  color: #72CB72;
+  line-height: 20px;
+}
+
+.percentage span {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #929292
+}
+
+/* Grid first row ends here */
+
+/* Styles for video section */
+.overview__video-section {
+  display: flex;
+  flex-direction: column;
+  width: 362px;
+  border-radius: 8px;
+  gap: 16px;
+  background: #FFFFFF;
+  padding: 24px;
+}
+
+.overview__video-image {
+  width: 316px;
+  height: 147px;
+  border-radius: 4px;
+  /* rgba(31, 31, 31, 0.6) */
+}
+
+.overview__video-title_section {
+  display: flex;
+  /* justify-content: space-between; */
+  width: 329px;
+  gap: 71px;
+}
+
+.overview__video-title {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #414141;
+  width: 103px;
+}
+
+.overview__views-comments {
+  display: flex;
+  gap: 10px;
+  width: 155px;
+}
+
+.overview__views-comments p {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #414141;
+}
+
+/* Styles for followers section */
+
+.overview__followers-container {
+  background: #FFFFFF;
+  width: 364px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+}
+
+.overview__header-padding {
+  padding-top: 24px;
+  padding-left: 24px;
+  padding-right: 18px;
+}
+
+.overview__followers {
+  padding-left: 24px;
+  padding-right: 18px;
+}
+
+.overview__followers-details {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.overview__name-school_container {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Now in profile component */
+.overview__name-school_image {
+  display: flex;
+  gap: 16px;
+  width: 170px;
+}
+
+.overview__followers-picture {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.overview__followers-name_school--wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.overview__followers-name {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #414141;
+}
+
+.overview__followers-school {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #929292;
+}
+
+/* Profile component ends here */
+
+.overview__followed {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #5353AA;
+}
+
+.button__follower {
+  position: absolute;
+  top: 252px;
+  width: 364px;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+/*  Styles for the views */
+.overview__views-container {
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  gap: 24px;
+  padding-top: 24px;
+  padding-left: 24px;
+  padding-right: 18px;
+  position: relative;
+}
+
+.overview__views-container div {
+  position: absolute;
+  top: 250px;
+  left: 98px;
+}
+
+.overview__views-container p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #606060;
+  width: 167px;
+  text-align: center;
+}
+
+/* Styles for the comment section */
+.overview__comments-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 1rem .7rem .7rem .7rem;
+  background: #FFFFFF;
+  height: 232px;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.overview__comments-header_view {
+  width: 702px;
+  height: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #B5B5B5;
+}
+
+.overview__comments-header_view a {
+  font-weight: 500;
+  size: 16px;
+  line-height: 20px;
+  color: #5353AA;
+}
+
+.overview__comments {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: relative;
+}
+
+.no__views {
+  position: absolute;
+  top: 80px;
+  left: 300px;
+}
+
+.no__views {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #606060;
+  width: 150px;
+  text-align: center;
+}
+
+.overview__comments-picture {
+  width: 142px;
+  height: 76px;
+  border-radius: 8px;
+}
+
+.overview__comments-course_code-cont {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.overview__comments-course_code-cont h4 {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  color: #414141;
+}
+
+.overview__comments-school_logo--cont {
+  display: flex;
+  gap: 8px;
+}
+
+.overvieww__comment-school_logo {
+  width: 16px;
+  height: 16px;
+}
+
+.overview__comment {
+  fon-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #414141;
+}
+
+.overview__comments-reply {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  color: #414141;
+}
+
+.overview__comments-reply_right--cont {
+  display: flex;
+  gap: 8px;
+}
+
+.overview__comments-reply span {
+  width: 38px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #414141;
+}
+
+.overview__comment-reply_days {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #606060;
+}
+
+.overview__video-code {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #929292;
+}
+
+.overview__comments-sub_container {
+  display: flex;
+  justify-content: space-between;
+  width: 702px;
+}
+
+.overview__comments-sub_container--profile {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.overview__comments-reply_cont {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  Padding: 0px 48px 0px 48px;
+}

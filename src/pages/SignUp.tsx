@@ -1,8 +1,8 @@
-import logo from "../assets/header-logo.png";
+import logo from "../assets/dropoud-logo.svg";
 import image from "../assets/dropoud-image.png";
 import Input from "../components/Input";
 import Button from "../components/ButtonComponent";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import axios from "axios";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -93,7 +93,7 @@ const SignUp = () => {
       })
       .then((response) => {
         console.log("Posting data", response.data);
-        navigate("/email-verification/" + formData.user.email);
+        //navigate("/email-verification/" + formData.user.email);
       })
       .catch((error) => {
         console.log(error?.response?.data);
@@ -106,13 +106,14 @@ const SignUp = () => {
     //   } else {
     //     setError(error);
     //   }
+    //navigate("/email-verification/" + formData.user.email);
   };
 
   return (
     <div className={classes["home__section"]}>
       <div className={classes["section__left"]}>
         <h1 className={classes["section__logo"]}>
-          <img className="logo" src={logo} alt="" />
+          <img className="logo" src={logo} alt="page-logo" />
         </h1>
         <div className={classes["section__content"]}>
           <h2 className={classes["text-bg"]}>Create Account</h2>
