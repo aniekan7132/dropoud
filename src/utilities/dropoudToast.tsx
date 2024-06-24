@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import "./Toaststyles.css"; // Import your custom styles
+import "./Toaststyles.css";
 import errorIcon from "../assets/errorIcon.svg";
 import React from "react";
 class Toast {
