@@ -15,7 +15,7 @@
 }
 
 .main-image {
-	max-height: 100vh;
+	height: 100vh;
 	width: 100%;
 }
 
@@ -60,7 +60,7 @@
 
 .image-container {
 	width: 50%;
-	height: 100vh;
+	/* height: 100vh; */
 }
 
 /* form {

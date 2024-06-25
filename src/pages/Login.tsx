@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Image from "../assets/dropoud-image.png";
 import Logo from "../assets/header-logo.png";
-import { Link } from "react-router-dom";
 import Input from "../components/Input";
 import classes from "./Login.module.css";
 import dropoudToast from "../utilities/dropoudToast";
@@ -91,7 +91,7 @@ const LoginForm: React.FC = () => {
 						/>
 					</div>
 
-					<Link to='' className={classes.forgot}>
+					<Link to='/forgotpassword?' className={classes.forgot}>
 						Forgot password?
 					</Link>
 					<button
