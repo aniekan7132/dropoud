@@ -25,7 +25,7 @@ const ForgotPassword = () => {
 				</p>
 
 				<Input
-					// className={classes["email__input"]}
+					className={classes["email__input"]}
 					placeholder='Enter You Email'
 				/>
 
