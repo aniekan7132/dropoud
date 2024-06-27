@@ -8,7 +8,7 @@ class Toast {
 		toast.error(Message, {
 			className: "custom-toast-error",
 			bodyClassName: "custom-toast-body",
-			progressClassName: "custom-toast-progress",
+			// progressClassName: "custom-toast-progress",
 			icon: (
 				<div>
 					<img src={errorIcon} alt='error' />

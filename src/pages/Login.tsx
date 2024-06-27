@@ -10,6 +10,7 @@ import Input from "../components/Input";
 import classes from "./Login.module.css";
 import dropoudToast from "../utilities/dropoudToast";
 import "../utilities/Toaststyles.css";
+// import Error from "../components/Error";
 
 // Spinner component
 const Spinner: React.FC = () => <div className={classes.spinner}></div>;
@@ -20,6 +21,7 @@ const LoginForm: React.FC = () => {
 	const [userEmail, setUserEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
+	// const [errorMessage, setErrorMessage] = useState("");
 	const navigate = useNavigate();
 
 	const handleUserEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -42,12 +44,13 @@ const LoginForm: React.FC = () => {
 
 			if (response.data.success) {
 				// Navigate to the dashboard if login is successful
-				dropoudToast.success("Login Successful");
+				// dropoudToast.success("Login Successful");
 				navigate("/dashboard");
 			} else {
 				dropoudToast.error("An error occurred. Please try again.");
 			}
 		} catch (error) {
+			// setErrorMessage(error.response.data.message);
 			dropoudToast.error(error.response.data.message);
 			console.log(error);
 		} finally {
@@ -63,6 +66,12 @@ const LoginForm: React.FC = () => {
 			<div className={classes["form-container"]}>
 				<form onSubmit={handleSubmit} className={classes["form__submit"]}>
 					<img src={Logo} alt='' className={classes.logo} />
+					{/* {errorMessage && (
+						<Error
+							errorMsg={errorMessage}
+							className={classes["error__message"]}
+						/>
+					)} */}
 					<ToastContainer className={classes["toast-position"]} />
 					<h2>Login</h2>
 					<p style={{ color: "#B5B5B5", padding: "10px 0" }}>

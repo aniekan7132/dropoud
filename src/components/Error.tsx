@@ -4,6 +4,7 @@ import classes from "./Error.module.css";
 
 type ErrorMsgProp = {
   errorMsg?: null | string;
+  className?: string
 };
 
 const Error = ({ errorMsg }: ErrorMsgProp) => {

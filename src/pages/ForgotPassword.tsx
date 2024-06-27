@@ -1,10 +1,19 @@
 import React from "react";
 import Input from "../components/Input";
 import classes from "./Password.module.css";
+import { useNavigate } from "react-router-dom";
+
+// import { Link } from "react-router-dom";
 // import Button from "../components/ButtonComponent";
 
 const ForgotPassword = () => {
 	// const [isLoading, setIsLoading] =useState(false)
+
+	const navigate = useNavigate();
+
+	const handlePush = () => {
+		navigate("/email-verification/:email");
+	};
 
 	return (
 		<div className={classes.forget}>
@@ -15,15 +24,16 @@ const ForgotPassword = () => {
 					your password
 				</p>
 
-				<div>
-					<Input placeholder='Enter You Email' />
-				</div>
+				<Input
+					// className={classes["email__input"]}
+					placeholder='Enter You Email'
+				/>
 
-				<div>
-					<button className={classes["submit__btn"]}>
-						Forgot Your Password?
-					</button>
-				</div>
+				{/* <Link to='/email-verification/:email'> */}
+				<button className={classes["submit__btn"]} onClick={handlePush}>
+					Forgot Your Password??
+				</button>
+				{/* </Link> */}
 			</form>
 		</div>
 	);
