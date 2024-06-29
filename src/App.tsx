@@ -9,6 +9,7 @@ import EmailVerification from "./components/EmailVerification";
 // import { BrowserRouter } from "react-router-dom";
 import LoginForm from "./pages/Login";
 import ForgotPassword from "./pages/ForgotPassword";
+import NewPassword from "./pages/NewPassword.tsx";
 import ThankYou from "./components/ThankYou";
 
 const App: FC = () => {
@@ -25,6 +26,7 @@ const App: FC = () => {
 					/>
 					<Route path='thank' element={<ThankYou />} />
 					<Route path='forgotpassword?' element={<ForgotPassword />} />
+					<Route path='newpassword' element={<NewPassword />} />
 				</Routes>
 			</Router>
 		</>
