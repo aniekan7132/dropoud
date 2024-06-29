@@ -11,6 +11,7 @@ import LoginForm from "./pages/Login";
 import ForgotPassword from "./pages/ForgotPassword";
 import NewPassword from "./pages/NewPassword.tsx";
 import ThankYou from "./components/ThankYou";
+import SuccessScreen from "./pages/SuccessScreen.tsx";
 
 const App: FC = () => {
 	return (
@@ -27,6 +28,7 @@ const App: FC = () => {
 					<Route path='thank' element={<ThankYou />} />
 					<Route path='forgotpassword?' element={<ForgotPassword />} />
 					<Route path='newpassword' element={<NewPassword />} />
+					<Route path='success' element={<SuccessScreen />} />
 				</Routes>
 			</Router>
 		</>
