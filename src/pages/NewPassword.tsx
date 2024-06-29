@@ -15,7 +15,7 @@ const NewPassword = () => {
 				<Input
 					className={classes["password__input"]}
 					id={classes["repeat"]}
-					placeholder='Repeat passwor'
+					placeholder='Repeat password'
 				/>
 
 				{/* <Link to='/email-verification/:email'> */}
