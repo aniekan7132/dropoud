@@ -120,17 +120,7 @@ form {
 	margin-right: 10px;
 }
 
-/* spinner Loader */
 
-.spinner {
-	border: 4px solid rgba(251, 244, 244, 0.1);
-	border-left-color: #fffefe;
-	border-radius: 50%;
-	width: 24px;
-	height: 24px;
-	animation: spin 1s linear infinite;
-	margin: 0 auto;
-}
 
 .error__message {
 	margin-right: 30% !important;

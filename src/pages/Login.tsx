@@ -11,9 +11,10 @@ import classes from "./Login.module.css";
 import dropoudToast from "../utilities/dropoudToast";
 import "../utilities/Toaststyles.css";
 // import Error from "../components/Error";
+import Spinner from "../components/Spinner";
 
 // Spinner component
-const Spinner: React.FC = () => <div className={classes.spinner}></div>;
+// const Spinner: React.FC = () => <div className={classes.spinner}></div>;
 
 const baseUrl = "https://drop-apis.firsta.tech";
 
