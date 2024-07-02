@@ -6,8 +6,16 @@ import { useNavigate } from "react-router-dom";
 // import { Link } from "react-router-dom";
 // import Button from "../components/ButtonComponent";
 
-const ForgotPassword = () => {
+const baseUrl = "https://drop-apis.firsta.tech";
+
+
+const ForgotPassword: React.FC = () => {
 	// const [isLoading, setIsLoading] =useState(false)
+
+	
+
+
+
 
 	const navigate = useNavigate();
 
