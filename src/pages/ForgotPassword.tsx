@@ -103,20 +103,23 @@ const ForgotPassword: React.FC = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsLoading(true);
-
+		
         try {
-            const response = await axios.get(`${baseurl}/api/v1/auth/forgot-password/${email}`)
-			// const response = await axios.get(`${baseurl}/api/v1/auth/forgot-password/${email}`,{
-            //     params: { email }
-            // });
 
-            if (response.data.success) {
-                dropoudToast.success("OTP sent successfully");
-                navigate(`/email-verification/${email}`);
-            } else {
-                dropoudToast.error("An error occurred. Please try again.");
-            }
-        } catch (error) {
+            await axios.get(`${baseurl}/api/v1/auth/forgot-password/${email}`)
+			.then((response) => {
+				
+				if (response.data.success) {
+					dropoudToast.success("OTP sent successfully");	
+					navigate(`/email-verification/${email}`);
+				} else {
+					dropoudToast.error("An error occurred. Please try again.");
+				}
+				console.log(response);
+			})
+        } 
+		
+		catch (error) {
             dropoudToast.error(error.response?.data?.message || "An error occurred. Please try again.");
             console.log(error);
         } finally {
