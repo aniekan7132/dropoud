@@ -10,7 +10,7 @@ interface LoginForm {
   onSubmit?: (username: string, password: string) => void;
 }
 
-const LoginForm: React.FC<LoginForm> = ({ onSubmit }) => {
+const LoginForm: React.FC<LoginForm> = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 

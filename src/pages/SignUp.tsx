@@ -2,7 +2,7 @@ import logo from "../assets/dropoud-logo.svg";
 import dropoudBanner from "../assets/dropoud-banner.svg";
 import Input from "../components/Input";
 import Button from "../components/ButtonComponent";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -62,7 +62,7 @@ const SignUp = () => {
     });
   };
 
-  const onSubmit = (e: any) => {
+  const onSubmit = (e: FormEvent) => {
     e.preventDefault();
 
     if (formData.user.first_name === "") {
