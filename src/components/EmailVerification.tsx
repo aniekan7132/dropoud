@@ -16,114 +16,111 @@ const EmailVerification = () => {
   const inputRef2 = useRef<HTMLInputElement | null>(null);
   const inputRef3 = useRef<HTMLInputElement | null>(null);
   const inputRef4 = useRef<HTMLInputElement | null>(null);
-	const [otp, setOtp] = useState("");
-	const [seconds, setSeconds] = useState(10);
-	const [minutes, setMinutes] = useState(0);
-	const [sendOtp, setSendOtp] = useState(false);
-	const [errorMsg, setErrorMsg] = useState("");
 
-	const inputRef = useRef<HTMLInputElement | null>(null);
-	const inputRef2 = useRef<HTMLInputElement | null>(null);
-	const inputRef3 = useRef<HTMLInputElement | null>(null);
-	const inputRef4 = useRef<HTMLInputElement | null>(null);
+  const baseUrl = "https://drop-apis.firsta.tech";
 
-	const baseUrl = "https://drop-apis.firsta.tech";
+  const params = useParams();
+  const emailUrl = params.email;
 
-	const params = useParams();
-	const email = params.email;
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // Decrease seconds if seconds is greater than zero
+      if (seconds > 0) {
+        setSeconds(seconds - 1);
+      }
 
-	useEffect(() => {
-		const interval = setInterval(() => {
-			// Decrease seconds if seconds is greater than zero
-			if (seconds > 0) {
-				setSeconds(seconds - 1);
-			}
+      // When seconds reaches zero, decrease minutes if greater than zero
+      if (seconds === 0) {
+        if (minutes === 0) {
+          // Stop the countdown when both minutes and seconds are zero
+          clearInterval(interval);
+          setSendOtp(true);
+        } else {
+          // Reset seconds to 59 and decrease minute by 1
+          setSeconds(59);
+          setMinutes(minutes - 1);
+        }
+      }
+    }, 1000);
 
-			// When seconds reaches zero, decrease minutes if greater than zero
-			if (seconds === 0) {
-				if (minutes === 0) {
-					// Stop the countdown when both minutes and seconds are zero
-					clearInterval(interval);
-					setSendOtp(true);
-				} else {
-					// Reset seconds to 59 and decrease minute by 1
-					setSeconds(59);
-					setMinutes(minutes - 1);
-				}
-			}
-		}, 1000);
+    return () => {
+      // Cleanup: stop the interval when the component unmount
+      clearInterval(interval);
+    };
+  }, [seconds]); // Re-run this effect whenever "seconds" changes
 
-		return () => {
-			// Cleanup: stop the interval when the component unmount
-			clearInterval(interval);
-		};
-	}, [seconds]); // Re-run this effect whenever "seconds" changes
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, []);
 
-	useEffect(() => {
-		if (inputRef.current) {
-			inputRef.current.focus();
-		}
-	}, []);
+  //const inputEmail = sessionStorage.getItem("email");
 
-	const inputEmail = sessionStorage.getItem("email");
-	//console.log(inputEmail);
+  const onOtpSubmit = (e: React.ChangeEvent<HTMLInputElement>, value: string) => {
+    e.preventDefault();
 
-	useEffect(() => {}, []);
+    axios
+      .post(`${baseUrl}/api/v1/auth/verify`, {
+        email: emailUrl,
+        code: value,
+      })
+      .then((response) => {
+        console.log("Posting OTD code...", response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
-	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const value = e.target.value;
-		//inputRef2.current?.focus();
-		if (!value) return;
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    //inputRef2.current?.focus();
+    if (!value) return;
 
-		setOtp(otp + value);
+    setOtp(otp + value);
 
-		// Move to next input if current field is filled
-		if (value && inputRef2.current) {
-			inputRef2.current.focus();
-		}
-	};
+    // Move to next input if current field is filled
+    if (value && inputRef2.current) {
+      inputRef2.current.focus();
+    }
+  };
 
-	const handleChangeTwo = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const value = e.target.value;
+  const handleChangeTwo = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
 
-		if (!value) return;
+    if (!value) return;
 
-		setOtp(otp + value);
+    setOtp(otp + value);
 
-		if (value && inputRef3.current) {
-			inputRef3.current.focus();
-		}
-	};
+    if (value && inputRef3.current) {
+      inputRef3.current.focus();
+    }
+  };
 
-	const handleChangeThree = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const value = e.target.value;
+  const handleChangeThree = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
 
-		if (!value) return;
+    if (!value) return;
 
-		setOtp(otp + value);
+    setOtp(otp + value);
 
-		if (value && inputRef4.current) {
-			inputRef4.current.focus();
-		}
-	};
+    if (value && inputRef4.current) {
+      inputRef4.current.focus();
+    }
+  };
 
-	const handleChangeFour = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const value = e.target.value;
+  const handleChangeFour = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
 
-		if (!value) return;
+    if (!value) return;
 
-		setOtp(otp + value);
+    setOtp(otp + value);
 
     if (value && inputRef4.current) {
       onOtpSubmit(e, value)
     }
   };
-		if (value && inputRef4.current) {
-			onOtpSubmit();
-		}
-	};
-
-	const onOtpSubmit = () => {};
 
   const resendOtp = () => {
     setSeconds(10);
@@ -142,17 +139,6 @@ const EmailVerification = () => {
         //setSendOtp(false);
       });
   };
-	const resendOtp = () => {
-		axios
-			.get(`${baseUrl}/api/v1/auth/verify/${email}`)
-			.then((response) => {
-				console.log("Getting Otp", response.data);
-			})
-			.catch((error) => {
-				console.log(error);
-				setErrorMsg(error?.message);
-			});
-	};
 
   return (
     <div className={classes["main__container"]}>
@@ -163,15 +149,6 @@ const EmailVerification = () => {
           We've sent a verification code to {`${emailUrl}`}. Please check your
           email, including the spam folder
         </p>
-	return (
-		<div className={classes["main__container"]}>
-			{errorMsg && <Error errorMsg={errorMsg} />}
-			<div className={classes["sub__container"]}>
-				<h5>Enter the 4 digit code</h5>
-				<p className={classes["otp__text-bg"]}>
-					We've sent a verification code to{`${inputEmail}`} Please check your
-					email, including the spam folder
-				</p>
 
         <div className={classes["input__container"]}>
           <form onSubmit={(e) => onOtpSubmit(e)} className={classes["otp__form"]}>
@@ -204,37 +181,6 @@ const EmailVerification = () => {
               onChange={(e) => handleChangeFour(e)}
             />
           </form>
-				<div className={classes["input__container"]}>
-					<form onSubmit={onOtpSubmit} className={classes["otp__form"]}>
-						<input
-							type='text'
-							className={classes["otp__input"]}
-							ref={inputRef}
-							maxLength={1}
-							onChange={(e) => handleChange(e)}
-						/>
-						<input
-							type='number'
-							className={classes["otp__input"]}
-							ref={inputRef2}
-							maxLength={1}
-							onChange={(e) => handleChangeTwo(e)}
-						/>
-						<input
-							type='number'
-							className={classes["otp__input"]}
-							ref={inputRef3}
-							maxLength={1}
-							onChange={(e) => handleChangeThree(e)}
-						/>
-						<input
-							type='number'
-							className={classes["otp__input"]}
-							ref={inputRef4}
-							maxLength={1}
-							onChange={(e) => handleChangeFour(e)}
-						/>
-					</form>
 
           <div className={classes["container__sm-text"]}>
             {seconds === 0 ||
@@ -259,26 +205,6 @@ const EmailVerification = () => {
       </div>
     </div>
   );
-					<div className={classes["container__sm-text"]}>
-						{!sendOtp ? (
-							<p className={classes["otp__text-sm"]}>
-								This code will expire in{" "}
-								<span>{minutes < 10 ? `0${minutes}` : minutes}</span>:
-								<span>{seconds < 10 ? `0${seconds}` : seconds}</span>
-							</p>
-						) : (
-							<p className={classes["otp__text-sm"]}>
-								Didn't recieve a code,{" "}
-								<button type='button' onClick={resendOtp}>
-									Resend Code
-								</button>
-							</p>
-						)}
-					</div>
-				</div>
-			</div>
-		</div>
-	);
 };
 
 export default EmailVerification;
@@ -306,7 +232,7 @@ export default EmailVerification;
             />*/
 
 {
-	/* {otp.map((value, index) => {
+  /* {otp.map((value, index) => {
               return (
                 <input
                   type="number"
