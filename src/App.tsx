@@ -19,21 +19,6 @@ const App: FC = () => {
 
 
 
-  return (
-    // <EmailVerification />
-    <>
-      <Router>
-        <Routes>
-          <Route path="/" element={<SignUp />} />
-          <Route path="/sign-in" element={<LoginForm />} />
-          <Route
-            path="/email-verification/:email"
-            element={<EmailVerification />}
-          />
-        </Routes>
-      </Router>
-    </>
-  );
 	return (
 		// <EmailVerification />
 		<>
