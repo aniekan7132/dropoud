@@ -1,0 +1,96 @@
+.home {
+  display: flex;
+}
+
+.main__pane {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main__container {
+  background: #f8f8f8;
+  padding: 1rem 2rem;
+  overflow: hidden;
+  flex: 1;
+}
+
+.wallet__figure-container {
+  display: flex;
+  width: 1120px;
+  gap: 24px;
+}
+
+.wallet__balance-container {
+  background: #ffffff;
+  width: 540px;
+  border-radius: 8px;
+  height: 424px;
+  padding: 1.5rem;
+  position: relative;
+}
+
+.wallet__balance-figure {
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 40px;
+  color: #414141;
+}
+
+.wallet__transaction-history {
+  position: absolute;
+  top: 172px;
+  left: 25px;
+}
+
+.wallet__no-transaction {
+  position: absolute;
+  top: 320px;
+  left: 148px;
+}
+
+.wallet__balance-div {
+  position: absolute;
+  top: 84px;
+  left: 25px;
+}
+
+.wallet__withdrawal-container {
+  background: #ffffff;
+  width: 550px;
+  border-radius: 8px;
+  height: 424px;
+  padding: 1.5rem;
+  position: relative;
+  overflow: auto;
+}
+
+.wallet__withdrawal-balance_div {
+  position: absolute;
+  top: 84px;
+  left: 25px;
+}
+
+.wallet__withdrawal-button {
+  position: absolute;
+  top: 156px;
+  left: 25px;
+}
+
+.withdrawal__button {
+  width: 192px;
+  color: #f8f8f8;
+  border-radius: 16px;
+}
+
+.wallet__withdrawal-transaction_history {
+  position: absolute;
+  top: 260px;
+  left: 32px;
+}
+
+.wallet__withdrawa-no_transaction {
+  position: absolute;
+  top: 320px;
+  left: 148px;
+}

@@ -1,9 +1,10 @@
 input {
   width: 460px;
-  height: 56px;
+  height: 46px;
   border-radius: 16px;
   border: 1px solid #b5b5b5;
   padding: 16px;
+  color: #606060;
 }
 
 input::placeholder {

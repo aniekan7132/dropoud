@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Image from "../assets/dropoud-image.png";
-import Logo from "../assets/header-logo.png";
+import dropoudBanner from "../assets/dropoud-banner.svg";
+import Logo from "../assets/dropoud-logo.svg";
 import { Link } from "react-router-dom";
 import Input from "../components/Input";
 import google from "../assets/google.png";
@@ -32,7 +32,7 @@ const LoginForm: React.FC<LoginForm> = () => {
   return (
     <div className={classes.login}>
       <div className={classes["image-container"]}>
-        <img src={Image} className={classes["main-image"]} alt="banner" />
+        <img src={dropoudBanner} className={classes["main-image"]} alt="banner" />
       </div>
       <div className={classes["form-container"]}>
         <form onSubmit={handleSubmit} className={classes["form__submit"]}>

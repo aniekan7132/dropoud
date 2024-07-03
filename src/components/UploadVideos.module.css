@@ -1,0 +1,128 @@
+.upload__videos-background {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(31, 31, 31, 0.6);
+  z-index: 9;
+}
+
+.upload__videos-container {
+  width: 1115px;
+  height: 450px;
+  position: absolute;
+  top: 125px;
+  left: 215px;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.upload__heading {
+  width: 1115px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 16px;
+  border-bottom: solid 1px #b5b5b5;
+}
+
+.cancel__icon {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.upload__select-files {
+  width: 260px;
+  height: 280px;
+  background: yellow;
+}
+
+.upload__select-files_sub--cont {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+}
+
+.upload__icon-background {
+  background: red;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  position: relative;
+}
+
+.upload__icon {
+  width: 56px;
+  height: 56px;
+  position: absolute;
+  top: 20px;
+  left: 22px;
+}
+
+.upload__select-files_text p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #414141;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 28px;
+  background: blue;
+}
+
+.upload__select-files_button {
+  height: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: center;
+}
+
+.upload__select-files_button a {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #5353aa;
+  text-decoration: none;
+  display: block;
+}
+
+.upload__file-format__cont p {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #414141;
+}
+
+.upload__file-format__cont {
+  display: flex;
+  flex-direction: column;
+  width: 460px;
+  height: 60px;
+  background: pink;
+  display: flex;
+  gap: 16px;
+}
+
+.upload__file-format {
+  width: 460px;
+  height: 84px;
+  display: flex;
+  background: green;
+}
+
+.upload__file-format p {
+  width: 54px;
+  height: 32px;
+  padding: 8px 12px;
+  background: red;
+  border-radius: 16px;
+}
+
+.upload__file-format span:not(:last-child) {
+  margin-right: ;
+}
