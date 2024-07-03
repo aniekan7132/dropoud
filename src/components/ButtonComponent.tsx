@@ -8,13 +8,14 @@ type ButtonProps = {
   type?: "submit" | "button";
   onClick?: (e: any) => void;
   className?: string
+  textColor?: string
 };
 
 function Button({size = "sm", color = "primary", children, type, className, onClick}: ButtonProps) {
   const functionForSize = (size: string) => {
     if(size === "sm") {
     return {
-      height: "48px",
+      height: "45px",
       width: "142px",
       borderRadius: "16px",
       border: "1px solid #5353AA",
@@ -22,8 +23,8 @@ function Button({size = "sm", color = "primary", children, type, className, onCl
       fontWeight: "400",
       fontSize: "16px",
       lineHeight: "20px",
-      padding: "16px 2px 16px 24px",
-      cursor: "pointer"
+      cursor: "pointer",
+      padding: "0px 20px px 20px",
     };
     }
     if(size === 'md'){
@@ -38,7 +39,7 @@ function Button({size = "sm", color = "primary", children, type, className, onCl
     }
     if(size === "lg"){
       return {
-        height: "56px",
+        height: "46px",
         width: "460px",
         borderRadius: "16px",
         border: "1px solid #5353AA",

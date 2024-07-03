@@ -29,11 +29,7 @@
   color: #606060;
 }
 
-.button__empty {
-  display: flex;
-  justify-content: center;
-  align-item: center;
-}
+
 
 .overview__followers-container {
   background: #FFFFFF;

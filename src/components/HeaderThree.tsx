@@ -1,10 +1,10 @@
 import React from 'react'
 import classes from "./HeaderThree.module.css";
 
-const HeaderThree = () => {
+const HeaderThree = ({text}: {text: string}) => {
   return (
     <>
-      <h3 className={classes["overview__header"]}>Latest Video You Upload</h3>
+      <h3 className={classes["overview__header"]}>{text}</h3>
     </>
   );
 }

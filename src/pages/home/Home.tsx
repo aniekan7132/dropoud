@@ -1,15 +1,4 @@
-import React from "react";
-import Profile from "../../components/Profile";
-import dropoudLogo2 from "../../assets/dropoud-logo2.svg";
-import fluentHome from "../../assets/fluent-home.svg";
-import fluentVideo from "../../assets/fluent-video.svg";
-import wallet from "../../assets/wallet.svg";
-import notification from "../../assets/notification.svg";
-import message from "../../assets/message.svg";
-import comments from "../../assets/comments.svg";
-import followers from "../../assets/followers.svg";
-import setting from "../../assets/setting.svg";
-import logout from "../../assets/logout.svg";
+import React, { useState } from "react";
 import search from "../../assets/search.svg";
 import Input from "../../components/Input";
 import upload from "../../assets/upload.svg";
@@ -26,175 +15,35 @@ import classes from "./Home.module.css";
 import { Link } from "react-router-dom";
 import Button from "../../components/ButtonComponent";
 import Empty from "../../components/Empty";
+import GridFirstRow from "../../components/GridFirstRow";
+import HeaderThree from "../../components/HeaderThree";
+import InputModal from "../../components/InputModal";
+import SideNavbar from "../../components/SideNavbar";
+import TopSearchBar from "../../components/TopSearchBar";
 
 const Home = () => {
+  const [inputModal, setInputModal] = useState(false);
+
   return (
-    <div className={classes.home}>
-      <nav className={classes["side__nav-bar"]}>
-        <img
-          className={classes["navbar__logo"]}
-          src={dropoudLogo2}
-          alt="Navigation-logo"
-        />
+    <>
+      {inputModal && <InputModal onClick={() => setInputModal(false)} />}
+      <div className={classes.home}>
+        <SideNavbar />
+        <main className={classes["main__pane"]}>
+          <TopSearchBar />
+          <div className={classes["main__container"]}>
+            <h2
+              className={`${classes["text-bg"]} ${classes["text__bg-margin"]}`}
+            >
+              Overview
+            </h2>
 
-        <div className={classes["nav__links-container"]}>
-          <div className={classes["nav__links"]}>
-            <img
-              className={classes["nav__links-img"]}
-              src={fluentHome}
-              alt="Home-logo"
-            />
-            <Link className={classes["nav__link-item"]} to="sign-up">
-              Home
-            </Link>
-          </div>
-          <div className={classes["nav__links"]}>
-            <img
-              className={classes["nav__links-img"]}
-              src={fluentVideo}
-              alt="Content-logo"
-            />
-            <Link className={classes["nav__link-item"]} to="">
-              Content
-            </Link>
-          </div>
-          <div className={classes["nav__links"]}>
-            <img
-              className={classes["nav__links-img"]}
-              src={wallet}
-              alt="Wallet-logo"
-            />
-            <Link className={classes["nav__link-item"]} to="">
-              Wallet
-            </Link>
-          </div>
-
-          <div className={classes["border__bottom"]}></div>
-
-          <div
-            className={`${classes["nav__links"]} ${classes["nav__links-2"]}`}
-          >
-            <img
-              className={classes["nav__links-img"]}
-              src={notification}
-              alt="Home-logo"
-            />
-            <Link className={classes["nav__link-item"]} to="">
-              Notification
-            </Link>
-          </div>
-          <div className={classes["nav__links"]}>
-            <img
-              className={classes["nav__links-img"]}
-              src={message}
-              alt="Content-logo"
-            />
-            <Link className={classes["nav__link-item"]} to="">
-              Inbox
-            </Link>
-          </div>
-          <div className={classes["nav__links"]}>
-            <img
-              className={classes["nav__links-img"]}
-              src={comments}
-              alt="Wallet-logo"
-            />
-            <Link className={classes["nav__link-item"]} to="">
-              Comment
-            </Link>
-          </div>
-          <div className={classes["nav__links"]}>
-            <img
-              className={classes["nav__links-img"]}
-              src={followers}
-              alt="Wallet-logo"
-            />
-            <Link className={classes["nav__link-item"]} to="">
-              Follower
-            </Link>
-          </div>
-
-          <div className={classes["border__bottom"]}></div>
-
-          <div className={classes["nav__links-3"]}>
-            <div className={classes["nav__links"]}>
-              <img
-                className={classes["nav__links-img"]}
-                src={setting}
-                alt="Wallet-logo"
-              />
-              <Link className={classes["nav__link-item"]} to="">
-                Setting
-              </Link>
-            </div>
-            <div className={classes["nav__links"]}>
-              <img
-                className={classes["nav__links-img"]}
-                src={logout}
-                alt="Wallet-logo"
-              />
-              <Link className={classes["nav__link-item"]} to="">
-                Logout
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
-
-      <main className={classes["main__container-overall"]}>
-        <div className={classes["top__navbar"]}>
-          <div className={classes["search__bar"]}>
-            <img
-              src={search}
-              alt="Search-logo"
-              className={classes["search__logo"]}
-            />
-            <Input
-              placeholder="Search..."
-              className={classes["top__bar-input"]}
-            />
-          </div>
-
-          <div className={classes["top__right-nav"]}>
-            <div className={classes["top__right-nav_button"]}>
-              <img
-                className={classes["button__logo"]}
-                src={upload}
-                alt="Upload-logo"
-              />
-              <Button color="secondary" size="sm" type="submit">
-                Upload
-              </Button>
-            </div>
-
-            <div className={classes["profile__container"]}>
-              <div className={classes["profile__picture-container"]}>
-                <img
-                  className={classes["profile__picture"]}
-                  src={profileImage}
-                  alt="Profile-picture"
-                />
-                <img
-                  className={classes["verified-icon"]}
-                  src={verifiedIcon}
-                  alt="Verified-icon"
-                />
-              </div>
-              <div className={classes["profile__title-container"]}>
-                <p className={classes["profile__name"]}>James Tom</p>
-                <p className={classes["profile__title"]}>University lecturer</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className={classes["main__container"]}>
-          <h2 className={classes["text-bg"]}>Overview</h2>
-
-          <div className={classes["overview__container"]}>
-            <Empty />
-            {/* { <div className={classes["overview__container-top"]}> } */}
-            {/* <div className={classes["sub__overview-container-sub"]}>
+            <div className={classes["overview__container"]}>
+              <GridFirstRow />
+              <GridFirstRow />
+              <GridFirstRow />
+              {/* { <div className={classes["overview__container-top"]}> } */}
+              {/* <div className={classes["sub__overview-container-sub"]}>
               <h3 className={classes["overview__header"]}>Total Followers</h3>
               <p className={classes["overview__score"]}>0</p>
               <div className={classes["main__arrow-container"]}>
@@ -242,8 +91,18 @@ const Home = () => {
               </div>
             </div>  */}
 
-            {/* <div className={classes["overview__video-section"]}>
-              <h3 className={classes["overview__header"]}>
+              <div className={classes["overview__video-section"]}>
+                <HeaderThree />
+                <p className={classes[""]}>
+                  Do you want to view metrics on your recent video? Upload and
+                  publish a video to begin
+                </p>
+                <div className={classes["button__empty"]}>
+                  <Button color="primary" size="smlg" type="submit">
+                    Upload Now
+                  </Button>
+                </div>
+                {/*<h3 className={classes["overview__header"]}>
                 Latest Video You Upload
               </h3>
               <img
@@ -267,11 +126,14 @@ const Home = () => {
                     Comments (20)
                   </p>
                 </div>
+              </div>*/}
               </div>
-            </div> */}
-            {/* 
-            <div className={classes["overview__followers-container"]}>
-              <h3
+
+              <div className={classes["overview__followers-container"]}>
+                <div className={classes["no__active-follower"]}>
+                  <p>No Active Follower</p>
+                </div>
+                {/*<h3
                 className={`${classes["overview__header"]} ${classes["overview__header-padding"]}`}
               >
                 Followers
@@ -370,27 +232,27 @@ const Home = () => {
                     </p>
                   </div>
                 </div>
+              </div>*/}
+                <Button
+                  className={classes["button__follower"]}
+                  color="primary"
+                  size="bigsm"
+                  type="submit"
+                >
+                  View All
+                </Button>
               </div>
-              <Button
-                className={classes["button__follower"]}
-                color="primary"
-                size="bigsm"
-                type="submit"
+              {/* </div> */}
+
+              <div
+                className={`${classes["overview__views-container"]} ${classes["grid__row-span_2"]} ${classes["grid__row-span"]}`}
               >
-                View All
-              </Button>
-            </div> */}
-            {/* </div> */}
+                <h3 className={classes["overview__header"]}>Views</h3>
 
-            <div
-              className={`${classes["overview__views-container"]} ${classes["grid__row-span_2"]} ${classes["grid__row-span"]}`}
-            >
-              <h3 className={classes["overview__header"]}>Views</h3>
-
-              <div>
-                <p>No Views at the moment </p>
-              </div>
-              {/* 
+                <div>
+                  <p>No Views at the moment </p>
+                </div>
+                {/* 
               <div className={classes["overview__name-school_container"]}>
                 <div
                   className={classes["overview__name-school_container--sub"]}
@@ -600,21 +462,21 @@ const Home = () => {
                 </div>
                 <p className={classes["overview__followed"]}>Just Viewed</p>
               </div> */}
-            </div>
+              </div>
 
-            <div className={classes["grid__col-span_2"]}>
-              <div className={classes["overview__comments-container"]}>
-                <div className={classes["overview__comments-header_view"]}>
-                  <h3 className={classes["overview__header"]}>Comments</h3>
-                  <Link to="">View all</Link>
-                </div>
-
-                <div className={classes["overview__comments"]}>
-                  <div className={classes["no__views"]}>
-                    <p>No Views at the moment </p>
+              <div className={classes["grid__col-span_2"]}>
+                <div className={classes["overview__comments-container"]}>
+                  <div className={classes["overview__comments-header_view"]}>
+                    <h3 className={classes["overview__header"]}>Comments</h3>
+                    <Link to="">View all</Link>
                   </div>
 
-                  {/* <div className={classes["overview__comments-sub_container"]}>
+                  <div className={classes["overview__comments"]}>
+                    <div className={classes["no__views"]}>
+                      <p>No Comments Found</p>
+                    </div>
+
+                    {/* <div className={classes["overview__comments-sub_container"]}>
                     <div
                       className={
                         classes["overview__comments-sub_container--profile"]
@@ -724,13 +586,14 @@ const Home = () => {
                       </div>
                     </div>
                   </div> */}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </main>
-    </div>
+        </main>
+      </div>
+    </>
   );
 };
 

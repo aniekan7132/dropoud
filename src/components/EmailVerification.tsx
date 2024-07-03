@@ -142,7 +142,7 @@ const EmailVerification = () => {
 
   return (
     <div className={classes["main__container"]}>
-      {errorMsg && <Error errorMsg={errorMsg} />}
+      {errorMsg && <Error errorMsg={errorMsg} />} 
       <div className={classes["sub__container"]}>
         <h5>Enter the 4 digit code</h5>
         <p className={classes["otp__text-bg"]}>

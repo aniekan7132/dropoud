@@ -1,0 +1,110 @@
+.home {
+  display: flex;
+}
+
+.main__pane {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main__container {
+  background: #f8f8f8;
+  padding: 1rem 2rem;
+  overflow: hidden;
+  flex: 1;
+}
+
+.content__container {
+  width: 1120px;
+  background: #FFFFFF;
+  height: 400px;
+  margin-top: 1rem;
+  border-radius: 8px;
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+.content__heading-titles {
+  width: 1120px;
+  height: 48px;
+  padding:  14px 39px 14px 39px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: solid 1px #B5B5B5;
+}
+
+.content__info {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 213px;
+  height: 100px;
+  position: relative;
+  top: 100px;
+  left: 462px;
+  text-align: center;
+}
+
+.existing__user-container {
+  width: 1120px;
+  padding: 1rem 2rem;
+  display: flex;
+  position: relative;
+}
+
+.existing__user-container:not(:last-child) {
+  border-bottom: solid 1px #B5B5B5;
+}
+
+.existing__user-content_div {
+  width: 263px;
+  display: flex;
+  gap: 16px;
+  /* pasition: relative; */
+}
+
+.existing__user-content_thumbnail {
+  width: 142px;
+  height: 64px;
+  border-radius: 4px;
+}
+
+.existing__user-title {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.existing__user-logo {
+  display: flex;
+  gap: 4px;
+}
+
+.dots {
+  text-align: right;
+  color: #414141;
+  font-size: 26px;
+}
+
+.existing__user-date_views-comment {
+  position: absolute;
+  left: 350px;
+  width: 700px;
+  display: flex;
+}
+
+.existing__user-date {
+  display: flex;
+  gap: 4px;
+}
+
+.existing__user-views {
+  position: absolute;
+  left: 340px;
+}
+
+.existing__user-comments {
+  position: absolute;
+  left: 670px;
+}

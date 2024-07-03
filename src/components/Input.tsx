@@ -8,12 +8,13 @@ type Props = React.DetailedHTMLProps<
 
 interface InputProps extends Props {
   className?: string;
+  width?: string
 }
 
-const Input = (props: InputProps) => {
+const Input = (props: Props, {className, width}: InputProps) => {
   return (
     <>
-      <input {...props} />
+      <input {...props} width={width ? width : ""} />
     </>
   );   
 

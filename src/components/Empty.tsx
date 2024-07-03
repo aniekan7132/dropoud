@@ -12,23 +12,21 @@ const Empty = () => {
       <GridFirstRow />
       <div className={classes["overview__video-section"]}>
         <HeaderThree />
-        <p className={classes[""]}>
+        <p className={classes["upload__video"]}>
           Do you want to view metrics on your recent video? Upload and publish a
           video to begin
         </p>
         <div className={classes["button__empty"]}>
           <Button
-            // className={classes["button__follower"]}
             color="primary"
             size="smlg"
             type="submit"
-            // className={classes.button}
           >
             Upload Now
           </Button>
         </div>
       </div>
-      <div className={classes["overview__followers-container"]}>
+      {/* <div className={classes["overview__followers-container"]}>
         <div className={classes["no__active-follower"]}>
           <p>No Active Follower</p>
         </div>
@@ -40,7 +38,7 @@ const Empty = () => {
         >
           View All
         </Button>
-      </div>
+      </div> */}
     </>
   );
 };
