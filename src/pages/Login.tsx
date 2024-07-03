@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { ToastContainer } from "react-toastify";
+// import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Image from "../assets/dropoud-image.png";
 import Logo from "../assets/header-logo.png";
 import Input from "../components/Input";
 import classes from "./Login.module.css";
-import dropoudToast from "../utilities/dropoudToast";
+// import dropoudToast from "../utilities/dropoudToast";
 import "../utilities/Toaststyles.css";
-// import Error from "../components/Error";
+import Error from "../components/Error";
 import Spinner from "../components/Spinner";
 
 // Spinner component
@@ -22,7 +22,7 @@ const LoginForm: React.FC = () => {
 	const [userEmail, setUserEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
-	// const [errorMessage, setErrorMessage] = useState("");
+	const [errorMessage, setErrorMessage] = useState("");
 	const navigate = useNavigate();
 
 	const handleUserEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -48,11 +48,11 @@ const LoginForm: React.FC = () => {
 				// dropoudToast.success("Login Successful");
 				navigate("/dashboard");
 			} else {
-				dropoudToast.error("An error occurred. Please try again.");
+				setErrorMessage("An error occurred. Please try again.");
 			}
 		} catch (error) {
-			// setErrorMessage(error.response.data.message);
-			dropoudToast.error(error.response.data.message);
+			setErrorMessage(error.response.data.message);
+			// dropoudToast.error(error.response.data.message);
 			console.log(error);
 		} finally {
 			setIsLoading(false);
@@ -67,13 +67,13 @@ const LoginForm: React.FC = () => {
 			<div className={classes["form-container"]}>
 				<form onSubmit={handleSubmit} className={classes["form__submit"]}>
 					<img src={Logo} alt='' className={classes.logo} />
-					{/* {errorMessage && (
+					{errorMessage && (
 						<Error
 							errorMsg={errorMessage}
 							className={classes["error__message"]}
 						/>
-					)} */}
-					<ToastContainer className={classes["toast-position"]} />
+					)}
+					{/* <ToastContainer className={classes["toast-position"]} /> */}
 					<h2>Login</h2>
 					<p style={{ color: "#B5B5B5", padding: "10px 0" }}>
 						Don't have an account?{" "}
