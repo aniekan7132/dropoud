@@ -63,7 +63,7 @@ const SignUp = () => {
   };
 
   const onSubmit = (e: any) => {
-    e.preventDefault();
+    e.preventDefault();response
 
     if (formData.user.first_name === "") {
       setError({ ...error, firstNameError: "First name is required." });
