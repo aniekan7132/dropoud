@@ -1,8 +1,8 @@
-import logo from "../assets/header-logo.png";
-import image from "../assets/dropoud-image.png";
+import logo from "../assets/dropoud-logo.svg";
+import dropoudBanner from "../assets/dropoud-banner.svg";
 import Input from "../components/Input";
 import Button from "../components/ButtonComponent";
-import {  FormEvent, useRef, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import axios from "axios";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -47,7 +47,7 @@ const SignUp = () => {
     },
   });
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const formRef = useRef(null);
   const [error, setError] = useState<SignupError>(defaultErrorState);
@@ -93,11 +93,10 @@ const SignUp = () => {
       })
       .then((response) => {
         console.log("Posting data", response.data);
-        navigate("/email-verification/" + formData.user.email);
+        //navigate("/email-verification/" + formData.user.email);
       })
       .catch((error) => {
         console.log(error);
-     
       });
 
     //   sessionStorage.setItem("email", JSON.stringify(formData.user.email));
@@ -106,13 +105,14 @@ const SignUp = () => {
     //   } else {
     //     setError(error);
     //   }
+    //navigate("/email-verification/" + formData.user.email);
   };
 
   return (
-    <div className={classes["home__section"]}>
+    <div className={classes["signup__section"]}>
       <div className={classes["section__left"]}>
         <h1 className={classes["section__logo"]}>
-          <img className="logo" src={logo} alt="" />
+          <img className="logo" src={logo} alt="page-logo" />
         </h1>
         <div className={classes["section__content"]}>
           <h2 className={classes["text-bg"]}>Create Account</h2>
@@ -190,14 +190,14 @@ const SignUp = () => {
           </form>
           <p className={classes["text__sm-policy"]}>
             Signing up for a Dropoud account means you agree to
-            <span> Privacy Policy </span>
-            and <span>Terms of Services</span>
+            <Link to=""> Privacy Policy </Link>
+            and <Link to="">Terms of Services</Link>
           </p>
         </div>
       </div>
 
       <div className={classes["section__right"]}>
-        <img src={image} alt="" />
+        <img src={dropoudBanner} alt="" />
       </div>
     </div>
   );
@@ -205,67 +205,3 @@ const SignUp = () => {
 
 export default SignUp;
 
-// if (!formData.confirmPassword.trim()) {
-//   formRef.current.confirmPassword.classList.add("error");
-//   setErrors({ confirmPassword: "Password is required." });
-//   return isError;
-// } else if (formData.password !== formData.confirmPassword) {
-//   formRef.current.confirmPassword.classList.add("error");
-//   setErrors({
-//     confirmPassword: "Password do not match.",
-//   });
-//   return isError;
-// }
-
-/*
-    const validateForm = (formData, formRef, setErrors) => {
-    // if there is any error
-    let isError = true;
-
-    if (!formData.firstName.trim()) {
-      formRef.current.firstName.classlist.add("error");
-      setErrors({ firstName: "First name is Required." });
-      return isError;
-    }
-
-    if (!formData.email) {
-      formRef.current.email.classlist.add("error");
-      setErrors({ email: "Email is required" });
-      return isError;
-    } else if (!isEmailValid(formData.email)) {
-      formRef.current.email.classList.add("error");
-      setErrors({ email: "Email is  required."})
-      return isError;
-    }
-
-    if(!formData.password.trim()){
-      formRef.current.password.classList.add("error");
-      setErrors({ password: "Password is  required." });
-      return isError;
-    }else if(formData.password.length < 8) {
-      formRef.current.password.classList.add("error");
-      setErrors({ password: "Password must be be atleast 8 characters blong." });
-      return isError;
-    }
-
-
-    return (isError = false);
-  };
-
-  const isEmailValid = (email) => {
-    return /\S+@\S+\.\S+/.test(email);
-  };
-
- */
-
-// Must be at least 8 characters.
-
-//   async function sendData() {
-//   fetch("", {
-//     method: "PUT",
-//     body: JSON.stringify()
-//     headers: {
-//       "Content-Type": "application/json",
-//     }
-//   })
-// }

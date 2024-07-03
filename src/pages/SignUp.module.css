@@ -1,4 +1,4 @@
-.home__section {
+.signup__section {
   display: flex;
   width: 100%;
   justify-content: space-between;
@@ -8,20 +8,28 @@
   margin-top: 10px;
 }
 
+.logo {
+  width: 170px;
+  height: 47px;
+}
+
 .section__left {
-  padding: 2rem 0 0 10rem;
+  padding: 2rem 0 0 5rem;
 }
 
 .section__content {
-  margin-top: 5rem;
+  margin-top: 2rem;
 }
 
+/* Header two starts here */
 .text-bg {
   font-weight: 700;
   size: 24px;
   line-height: 28px;
   color: #414141;
 }
+
+/* Header two ends here */
 
 .section__content h2 {
   margin-bottom: 1rem;
@@ -34,7 +42,7 @@
 .section__form {
   display: flex;
   flex-direction: column;
-  gap: .7rem;
+  gap: .3rem;
   margin-top: 1rem;
 }
 
@@ -58,8 +66,9 @@
   margin-top: 1rem;
 }
 
-.text__sm-policy span {
+.text__sm-policy a {
   color: #5353aa;
+  text-decoration: none;
 }
 
 .section__right {
@@ -68,7 +77,7 @@
 
 .section__right img {
   width: 698px;
-  height: 790px;
+  /* height: 790px; */
   radius: 0px, 24px, 24px, 0px;
 }
 

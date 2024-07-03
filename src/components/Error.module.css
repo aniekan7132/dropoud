@@ -1,7 +1,7 @@
 /* .error__container {
  position: absolute;
- top: 164px;
- left: 620px;
+ top: 100px;
+ left: 400px;
  width: 576px;
  display: flex;
  align-items: center;
@@ -20,10 +20,9 @@
 	gap: 32px;
 }
 
-.error__container p {
-	color: #ffffff;
-	font-family: Mulish;
-	font-weight: 400;
-	font-size: 16px;
-	line-height: 20px;
+.error__text {
+ color: #FFFFFF;
+ font-weight: 400;
+ font-size: 16px;
+ line-height: 20px;
 }

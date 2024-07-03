@@ -6,6 +6,16 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 
 const EmailVerification = () => {
+  const [otp, setOtp] = useState("");
+  const [seconds, setSeconds] = useState(10);
+  const [minutes, setMinutes] = useState(0);
+  const [sendOtp, setSendOtp] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const inputRef = useRef<HTMLInputElement | null>(null);
+  const inputRef2 = useRef<HTMLInputElement | null>(null);
+  const inputRef3 = useRef<HTMLInputElement | null>(null);
+  const inputRef4 = useRef<HTMLInputElement | null>(null);
 	const [otp, setOtp] = useState("");
 	const [seconds, setSeconds] = useState(10);
 	const [minutes, setMinutes] = useState(0);
@@ -104,6 +114,10 @@ const EmailVerification = () => {
 
 		setOtp(otp + value);
 
+    if (value && inputRef4.current) {
+      onOtpSubmit(e, value)
+    }
+  };
 		if (value && inputRef4.current) {
 			onOtpSubmit();
 		}
@@ -111,6 +125,23 @@ const EmailVerification = () => {
 
 	const onOtpSubmit = () => {};
 
+  const resendOtp = () => {
+    setSeconds(10);
+    setMinutes(0);
+    setSendOtp(false);
+    //drop-apis.firsta.tech/api/v1/auth/verify/saniekan32@gmail.com
+
+    axios
+      .get(`${baseUrl}/api/v1/auth/verify/${emailUrl}`)
+      .then((response) => {
+        console.log("Getting Otp", response);
+      })
+      .catch((error) => {
+        console.log(error);
+        setErrorMsg(error?.message);
+        //setSendOtp(false);
+      });
+  };
 	const resendOtp = () => {
 		axios
 			.get(`${baseUrl}/api/v1/auth/verify/${email}`)
@@ -123,6 +154,15 @@ const EmailVerification = () => {
 			});
 	};
 
+  return (
+    <div className={classes["main__container"]}>
+      {errorMsg && <Error errorMsg={errorMsg} />} 
+      <div className={classes["sub__container"]}>
+        <h5>Enter the 4 digit code</h5>
+        <p className={classes["otp__text-bg"]}>
+          We've sent a verification code to {`${emailUrl}`}. Please check your
+          email, including the spam folder
+        </p>
 	return (
 		<div className={classes["main__container"]}>
 			{errorMsg && <Error errorMsg={errorMsg} />}
@@ -133,6 +173,37 @@ const EmailVerification = () => {
 					email, including the spam folder
 				</p>
 
+        <div className={classes["input__container"]}>
+          <form onSubmit={(e) => onOtpSubmit(e)} className={classes["otp__form"]}>
+            <input
+              type="text"
+              className={classes["otp__input"]}
+              ref={inputRef}
+              maxLength={1}
+              onChange={(e) => handleChange(e)}
+            />
+            <input
+              type="number"
+              className={classes["otp__input"]}
+              ref={inputRef2}
+              maxLength={1}
+              onChange={(e) => handleChangeTwo(e)}
+            />
+            <input
+              type="number"
+              className={classes["otp__input"]}
+              ref={inputRef3}
+              maxLength={1}
+              onChange={(e) => handleChangeThree(e)}
+            />
+            <input
+              type="number"
+              className={classes["otp__input"]}
+              ref={inputRef4}
+              maxLength={1}
+              onChange={(e) => handleChangeFour(e)}
+            />
+          </form>
 				<div className={classes["input__container"]}>
 					<form onSubmit={onOtpSubmit} className={classes["otp__form"]}>
 						<input
@@ -165,6 +236,29 @@ const EmailVerification = () => {
 						/>
 					</form>
 
+          <div className={classes["container__sm-text"]}>
+            {seconds === 0 ||
+              (minutes === 0 && (
+                <p className={classes["otp__text-sm"]}>
+                  This code will expire in{" "}
+                  <span>{minutes < 10 ? `0${minutes}` : minutes}</span>:
+                  <span>{seconds < 10 ? `0${seconds}` : seconds}</span>
+                </p>
+              ))}
+
+            {sendOtp && (
+              <p className={classes["otp__text-sm"]}>
+                Didn't recieve a code,{" "}
+                <button type="button" onClick={resendOtp}>
+                  Resend Code
+                </button>
+              </p>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 					<div className={classes["container__sm-text"]}>
 						{!sendOtp ? (
 							<p className={classes["otp__text-sm"]}>

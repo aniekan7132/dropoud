@@ -1,0 +1,89 @@
+.progress__bar-background {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(31, 31, 31, 0.6);
+  z-index: 9;
+}
+
+.progress__bar-container {
+  width: 1115px;
+  height: 450px;
+  position: absolute;
+  top: 125px;
+  left: 215px;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.progress__bar-div {
+  width: 612px;
+  height: 104px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: absolute;
+  top: 162px;
+  left: 262px;
+}
+
+.progress__bar-div p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #000000;
+  text-align: center;
+}
+
+.progress__bar-uploading {
+  width: 612px;
+  height: 16px;
+  border-radius: 32px;
+  background: #f8f8f8;
+  position: relative;
+}
+
+.progress__bar-moving {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 16px;
+  background: #5353aa;
+  width: 60px;
+  height: 16px;
+}
+
+.progress__bar-successful_div {
+ width: 343px;
+ height: 226px;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ gap: 14px;
+ position: absolute;
+ top: 101px;
+ left: 380px;
+}
+
+.progress__bar-successful_icon img {
+ width: 154px;
+ height: 154px;
+}
+
+.progress__bar-successful_text {
+ width: 200px;
+ font-weight: 400;
+ font-size: 16px;
+ line-height: 20px;
+ color: #6B6B6B;
+ text-align: center;
+}
+
+.try__again {
+ font-weight: 400;
+ font-size: 16px;
+ line-height: 20px;
+ color: #5353AA;
+ cursor: pointer;
+}

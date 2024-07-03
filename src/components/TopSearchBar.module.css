@@ -1,0 +1,102 @@
+.top__navbar {
+  max-height: 80px;
+  display: flex;
+  flex: 1;
+  position: relative;
+}
+
+.search__bar {
+  width: 785px;
+  height: 26px;
+  position: absolute;
+  top: 12px;
+  left: 28px;
+  display: flex;
+  gap: 16px;
+}
+
+.search__logo {
+  position: absolute;
+  top: 11px;
+  left: 19px;
+  width: 22px;
+  height: 22px;
+}
+
+.top__bar-input {
+  border: none;
+  width: 730px;
+  border-radius: 16px;
+  background-color: none;
+  background: #f8f8f8;
+  padding-left: 3rem;
+}
+
+.top__bar-input:focus {
+  border: none;
+}
+
+.top__right-nav {
+  position: absolute;
+  top: 12px;
+  left: 800px;
+  display: flex;
+  gap: 18px;
+}
+
+.top__right-nav_button {
+  position: relative;
+}
+
+.button__logo {
+  position: absolute;
+  top: 12px;
+  left: 19px;
+  width: 24px;
+  height: 24px;
+}
+
+.profile__container {
+  display: flex;
+  gap: 12px;
+  width: 170px;
+  height: 42px;
+  margin-top: 0.4rem;
+}
+
+.profile__picture-container {
+  position: relative;
+}
+
+.profile__picture {
+  width: 40px;
+  height: 40px;
+}
+
+.verified-icon {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 25px;
+  left: 25px;
+}
+
+.profile__title-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.profile__name {
+  color: #414141;
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 500;
+}
+
+.profile__title {
+  color: #606060;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+}

@@ -1,0 +1,31 @@
+.overview__name-school_image {
+  display: flex;
+  gap: 16px;
+  width: 170px;
+}
+
+.overview__followers-picture {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.overview__followers-name_school--wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.overview__followers-name {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #414141;
+}
+
+.overview__followers-school {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #929292;
+}

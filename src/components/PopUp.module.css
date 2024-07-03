@@ -1,0 +1,31 @@
+.popup__background {
+  /* background: #FFFFFF; */
+   background: red;
+  width: 256px;
+  height: 168px;
+  padding: 16px 24px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  z-index: 10;
+}
+
+.popup__title-icon_div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.popup__title-icon_div img {
+  width: 24px;
+  height: 24px;
+}
+
+.popup__title-icon_div p {
+  font-weight: 500;
+  size: 14px;
+  line-height: 16px;
+  color: #606060;
+}

@@ -2,19 +2,29 @@
 import React from "react";
 
 type ButtonProps = {
-  size?: "sm" | "md" | "lg";
+  size?: "sm" | "md" | "lg" | "bigsm" | "smlg";
   color?: "primary" | "secondary";
-  children: string;
+  children?: string;
   type?: "submit" | "button";
   onClick?: (e: any) => void;
+  className?: string
+  textColor?: string
 };
 
-function Button({size = "sm", color = "primary", children, type, onClick}: ButtonProps) {
+function Button({size = "sm", color = "primary", children, type, className, onClick}: ButtonProps) {
   const functionForSize = (size: string) => {
     if(size === "sm") {
     return {
-      height: "36px",
-      width: "52px",
+      height: "45px",
+      width: "142px",
+      borderRadius: "16px",
+      border: "1px solid #5353AA",
+      color: "#5353AA",
+      fontWeight: "400",
+      fontSize: "16px",
+      lineHeight: "20px",
+      cursor: "pointer",
+      padding: "0px 20px px 20px",
     };
     }
     if(size === 'md'){
@@ -29,7 +39,7 @@ function Button({size = "sm", color = "primary", children, type, onClick}: Butto
     }
     if(size === "lg"){
       return {
-        height: "56px",
+        height: "46px",
         width: "460px",
         borderRadius: "16px",
         border: "1px solid #5353AA",
@@ -37,7 +47,36 @@ function Button({size = "sm", color = "primary", children, type, onClick}: Butto
         cursor: 'pointer',
         fontSize: "16px",
         lineHeight: "20px",
-        fontWeight: "400"
+        fontWeight: "400",
+        outline: "none"
+      };
+    }
+    if (size === "bigsm") {
+      return {
+        height: "48px",
+        // width: "213px",
+        // borderRadius: "16px",
+        border: "1px solid #5353AA",
+        color: "#ffffff",
+        fontWeight: "400",
+        fontSize: "16px",
+        lineHeight: "20px",
+        padding: "16px 24px 16px 24px",
+        cursor: "pointer",
+      };
+    }
+    if (size === "smlg") {
+      return {
+        height: "56px",
+        width: "213px",
+        borderRadius: "16px",
+        border: "1px solid #5353AA",
+        color: "#ffffff",
+        fontWeight: "400",
+        fontSize: "16px",
+        lineHeight: "20px",
+        padding: "16px 24px 16px 24px",
+        cursor: "pointer",
       };
     }
   }
@@ -50,13 +89,13 @@ function Button({size = "sm", color = "primary", children, type, onClick}: Butto
     }
     if(color === "secondary") {
       return {
-        backgroundColor: "#FF5656",
+        backgroundColor: "#FFFFFF",
       };
     }
   }
 
   return (
-    <button type={type} className="btn" style={{...functionForSize(size), ...functionForColor(color)}} onClick={onClick}>
+    <button type={type} className={className ? className : "btn"} style={{...functionForSize(size), ...functionForColor(color)}} onClick={onClick}>
       {children}
     </button>
   );
