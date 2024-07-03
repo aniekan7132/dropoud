@@ -2,7 +2,7 @@ import logo from "../assets/header-logo.png";
 import image from "../assets/dropoud-image.png";
 import Input from "../components/Input";
 import Button from "../components/ButtonComponent";
-import { useEffect, useRef, useState } from "react";
+import {  FormEvent, useRef, useState } from "react";
 import axios from "axios";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -34,7 +34,7 @@ interface SignupError {
   phoneError: null | string;
 }
 
-const baseUrl = "https://drop-apis.firsta.tech";
+const baseUrl = "http://drop-apis.firsta.tech";
 
 const SignUp = () => {
   const [formData, setFormData] = useState<DefaultState>({
@@ -62,8 +62,8 @@ const SignUp = () => {
     });
   };
 
-  const onSubmit = (e: any) => {
-    e.preventDefault();response
+  const onSubmit = (e: FormEvent) => {
+    e.preventDefault();
 
     if (formData.user.first_name === "") {
       setError({ ...error, firstNameError: "First name is required." });
@@ -96,8 +96,8 @@ const SignUp = () => {
         navigate("/email-verification/" + formData.user.email);
       })
       .catch((error) => {
-        console.log(error?.response?.data);
-        navigate("/email-verification/" + formData.user.email);
+        console.log(error);
+     
       });
 
     //   sessionStorage.setItem("email", JSON.stringify(formData.user.email));
