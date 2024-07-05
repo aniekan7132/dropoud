@@ -15,6 +15,7 @@ import ThankYou from "./components/ThankYou";
 import SuccessScreen from "./pages/SuccessScreen.tsx";
 import Home from "./pages/home/Home";
 import Content from "./pages/content/Content";
+import Notification from "./pages/Notification/Notification.tsx";
 // import PopUp from "./components/PopUp";
 // import PopUpInput from "./components/PopUpInput";
 import Wallet from "./pages/wallet/Wallet";
@@ -30,7 +31,7 @@ const App: FC = () => {
 		<>
 			<Router>
 				<Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
 					<Route path='/sign-up' element={<SignUp />} />
 					<Route path='/sign-in' element={<LoginForm />} />
 					<Route
@@ -41,6 +42,7 @@ const App: FC = () => {
 					<Route path='forgotpassword?' element={<ForgotPassword />} />
 					<Route path='newpassword' element={<NewPassword />} />
 					<Route path='success' element={<SuccessScreen />} />
+					<Route path="/notification" element={<Notification />} />
           <Route path="/content" element={<Content />} />
           <Route path="/wallet" element={<Wallet />} />
 				</Routes>
