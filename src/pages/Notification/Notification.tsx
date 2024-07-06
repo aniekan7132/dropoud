@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import SideNavbar from "../../components/SideNavbar";
 import TopSearchBar from "../../components/TopSearchBar";
 import classes from "./notification.module.css";
@@ -9,12 +9,20 @@ import Success from "../../assets/transus.svg";
 import Fail from "../../assets/transfail.svg";
 import Profile from "../../assets/profile.svg";
 
+import DeleteModal from "../../components/DeleteModal";
+
 
 
 const Notification = () => {
+
+    const [deleteNotice, setDeleteNotice] = useState(false);
+
     return (
 
         <>
+
+            {deleteNotice && <DeleteModal />}
+
             <div className={classes.notice}>
                 <SideNavbar />
                 <main className={classes["notice__pane"]}>
@@ -187,7 +195,7 @@ const Notification = () => {
 
                                 </div>
 
-                                <div className={classes["delete"]}>
+                                <div className={classes["delete"]} onClick={() => setDeleteNotice(false)}>
                                     <img src={Delete} alt="" />
                                 </div>
                             </div>
