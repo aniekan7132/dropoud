@@ -94,10 +94,11 @@ margin: 20px 32px 0px 32px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 226px;
+  width: 370px;
   margin-left: 22px;
   height: 40px;
 }
+
 
 .details img{
   margin-right: 20px;
@@ -116,5 +117,14 @@ font-size: smaller;
 }
 
 .test{
-  width: 176px;
+  width: 290px;
+}
+
+
+.success{
+  color: #00B87C !important;
+}
+
+.error{
+  color: #FF5656 !important;
 }

@@ -5,6 +5,9 @@ import classes from "./notification.module.css";
 import HeaderTwo from "../../components/HeaderTwo";
 import userImage from "../../assets/followers-picture2.svg";
 import Delete from "../../assets/delete.svg";
+import Success from "../../assets/transus.svg";
+import Fail from "../../assets/transfail.svg";
+import Profile from "../../assets/profile.svg";
 
 
 
@@ -41,27 +44,6 @@ const Notification = () => {
                                 </div>
                             </div>
 
-                            <div className={classes["notification"]}>
-                                <div className={classes["notice__body"]}>
-                                    <div className={classes["details"]}>
-
-                                        <img src={userImage} alt="userimage" />
-                                        <div className={classes["test"]}>
-                                            <p>Course Purchased</p>
-                                            <p className={classes["notice__description"]}>Lilith Just purchased your course </p>
-                                        </div>
-                                    </div>
-                                    <p className={classes["date"]} >
-                                        16 Apr 2024
-                                    </p>
-
-                                </div>
-
-                                <div className={classes["delete"]}>
-                                    <img src={Delete} alt="" />
-                                </div>
-                            </div>
-
 
 
                             <div className={classes["notification"]}>
@@ -86,6 +68,30 @@ const Notification = () => {
                             </div>
 
 
+                            <div className={classes["notification"]}>
+                                <div className={classes["notice__body"]}>
+                                    <div className={classes["details"]}>
+
+                                        <img src={userImage} alt="userimage" />
+                                        <div className={classes["test"]}>
+                                            <p>Course Purchased</p>
+                                            <p className={classes["notice__description"]}>Lilith Just purchased your course </p>
+                                        </div>
+                                    </div>
+                                    <p className={classes["date"]} >
+                                        16 Apr 2024
+                                    </p>
+
+                                </div>
+
+                                <div className={classes["delete"]}>
+                                    <img src={Delete} alt="" />
+                                </div>
+                            </div>
+
+
+
+
 
 
 
@@ -98,14 +104,15 @@ const Notification = () => {
                                     <div className={classes["details"]}>
 
                                         <img src={userImage} alt="userimage" />
-                                        <div>
-                                            <p>Course Purchased</p>
-                                            <p className={classes["notice__description"]}>Lilith Just purchased your course </p>
+                                        <div className={classes["test"]}>
+                                            <p>Course Viewed</p>
+                                            <p className={classes["notice__description"]}>Someone Just viewed  your course </p>
                                         </div>
                                     </div>
-                                    <button className={classes["new"]}>
-                                        new
-                                    </button>
+                                    <p className={classes["date"]} >
+                                        16 Apr 2024
+                                    </p>
+
 
                                 </div>
 
@@ -113,6 +120,81 @@ const Notification = () => {
                                     <img src={Delete} alt="" />
                                 </div>
                             </div>
+
+
+
+                            <div className={classes["notification"]}>
+                                <div className={classes["notice__body"]}>
+                                    <div className={classes["details"]}>
+
+                                        <img src={Success} alt="userimage" />
+                                        <div className={classes["test"]}>
+                                            <p className={classes["success"]}>Withdrawal Successful</p>
+                                            <p className={classes["notice__description"]}  >Your transaction has been processed successfully </p>
+                                        </div>
+                                    </div>
+                                    <p className={classes["date"]} >
+                                        16 Apr 2024
+                                    </p>
+
+                                </div>
+
+                                <div className={classes["delete"]}>
+                                    <img src={Delete} alt="" />
+                                </div>
+                            </div>
+
+
+
+
+                            <div className={classes["notification"]}>
+                                <div className={classes["notice__body"]}>
+                                    <div className={classes["details"]}>
+
+                                        <img src={Fail} alt="userimage" />
+                                        <div className={classes["test"]}>
+                                            <p className={classes["error"]}>Error Processing Your Withdrawal</p>
+                                            <p className={classes["notice__description"]}>Please cross check your bank details and fix the issues </p>
+                                        </div>
+                                    </div>
+                                    <p className={classes["date"]} >
+                                        16 Apr 2024
+                                    </p>
+
+                                </div>
+
+                                <div className={classes["delete"]}>
+                                    <img src={Delete} alt="" />
+                                </div>
+                            </div>
+
+
+
+
+                            <div className={classes["notification"]}>
+                                <div className={classes["notice__body"]}>
+                                    <div className={classes["details"]}>
+
+                                        <img src={Profile} alt="userimage" />
+                                        <div className={classes["test"]}>
+                                            <p>Congratulations! You Have Complete Your  Profile</p>
+                                            <p className={classes["notice__description"]}>  We are so happy to  see your complete your profile </p>
+                                        </div>
+                                    </div>
+                                    <p className={classes["date"]} >
+                                        16 Apr 2024
+                                    </p>
+
+                                </div>
+
+                                <div className={classes["delete"]}>
+                                    <img src={Delete} alt="" />
+                                </div>
+                            </div>
+
+
+
+
 
 
 
