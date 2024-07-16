@@ -15,11 +15,9 @@ const TopSearchBar = () => {
       <>
         <div className={classes["top__navbar"]}>
           <div className={classes["search__bar"]}>
-            <img
-              src={search}
-              alt="Search-logo"
-              className={classes["search__logo"]}
-            />
+            <button className={classes["search__logo"]}>
+              <img src={search} alt="Search-logo" />
+            </button>
             <Input
               placeholder="Search..."
               className={classes["top__bar-input"]}

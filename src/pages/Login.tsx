@@ -1,38 +1,72 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import dropoudBanner from "../assets/dropoud-banner.svg";
 import Logo from "../assets/dropoud-logo.svg";
 import { Link } from "react-router-dom";
 import Input from "../components/Input";
 import google from "../assets/google.png";
 import classes from "./Login.module.css";
+import AuthContext from "../context/AuthProvider";
+import axios from "axios";
+
+const defaultErrorState = {
+  usernameError: null,
+  passwordError: null,
+};
+
+interface LoginError {
+  usernameError: null | string;
+  passwordError: null | string;
+}
 
 interface LoginForm {
   onSubmit?: (username: string, password: string) => void;
 }
 
 const LoginForm: React.FC<LoginForm> = () => {
-  const [username, setUsername] = useState("");
+  // const { setAuth } = useContext(AuthContext);
+  const [userEmail, setUserEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState<LoginError>(defaultErrorState);
+
+  const LOGIN_URL = "/api/v1/auth/login";
 
   const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUsername(e.target.value);
+    setUserEmail(e.target.value);
+    setError(defaultErrorState);
   };
 
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
+    setError(defaultErrorState);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     // onSubmit(username, password);
 
+    if (userEmail === "") {
+      setError({ ...error, usernameError: "Email is required" });
+    }
 
+    if (password === "") {
+      setError({ ...error, passwordError: "Password is required" });
+    }
+
+    try {
+      const response = await axios.post(LOGIN_URL, { email: userEmail, password: password });
+      setUserEmail("");
+      setPassword("");
+    } catch (err) {}
   };
 
   return (
     <div className={classes.login}>
       <div className={classes["image-container"]}>
-        <img src={dropoudBanner} className={classes["main-image"]} alt="banner" />
+        <img
+          src={dropoudBanner}
+          className={classes["main-image"]}
+          alt="banner"
+        />
       </div>
       <div className={classes["form-container"]}>
         <form onSubmit={handleSubmit} className={classes["form__submit"]}>
@@ -49,10 +83,11 @@ const LoginForm: React.FC<LoginForm> = () => {
             <Input
               type="text"
               id="username"
-              value={username}
+              value={userEmail}
               onChange={handleUsernameChange}
               placeholder="email or username"
             />
+            {error && <p>{error.usernameError}</p>}
           </div>
           <div>
             <Input
@@ -62,6 +97,7 @@ const LoginForm: React.FC<LoginForm> = () => {
               onChange={handlePasswordChange}
               placeholder="password"
             />
+            {error && <p>{error.passwordError}</p>}
           </div>
 
           <Link to="" className={classes.forgot}>

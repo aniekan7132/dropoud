@@ -21,6 +21,9 @@
   left: 19px;
   width: 22px;
   height: 22px;
+  border: none;
+  background: none;
+  cursor: pointer;
 }
 
 .top__bar-input {

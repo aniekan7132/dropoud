@@ -14,13 +14,20 @@ import Content from "./pages/content/Content";
 import PopUp from "./components/PopUp";
 import PopUpInput from "./components/PopUpInput";
 import Wallet from "./pages/wallet/Wallet";
+import WithdrawMoney from "./components/WithdrawMoney";
+import ConfirmTransaction from "./components/ConfirmTransaction";
+import WithdrawalSuccessful from "./components/WithdrawalSuccessful";
+import Inbox from "./pages/inbox/Inbox";
 
 const App: FC = () => {
 
   return (
+    // <SignUp />
     //  <EmailVerification />
     // <Empty  />
     // <PopUpInput />
+    // <WithdrawMoney />
+    // <WithdrawalSuccessful />
     <>
       <Router>
         <Routes>
@@ -33,6 +40,7 @@ const App: FC = () => {
           />
           <Route path="/content" element={<Content />} />
           <Route path="/wallet" element={<Wallet />} />
+          <Route path="/inbox" element={<Inbox />} />
         </Routes>
       </Router>
     </>

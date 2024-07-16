@@ -43,7 +43,7 @@ const InputModal = ({ onClick }: SearchModal) => {
           <img src={search} alt="Search-icon" />
           <p>No activity yet</p>
         </div> */}
-        <HeaderThree />
+        <HeaderThree  text=""/>
         <div className={classes["input__viewers"]}>
           <div className={classes["input__viewers-container"]}>
             <Viewers />
