@@ -1,0 +1,16 @@
+{
+  "comments": [
+    {
+      "user_image": "path/to/user/image.jpg",
+      "comment_title": "Sample Title",
+      "comment_description": "This is a sample comment description.",
+      "date_of_comment": "2024-07-04"
+    },
+    {
+      "user_image": "path/to/user/image2.jpg",
+      "comment_title": "Another Title",
+      "comment_description": "This is another sample comment description.",
+      "date_of_comment": "2024-07-04"
+    }
+  ]
+}
