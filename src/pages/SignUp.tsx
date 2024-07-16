@@ -117,7 +117,7 @@ const SignUp = () => {
         <div className={classes["section__content"]}>
           <h2 className={classes["text-bg"]}>Create Account</h2>
           <p className={classes["text__sm"]}>
-            Already have an account? <Link to="sign-in">Log in</Link>
+            Already have an account? <Link to="/sign-in">Log in</Link>
           </p>
           <form
             ref={formRef}

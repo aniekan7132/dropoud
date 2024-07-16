@@ -30,7 +30,7 @@ const SideNavbar = () => {
               src={fluentHome}
               alt="Home-logo"
             />
-            <Link className={classes["nav__link-item"]} to="sign-up">
+            <Link className={classes["nav__link-item"]} to="/home">
               Home
             </Link>
           </div>
@@ -40,7 +40,7 @@ const SideNavbar = () => {
               src={fluentVideo}
               alt="Content-logo"
             />
-            <Link className={classes["nav__link-item"]} to="content">
+            <Link className={classes["nav__link-item"]} to="/content">
               Content
             </Link>
           </div>
@@ -50,7 +50,7 @@ const SideNavbar = () => {
               src={wallet}
               alt="Wallet-logo"
             />
-            <Link className={classes["nav__link-item"]} to="wallet">
+            <Link className={classes["nav__link-item"]} to="/wallet">
               Wallet
             </Link>
           </div>
@@ -65,7 +65,7 @@ const SideNavbar = () => {
               src={notification}
               alt="Home-logo"
             />
-            <Link className={classes["nav__link-item"]} to="">
+            <Link className={classes["nav__link-item"]} to="/notification">
               Notification
             </Link>
           </div>

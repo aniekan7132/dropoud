@@ -9,10 +9,15 @@ import "./index.css";
 import EmailVerification from "./components/EmailVerification";
 // import { BrowserRouter } from "react-router-dom";
 import LoginForm from "./pages/Login";
+import ForgotPassword from "./pages/ForgotPassword";
+import NewPassword from "./pages/NewPassword.tsx";
+import ThankYou from "./components/ThankYou";
+import SuccessScreen from "./pages/SuccessScreen.tsx";
 import Home from "./pages/home/Home";
 import Content from "./pages/content/Content";
-import PopUp from "./components/PopUp";
-import PopUpInput from "./components/PopUpInput";
+import Notification from "./pages/Notification/Notification.tsx";
+// import PopUp from "./components/PopUp";
+// import PopUpInput from "./components/PopUpInput";
 import Wallet from "./pages/wallet/Wallet";
 import WithdrawMoney from "./components/WithdrawMoney";
 import ConfirmTransaction from "./components/ConfirmTransaction";
@@ -21,13 +26,14 @@ import Inbox from "./pages/inbox/Inbox";
 
 const App: FC = () => {
 
+
+
+
+
   return (
-    // <SignUp />
     //  <EmailVerification />
     // <Empty  />
     // <PopUpInput />
-    // <WithdrawMoney />
-    // <WithdrawalSuccessful />
     <>
       <Router>
         <Routes>
@@ -40,7 +46,6 @@ const App: FC = () => {
           />
           <Route path="/content" element={<Content />} />
           <Route path="/wallet" element={<Wallet />} />
-          <Route path="/inbox" element={<Inbox />} />
         </Routes>
       </Router>
     </>
