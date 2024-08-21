@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Input from "../components/Input";
 import classes from "./Newpassword.module.css";
 import axios from "axios";
-import dropoudToast from "../utilities/dropoudToast";
 import { useNavigate } from "react-router-dom";
 import Spinner from "../components/Spinner";
 

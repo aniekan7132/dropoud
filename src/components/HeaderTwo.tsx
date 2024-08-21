@@ -9,4 +9,4 @@ const HeaderTwo = ({text}: {text: string}) => {
   );
 }
 
-export default HeaderTwo
+export default HeaderTwo;

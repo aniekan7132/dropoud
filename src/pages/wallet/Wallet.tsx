@@ -29,29 +29,71 @@ const Wallet = () => {
 
                 <div className={classes["wallet__transaction-history"]}>
                   <HeaderThree text="Transactions History" />
-                </div>
 
-                {/* <div className={classes["wallet__no-transaction"]}> 
-                  <HeaderFive text="No Transactions Have Been Made Yet." />
-                </div> */}
-
-                <div>
-                  <div>
+                  <div
+                    className={classes["wallet__transaction-history_wrapper"]}
+                  >
                     <div>
-                      <div>
-                        <HeaderSeven text="Course Purchase" />
-                        <p>
-                          <span>12:30pm</span> <span>12</span>
-                          <span>Apr 2024</span>
-                        </p>
-                      </div>
-                      <div>
-                        <p>₦75</p>
+                      <div className={classes["wallet__transaction-div"]}>
+                        <div className={classes["wallet__course-purchase"]}>
+                          <HeaderFive text="Course Purchase" />
+                          <p className={classes["wallet__transaction-date"]}>
+                            <p>12:30pm</p> <p>12</p>
+                            <p>Apr</p>
+                            <p>2024</p>
+                          </p>
+                        </div>
+                        <div>
+                          <p className={classes["wallet__transaction-amount"]}>
+                            ₦75
+                          </p>
+                        </div>
                       </div>
                     </div>
+
+                    <div>
+                      <div className={classes["wallet__transaction-div"]}>
+                        <div className={classes["wallet__course-purchase"]}>
+                          <HeaderFive text="Course Purchase" />
+                          <p className={classes["wallet__transaction-date"]}>
+                            <p>12:30pm</p> <p>12</p>
+                            <p>Apr</p>
+                            <p>2024</p>
+                          </p>
+                        </div>
+                        <div>
+                          <p className={classes["wallet__transaction-amount"]}>
+                            ₦75
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <div className={classes["wallet__transaction-div"]}>
+                        <div className={classes["wallet__course-purchase"]}>
+                          <HeaderFive text="Course Purchase" />
+                          <p className={classes["wallet__transaction-date"]}>
+                            <p>12:30pm</p> <p>12</p>
+                            <p>Apr</p>
+                            <p>2024</p>
+                          </p>
+                        </div>
+                        <div>
+                          <p className={classes["wallet__transaction-amount"]}>
+                            ₦75
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
                   </div>
                 </div>
               </div>
+
+              {/* <div className={classes["wallet__no-transaction"]}> 
+                  <HeaderFive text="No Transactions Have Been Made Yet." />
+                </div> */}
 
               <div className={classes["wallet__withdrawal-container"]}>
                 <div>
@@ -75,11 +117,65 @@ const Wallet = () => {
                   className={classes["wallet__withdrawal-transaction_history"]}
                 >
                   <HeaderThree text="Transactions History" />
+
+                  <div className={classes["wallet__transaction-div"]}>
+                    <div className={classes["wallet__course-purchase"]}>
+                      <HeaderFive text="Withdrawal" />
+                      <p className={classes["wallet__transaction-date"]}>
+                        <p>12:30pm</p> <p>12</p>
+                        <p>Apr</p>
+                        <p>2024</p>
+                      </p>
+                    </div>
+                    <div>
+                      <p
+                        className={`${classes["wallet__transaction-amount"]} ${classes["wallet__transaction-withdrawn"]}`}
+                      >
+                        ₦90,000
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className={classes["wallet__transaction-div"]}>
+                    <div className={classes["wallet__course-purchase"]}>
+                      <HeaderFive text="Withdrawal" />
+                      <p className={classes["wallet__transaction-date"]}>
+                        <p>12:30pm</p> <p>12</p>
+                        <p>Apr</p>
+                        <p>2024</p>
+                      </p>
+                    </div>
+                    <div>
+                      <p
+                        className={`${classes["wallet__transaction-amount"]} ${classes["wallet__transaction-withdrawn"]}`}
+                      >
+                        ₦90,000
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className={classes["wallet__transaction-div"]}>
+                    <div className={classes["wallet__course-purchase"]}>
+                      <HeaderFive text="Withdrawal" />
+                      <p className={classes["wallet__transaction-date"]}>
+                        <p>12:30pm</p> <p>12</p>
+                        <p>Apr</p>
+                        <p>2024</p>
+                      </p>
+                    </div>
+                    <div>
+                      <p
+                        className={`${classes["wallet__transaction-amount"]} ${classes["wallet__transaction-withdrawn"]}`}
+                      >
+                        ₦90,000
+                      </p>
+                    </div>
+                  </div>
                 </div>
 
-                <div className={classes["wallet__withdrawa-no_transaction"]}>
+                {/* <div className={classes["wallet__withdrawa-no_transaction"]}>
                   <HeaderFive text="No Transactions Have Been Made Yet." />
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

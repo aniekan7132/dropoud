@@ -30,7 +30,7 @@ const SideNavbar = () => {
               src={fluentHome}
               alt="Home-logo"
             />
-            <Link className={classes["nav__link-item"]} to="/home">
+            <Link className={classes["nav__link-item"]} to="/dashboard">
               Home
             </Link>
           </div>
@@ -75,7 +75,7 @@ const SideNavbar = () => {
               src={message}
               alt="Content-logo"
             />
-            <Link className={classes["nav__link-item"]} to="">
+            <Link className={classes["nav__link-item"]} to="inbox">
               Inbox
             </Link>
           </div>

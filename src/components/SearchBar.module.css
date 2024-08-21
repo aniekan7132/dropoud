@@ -1,0 +1,40 @@
+/* .top__navbar {
+  max-height: 80px;
+  display: flex;
+  flex: 1;
+  position: relative;
+} */
+
+.search__bar {
+  width: 785px;
+  height: 26px;
+  /* position: absolute;
+  top: 12px;
+  left: 28px; */
+  display: flex;
+  gap: 16px;
+}
+
+.search__logo {
+  position: absolute;
+  top: 11px;
+  left: 19px;
+  width: 22px;
+  height: 22px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.top__bar-input {
+  border: none;
+  width: 730px;
+  border-radius: 16px;
+  background-color: none;
+  background: #f8f8f8;
+  padding-left: 3rem;
+}
+
+.top__bar-input:focus {
+  border: none;
+}

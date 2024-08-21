@@ -66,7 +66,6 @@
 
 /* Styles for the nav sidebar ends here */
 
-
 /* Styles for the top Navbar*/
 
 .top__navbar {
@@ -185,6 +184,7 @@
   background: #f8f8f8;
   padding: 1rem 1.3rem;
   overflow: auto;
+  overflow-x: hidden;
   flex: 1;
 }
 
@@ -234,6 +234,7 @@
   height: 140px;
 }
 
+/* TAKE NOTE TO REMOVE STYLE DECLARATION */
 .overview__header {
   font-weight: 500;
   font-size: 18px;
@@ -253,7 +254,7 @@
   gap: 8px;
 }
 
-.sub__arrow-container {
+.arrow__container-increased {
   width: 24px;
   height: 24px;
   background: #72cb72;
@@ -261,8 +262,12 @@
   position: relative;
 }
 
-.sub__arrow-container_red {
+.arrow__container-decreased {
   background: #ff5656;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  position: relative;
 }
 
 .arrow {
@@ -272,14 +277,21 @@
   color: #ffffff;
 }
 
-.percentage {
+.percentage__increased {
   font-weight: 400;
   font-weight: 16px;
   color: #72cb72;
   line-height: 20px;
 }
 
-.percentage span {
+.percentage__decreased {
+  font-weight: 400;
+  font-weight: 16px;
+  color: #ff5656;
+  line-height: 20px;
+}
+
+.percentage__span {
   font-weight: 400;
   font-size: 12px;
   line-height: 16px;
@@ -295,8 +307,8 @@
   justify-content: space-between;
   background: #ffffff;
   padding: 24px;
-  /* width: 362px;
   border-radius: 8px;
+  /* width: 362px;
   gap: 16px; */
 }
 
@@ -336,6 +348,25 @@
   width: 103px;
 }
 
+.school__logo-div {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  margin-top: .5rem;
+}
+
+.school__logo-div p {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #929292;
+}
+
+.university__logo {
+  width: 16px;
+  height: 16px;
+}
+
 .overview__views-comments {
   display: flex;
   gap: 10px;
@@ -359,6 +390,7 @@
   flex-direction: column;
   gap: 16px;
   position: relative;
+  overflow: hidden;
 }
 
 .no__active-follower {
@@ -382,6 +414,11 @@
 .overview__followers {
   padding-left: 24px;
   padding-right: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow: scroll;
+  overflow-x: hidden;
 }
 
 .overview__followers-details {
@@ -393,6 +430,11 @@
 .overview__name-school_container {
   display: flex;
   justify-content: space-between;
+}
+
+.overview__name-school_container--sub {
+  display: flex;
+  align-items: center;
 }
 
 /* Now in profile component */
@@ -426,6 +468,7 @@
   font-size: 12px;
   line-height: 16px;
   color: #929292;
+  width: 163px;
 }
 
 /* Profile component ends here */
@@ -435,11 +478,14 @@
   font-size: 14px;
   line-height: 16px;
   color: #5353aa;
+  display: flex;
+  justify: center;
+  align-items: center;
 }
 
 .button__follower {
   position: absolute;
-  top: 252px;
+  top: 255px;
   width: 364px;
   border-bottom-right-radius: 8px;
   border-bottom-left-radius: 8px;
@@ -455,22 +501,24 @@
   padding-left: 24px;
   padding-right: 18px;
   position: relative;
+  overflow: scroll;
+  overflow-x: hidden;
 }
 
 .overview__views-container div {
-  position: absolute;
+  /* position: absolute;
   top: 250px;
-  left: 98px;
+  left: 98px; */
 }
 
-.overview__views-container p {
+/* .overview__views-container p {
   font-weight: 400;
   font-size: 16px;
   line-height: 20px;
   color: #606060;
   width: 167px;
   text-align: center;
-}
+} */
 
 /* Styles for the comment section */
 .overview__comments-container {

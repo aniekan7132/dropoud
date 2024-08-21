@@ -7,6 +7,7 @@ import axios from "axios";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import classes from "./SignUp.module.css";
+import HeaderTwo from "../components/HeaderTwo";
 
 interface DefaultState {
   user: {
@@ -35,6 +36,8 @@ interface SignupError {
 }
 
 const baseUrl = "http://drop-apis.firsta.tech";
+const temBaseurl = "https://dropoud-api.onrender.com";
+const localBaseUrl = "http://192.168.0.101:7070";
 
 const SignUp = () => {
   const [formData, setFormData] = useState<DefaultState>({
@@ -86,7 +89,7 @@ const SignUp = () => {
     }
 
     axios
-      .post(`${baseUrl}/api/v1/users`, {
+      .post(`${localBaseUrl}/api/v1/users`, {
         ...formData.user,
         account_type: "Lecturer",
         title: "",
@@ -115,7 +118,7 @@ const SignUp = () => {
           <img className="logo" src={logo} alt="page-logo" />
         </h1>
         <div className={classes["section__content"]}>
-          <h2 className={classes["text-bg"]}>Create Account</h2>
+          <HeaderTwo text="Create Account" />
           <p className={classes["text__sm"]}>
             Already have an account? <Link to="/sign-in">Log in</Link>
           </p>

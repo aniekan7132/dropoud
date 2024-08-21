@@ -7,19 +7,22 @@ import search from "../assets/search.svg";
 import upload from "../assets/upload.svg";
 import profileImage from "../assets/profile-image.svg";
 import verifiedIcon from "../assets/verified-icon.svg";
+import { useSelector } from "react-redux";
+import { selectUser } from "../features/userSlice";
 
 const TopSearchBar = () => {
+  const user = useSelector(selectUser);
+  console.log(user);
+
   return (
     <>
       {" "}
       <>
         <div className={classes["top__navbar"]}>
           <div className={classes["search__bar"]}>
-            <img
-              src={search}
-              alt="Search-logo"
-              className={classes["search__logo"]}
-            />
+            <button className={classes["search__logo"]}>
+              <img src={search} alt="Search-logo" />
+            </button>
             <Input
               placeholder="Search..."
               className={classes["top__bar-input"]}
@@ -53,7 +56,9 @@ const TopSearchBar = () => {
                 />
               </div>
               <div className={classes["profile__title-container"]}>
-                <p className={classes["profile__name"]}>James Tom</p>
+                <p className={classes["profile__name"]}>
+                  {user && user?.first_name + " " + user?.surname}
+                </p>
                 <p className={classes["profile__title"]}>University lecturer</p>
               </div>
             </div>

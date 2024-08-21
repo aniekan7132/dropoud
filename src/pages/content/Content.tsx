@@ -15,13 +15,18 @@ import HeaderSix from "../../components/HeaderSix";
 import HeaderSeven from "../../components/HeaderSeven";
 import schoolLogo from "../../assets/school-logo.svg";
 import DeleteModal from "../../components/DeleteModal";
+import WithdrawalSuccessful from "../../components/WithdrawalSuccessful";
+import UploadConatiner from "../../components/UploadConatiner";
 
+interface Props {
+  onClick: () => {};
+}
 const Content = () => {
   const [uploadVideos, setUploadVideos] = useState(false);
 
   return (
     <>
-      {uploadVideos && <DeleteModal />}
+      {uploadVideos && <UploadConatiner setUploadVideos={setUploadVideos} />}
       <div className={classes.home}>
         <SideNavbar />
         <main className={classes["main__pane"]}>
@@ -35,17 +40,22 @@ const Content = () => {
                 <HeaderFour text="Views" />
                 <HeaderFour text="Comments" />
               </div>
-              { <div className={classes["content__info"]}>
-                <HeaderFive text="No Content Available" />
-                <Button
-                  color="primary"
-                  size="smlg"
-                  type="submit"
-                  onClick={() => setUploadVideos(true)}
-                >
-                  Upload Now
-                </Button>
-              </div>}
+              {
+                <div className={classes["content__info"]}>
+                  <HeaderFive text="No Content Available" />
+                  <Button
+                    color="primary"
+                    size="smlg"
+                    type="submit"
+                    onClick={() => {
+                      setUploadVideos(true);
+                      console.log("clicked");
+                    }}
+                  >
+                    Upload Now
+                  </Button>
+                </div>
+              }
               {/* <div className={classes["existing__user-container"]}>
                 <div className={classes["existing__user-content_div"]}>
                   <div>

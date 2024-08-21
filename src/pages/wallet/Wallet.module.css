@@ -19,6 +19,7 @@
   display: flex;
   width: 1120px;
   gap: 24px;
+  margin-top: 1rem;
 }
 
 .wallet__balance-container {
@@ -28,6 +29,7 @@
   height: 424px;
   padding: 1.5rem;
   position: relative;
+  overflow: auto;
 }
 
 .wallet__balance-figure {
@@ -65,6 +67,10 @@
   overflow: auto;
 }
 
+.wallet__transaction-history_wrapper {
+  padding-bottom: 1.5rem;
+}
+
 .wallet__withdrawal-balance_div {
   position: absolute;
   top: 84px;
@@ -93,4 +99,40 @@
   position: absolute;
   top: 320px;
   left: 148px;
+}
+
+.wallet__transaction-div {
+  display: flex;
+  justify-content: space-between;
+  width: 465px;
+  margin-top: 1.5rem;
+}
+
+.wallet__course-purchase {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.wallet__transaction-date {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #929292;
+}
+
+.wallet__transaction-amount {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #414141;
+}
+
+.wallet__transaction-withdrawn {
+  color: #FF5656; 
+}
+
+.wallet__transaction-date {
+  display: flex;
+  gap: 4px;
 }

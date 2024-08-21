@@ -1,8 +1,13 @@
 import React from "react";
 import classes from "./GridFirstRow.module.css";
 import arrowUp from "../assets/arrow-up.svg";
+import { Dashboard } from "../types";
 
-const GridFirstRow = () => {
+interface Props {
+  dashboardData: Dashboard
+}
+
+const GridFirstRow = ({dashboardData}: Props) => {
   return (
     <>
       <div className={classes["sub__overview-container-sub"]}>
