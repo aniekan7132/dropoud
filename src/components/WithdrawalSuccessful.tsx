@@ -11,7 +11,7 @@ const WithdrawalSuccessful = () => {
     "successful-withdrawal"
   ) as HTMLElement;
 
-  return ReactDOM.createPortal(
+  return(
     <>
       <div className={classes["modal__background"]}></div>
       <div className={classes["withdrawal__successful-container"]}>
@@ -67,8 +67,8 @@ const WithdrawalSuccessful = () => {
           </div>
         </div>
       </div>
-    </>,
-    withdrawalSuccessfulModal
+    </>
+    
   );
 };
 

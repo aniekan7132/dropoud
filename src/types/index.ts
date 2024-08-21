@@ -170,8 +170,8 @@ export interface Lecture {
   video: string;
   description: string;
   fullname?: string;
-  view_counts?: number;
-  comment_counts?: number;
+  view_count?: number;
+  comment_count?: number;
   user_image?: string;
   thumbnail?: string;
 }

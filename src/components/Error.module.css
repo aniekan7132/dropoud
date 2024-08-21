@@ -1,23 +1,18 @@
-/* .error__container {
- position: absolute;
- top: 100px;
- left: 400px;
- width: 576px;
+.error__container {
+	max-width: max-content;
  display: flex;
- align-items: center;
- justify-content: center;
  gap: 8px;
- border-radius: 8px;
+ /* border-radius: 8px; */
  padding: 8px 24px 8px 24px;
  background: #E84747;
-} */
+} 
 
 .error__container div {
-	width: 526px;
+	/* width: 526px; */
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	gap: 32px;
+	gap: 10px;
 }
 
 .error__text {

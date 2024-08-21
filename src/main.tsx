@@ -4,10 +4,14 @@ import App from "./App.tsx";
 import "./index.css";
 import { AuthProvider } from "./context/AuthProvider.tsx";
 
+import { Provider } from "react-redux";
+import store from "./app/store.tsx";
+import Modal from "./components/Modal.tsx";
+
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <AuthProvider>
-      <App />
-    </AuthProvider>
+    <Provider store={store}>
+        <App />
+    </Provider>
   </React.StrictMode>
 );

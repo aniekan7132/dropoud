@@ -57,7 +57,7 @@ const EmailVerification = () => {
 
   //const inputEmail = sessionStorage.getItem("email");
 
-  const onOtpSubmit = (e: React.ChangeEvent<HTMLInputElement>, value: string) => {
+  const onOtpSubmit = (e: React.FormEvent, value: string) => {
     e.preventDefault();
 
     axios

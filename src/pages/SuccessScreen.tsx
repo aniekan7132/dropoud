@@ -10,7 +10,7 @@ const SuccessScreen = () => {
 					You have successfully reset your password{" "}
 				</h3>
 				<Link to='/sign-in' className={classes["text__sub"]}>
-					<p className={classes["text__sub"]}>Back to Log in</p>
+					Back to Log in
 				</Link>
 			</div>
 		</div>
