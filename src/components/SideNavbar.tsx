@@ -119,13 +119,88 @@ const SideNavbar = () => {
                 src={logout}
                 alt="Wallet-logo"
               />
-              <Link className={classes["nav__link-item"]} to="">
+              <Link className={classes["nav__link-item"]} to="/sign-in">
                 Logout
               </Link>
             </div>
           </div>
         </div>
       </nav>
+
+
+
+      <div className={classes["mobile_side__nav-bar"]}>
+      
+
+        <div className={classes["mobile_nav__links-container"]}>
+          <div className={classes["mobile_nav__links"]}>
+          <Link  to="/dashboard">
+            <img
+              className={classes["mobile_nav__links-img"]}
+              src={fluentHome}
+              alt="Home-logo"
+            />
+            </Link>
+            <Link className={classes["mobile_nav__link-item"]} to="/dashboard">
+              Home
+            </Link>
+          </div>
+          <div className={classes["mobile_nav__links"]}>
+          <Link  to="/content">
+            <img
+              className={classes["mobile_nav__links-img"]}
+              src={fluentVideo}
+              alt="Content-logo"
+            />
+            </Link>
+            <Link className={classes["mobile_nav__link-item"]} to="/content">
+              Content
+            </Link>
+          </div>
+          <div className={classes["mobile_nav__links"]}>
+          <Link to="/wallet">
+            <img
+              className={classes["mobile_nav__links-img"]}
+              src={wallet}
+              alt="Wallet-logo"
+            />
+            </Link>
+            <Link className={classes["mobile_nav__link-item"]} to="/wallet">
+              Wallet
+            </Link>
+          </div>
+
+          <div className={classes["mobile_nav__links"]}>
+          <Link  to="/notification">
+            <img
+              className={classes["mobile_nav__links-img"]}
+              src={notification}
+              height={'24px'}
+              alt="Wallet-logo"
+            />
+            </Link>
+            <Link className={classes["mobile_nav__link-item"]} to="/notification">
+            Notification
+            </Link>
+          </div>
+
+         
+
+          
+          <div className={classes["mobile_nav__links"]}>
+            <img
+              className={classes["mobile_nav__links-img"]}
+              src={message}
+              alt="Content-logo"
+            />
+            <Link className={classes["mobile_nav__link-item"]} to="inbox">
+              More
+            </Link>
+          </div>
+        
+          
+        </div>
+      </div>
     </>
   );
 };
