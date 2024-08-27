@@ -105,7 +105,7 @@ const Home = () => {
 
   const fetchDashboardData = () => {
     axios
-      .get(`${localBaseUrl}${DASHBOARD_URL}`, {
+      .get(`${DASHBOARD_URL}`, {
         headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
       })
       .then((response) => {

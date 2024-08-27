@@ -9,9 +9,10 @@ type ButtonProps = {
   onClick?: (e: any) => void;
   className?: string
   textColor?: string
+  disabled?: boolean
 };
 
-function Button({size = "sm", color = "primary", children, type, className, onClick}: ButtonProps) {
+function Button({size = "sm", color = "primary", children, type, className, disabled, onClick}: ButtonProps) {
   const functionForSize = (size: string) => {
     if(size === "sm") {
     return {
@@ -95,7 +96,7 @@ function Button({size = "sm", color = "primary", children, type, className, onCl
   }
 
   return (
-    <button type={type} className={className ? className : "btn"} style={{...functionForSize(size), ...functionForColor(color)}} onClick={onClick}>
+    <button type={type} disabled={disabled} className={className ? className : "btn"} style={{...functionForSize(size), ...functionForColor(color)}} onClick={onClick}>
       {children}
     </button>
   );

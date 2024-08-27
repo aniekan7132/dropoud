@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import axios from "../axios/axios.tsx";
 import dropoudBanner from "../assets/dropoud-banner.svg";
 import Logo from "../assets/dropoud-logo.svg";
 import Input from "../components/Input";
@@ -43,18 +43,16 @@ const LoginForm: React.FC = () => {
     setIsLoading(true);
 
     axios
-      .post(`${localBaseUrl}/api/v1/auth/login`, {
+      .post(`/api/v1/auth/login`, {
         email: userEmail,
         password: password,
       })
       .then((response) => {
-        console.log(response);
         sessionStorage.setItem("token", response.data?.data.token);
         dispatch(login(response.data?.data));
         navigate("/dashboard");
       })
       .catch((error) => {
-        console.log(error);
         setError(true);
         setErrorMessage(error.response ? error.response?.data?.message : error.message)
         setIsLoading(false);

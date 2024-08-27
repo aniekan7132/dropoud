@@ -8,7 +8,7 @@ import HeaderFive from "../../components/HeaderFive";
 import Button from "../../components/ButtonComponent";
 import UploadVideos from "../../components/UploadVideos";
 import ModalDetails from "../../components/ModalDetails";
-import ProgressBar from "../../components/ProgressBar";
+import ProgressBar from "../../components/SucessUploadScreen";
 import Profile from "../../components/Profile";
 import videoContentBox from "../../assets/video-box-content.svg";
 import HeaderSix from "../../components/HeaderSix";
