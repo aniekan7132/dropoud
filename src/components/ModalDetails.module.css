@@ -224,3 +224,51 @@ video::-webkit-media-controls-play-button {
   border-radius: 16px;
 }
 
+
+
+
+
+@media (max-width: 768px) {
+
+  .upload__videos-container {
+    width: 90%;
+    height: auto;
+    position: relative;
+    top: 10px;
+    left: 0;
+    border-radius: 8px;
+    background: #ffffff;
+    overflow: auto;
+  }
+  .upload__videos-background {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ flex-direction: column; 
+  }
+  .upload__select-files {
+    width: 100%;
+    height: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+  }
+
+  .upload__file-format__cont {
+   flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 1.2rem;
+    width: 100%;
+  
+  }
+  .file__format-top{
+   
+    width: 100%;
+  }
+
+  .upload__file-format {
+    width: 100%;
+    
+  }
+}

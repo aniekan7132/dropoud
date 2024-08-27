@@ -174,7 +174,14 @@ export interface Lecture {
   comment_count?: number;
   user_image?: string;
   thumbnail?: string;
+  price:number;
+  currency:Currency;
+  downloadPrice:number;
+  campus_logo?: string;
 }
+export type Currency='NGN'|'USD';
+
+export type LectureStatus='Review'|'Suspended'|'Active'
 
 export interface Vote {
   id: number;

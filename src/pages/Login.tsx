@@ -1,127 +1,172 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
-import axios from "axios";
+import logo from "../assets/dropoud-logo.svg";
 import dropoudBanner from "../assets/dropoud-banner.svg";
-import Logo from "../assets/dropoud-logo.svg";
 import Input from "../components/Input";
-import classes from "./Login.module.css";
-import Error from "../components/Error";
-import Spinner from "../components/Spinner";
-import HeaderTwo from "../components/HeaderTwo";
 import Button from "../components/ButtonComponent";
-import { useDispatch } from "react-redux";
-import { login } from "../features/userSlice.ts";
+import { FormEvent, useEffect, useRef, useState } from "react";
+import axios from "axios";
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import classes from "./SignUp.module.css";
+import HeaderTwo from "../components/HeaderTwo";
+import Error from "../components/Error";
 
-// Spinner component
-// const Spinner: React.FC = () => <div className={classes.spinner}></div>;
+interface DefaultState {
+  user: {
+    first_name: string;
+    surname: string;
+    email: string;
+    password: string;
+    phone: string;
+  };
+}
 
-const baseUrl = "https://drop-apis.firsta.tech";
+const defaultErrorState = {
+  firstNameError: null,
+  lastNameError: null,
+  emailError: null,
+  passwordError: null,
+  phoneError: null,
+};
+
+interface SignupError {
+  firstNameError: null | string;
+  lastNameError: null | string;
+  emailError: null | string;
+  passwordError: null | string;
+  phoneError: null | string;
+}
+
+const baseUrl = "http://drop-apis.firsta.tech";
 const temBaseurl = "https://dropoud-api.onrender.com";
 const localBaseUrl = "http://192.168.0.102:7070";
 
-const LoginForm: React.FC = () => {
-  const [userEmail, setUserEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+const Login = () => {
+  const [formData, setFormData] = useState<DefaultState>({
+    user: {
+      first_name: "",
+      surname: "",
+      email: "",
+      password: "",
+      phone: "",
+    },
+  });
+  const [errorState, setErrorState] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const [error, setError] = useState(false);
+
+const [loading, setLoading] = useState(false)
+
   const navigate = useNavigate();
 
-  const dispatch = useDispatch();
+  const formRef = useRef(null);
+  const [error, setError] = useState<SignupError>(defaultErrorState);
 
-  const handleUserEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUserEmail(e.target.value);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    setError(defaultErrorState);
+    setFormData({
+      user: {
+        ...formData.user,
+        [e.target.id]: e.target.value,
+      },
+    });
   };
 
-  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(e.target.value);
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const onSubmit = (e: FormEvent) => {
     e.preventDefault();
-    setIsLoading(true);
 
+setLoading(true)
     axios
-      .post(`${localBaseUrl}/api/v1/auth/login`, {
-        email: userEmail,
-        password: password,
+      .post(`${baseUrl}/api/v1/auth/login`, {
+        ...formData.user,
       })
       .then((response) => {
-        console.log(response);
-        sessionStorage.setItem("token", response.data?.data.token);
-        dispatch(login(response.data?.data));
+        console.log("Posting data", response.data);
+        sessionStorage.setItem('token', response.data.data.token)
         navigate("/dashboard");
       })
       .catch((error) => {
         console.log(error);
-        setError(true);
-        setErrorMessage(error.response ? error.response?.data?.message : error.message)
-        setIsLoading(false);
-      });
+        setErrorState(true)
+        setErrorMessage(error?.response?error.response.data.message:'Network error')
+      }).finally(()=>{
+        setLoading(false)
+      })
+
+    //   sessionStorage.setItem("email", JSON.stringify(formData.user.email));
+    //   if(formData.user.first_name && formData.user.surname && formData.user.email && formData.user.password && formData.user.phone) {
+    //     //navigate("/email-verification");
+    //   } else {
+    //     setError(error);
+    //   }
+    //navigate("/email-verification/" + formData.user.email);
   };
 
   return (
-    <div className={classes.login}>
-      <div className={classes["error__container"]}>
-        {error && (
+    <div className={classes["signup__section"]}>
+      <div className={classes["section__left"]}>
+
+        <h1 className={classes["section__logo"]}>
+          <img className="logo" src={logo} alt="page-logo" />
+        </h1>
+        <div className={classes["section__content"]}>
+        {errorState && (
           <Error
             errorMsg={errorMessage}
             className={classes["error__message"]}
           />
         )}
-      </div>
-      <div className={classes["form__container"]}>
-        <div>
-          <img src={Logo} alt="" className={classes.logo} />
-        </div>
+          <HeaderTwo text="Login" />
+          <p className={classes["text__sm"]}>
+            Are you new? <Link to="/">Signup</Link>
+          </p>
+          <form
+            ref={formRef}
+            onSubmit={(e) => onSubmit(e)}
+            className={classes["section__form"]}
+          >
+         
+            <Input
+              type="email"
+              placeholder="Email"
+              id="email"
+              value={formData.user.email}
+              onChange={handleChange}
+            />
+            {error && (
+              <p className={`${classes["text__sm"]} ${classes.red}`}>
+                {error.emailError}
+              </p>
+            )}
 
-        <div className={classes["form__div"]}>
-          <HeaderTwo text="Log in" />
-          <form onSubmit={handleSubmit} className={classes["form__submit"]}>
-            <p style={{ color: "#B5B5B5", padding: "10px 0" }}>
-              Don't have an account?{" "}
-              <Link to="/" className={classes.forgot}>
-                Sign up
-              </Link>
-            </p>
-
-            <div className={classes["input__div"]}>
-              <Input
-                type="text"
-                id="username"
-                value={userEmail}
-                onChange={handleUserEmailChange}
-                placeholder="Email or Username"
-              />
-              <Input
-                type="password"
-                id="password"
-                value={password}
-                onChange={handlePasswordChange}
-                placeholder="Password"
-              />
-            </div>
-
-            <Link to="/forgotpassword?" className={classes.forgot}>
-              Forgot password?
-            </Link>
-            <button className={classes["submit-btn"]} disabled={isLoading}>
-              {isLoading ? <Spinner /> : "Login"}
-            </button>
+            <Input
+              type="password"
+              placeholder="Password"
+              id="password"
+              value={formData.user.password}
+              onChange={handleChange}
+            />
+            {error && (
+              <p className={`${classes["text__sm"]} ${classes.red}`}>
+                {error.passwordError}
+              </p>
+            )}
+            <Button color="primary" size="mobile" type="submit" onClick={onSubmit}>
+             {loading?'Please wait...':'Login'}
+            </Button>
           </form>
+          <p className={classes["text__sm-policy"]}>
+            Signing up for a Dropoud account means you agree to
+            <Link to=""> Privacy Policy </Link>
+            and <Link to="">Terms of Services</Link>
+          </p>
         </div>
       </div>
 
-      <div className={classes["image-container"]}>
-        <img
-          src={dropoudBanner}
-          className={classes["main-image"]}
-          alt="banner"
-        />
+      <div className={classes["section__right"]}>
+        <img src={dropoudBanner} alt="" />
       </div>
     </div>
   );
 };
 
-export default LoginForm;
+export default Login;
+

@@ -6,7 +6,7 @@
 }
 
 .search__bar {
-  width: 785px;
+  width: 685px;
   height: 26px;
   position: absolute;
   top: 12px;
@@ -74,6 +74,7 @@
 .profile__picture {
   width: 40px;
   height: 40px;
+  border-radius: 50px;
 }
 
 .verified-icon {
@@ -103,3 +104,139 @@
   line-height: 16px;
   font-weight: 400;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.mobile_top__navbar {
+  max-height: 80px;
+  display: none;
+  flex: 1;
+  width: 100vw;
+  flex-direction: row;
+  padding: 16px;
+justify-content: space-between;
+}
+
+
+
+.right{
+
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.mobile_button_upload{
+  background: none;
+  border: none;
+}
+
+.mobile_search__logo {
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.mobile_top__bar-input {
+  border: none;
+  width: 730px;
+  border-radius: 16px;
+  background-color: none;
+  background: #f8f8f8;
+  padding-left: 3rem;
+}
+
+.mobile_top__bar-input:focus {
+  border: none;
+}
+
+.mobile_top__right-nav {
+  position: absolute;
+  top: 12px;
+  left: 800px;
+  display: flex;
+  gap: 18px;
+}
+
+.mobile_top__right-nav_button {
+  position: relative;
+}
+
+.mobile_button__logo {
+  width: 32px;
+  height: 32px;
+}
+
+.mobile_profile__container {
+  display: flex;
+  gap: 12px;
+  width: 170px;
+  height: 42px;
+  margin-top: 0.4rem;
+}
+
+.mobile_profile__picture-container {
+  position: relative;
+}
+
+.mobile_profile__picture {
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+}
+
+.mobile_verified-icon {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 25px;
+  left: 25px;
+}
+
+.mobile_profile__title-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mobile_profile__name {
+  color: #414141;
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 500;
+}
+
+.mobile_profile__title {
+  color: #606060;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+}
+
+
+
+@media (max-width: 768px) {
+
+  .top__navbar{
+    display: none;
+  }
+  .mobile_top__navbar {
+  display: flex;
+  }
+  }

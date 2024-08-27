@@ -99,6 +99,9 @@ const UploadVideos = ({ setFilePicked, closeModal, setFile }: Props) => {
               <span>WMV</span>
             </div>
           </div>
+          <div style={{height:'200px'}}>
+            
+          </div>
         </div>
       </div>
     </div>

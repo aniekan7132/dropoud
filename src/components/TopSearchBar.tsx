@@ -2,15 +2,18 @@ import React from "react";
 import Input from "./Input";
 import Button from "./ButtonComponent";
 import classes from "./TopSearchBar.module.css";
-
+import logo from "../assets/dropoud-logo.svg";
 import search from "../assets/search.svg";
 import upload from "../assets/upload.svg";
-import profileImage from "../assets/profile-image.svg";
 import verifiedIcon from "../assets/verified-icon.svg";
 import { useSelector } from "react-redux";
 import { selectUser } from "../features/userSlice";
 
-const TopSearchBar = () => {
+interface Props{
+  onUpload?:()=>void
+}
+
+const TopSearchBar = ({onUpload}:Props) => {
   const user = useSelector(selectUser);
   console.log(user);
 
@@ -37,7 +40,7 @@ const TopSearchBar = () => {
                 src={upload}
                 alt="Upload-logo"
               />
-              <Button color="secondary" size="sm" type="submit">
+              <Button color="secondary" size="sm" type="submit" onClick={onUpload}>
                 Upload
               </Button>
             </div>
@@ -46,7 +49,7 @@ const TopSearchBar = () => {
               <div className={classes["profile__picture-container"]}>
                 <img
                   className={classes["profile__picture"]}
-                  src={profileImage}
+                  src={user?.image}
                   alt="Profile-picture"
                 />
                 <img
@@ -59,10 +62,54 @@ const TopSearchBar = () => {
                 <p className={classes["profile__name"]}>
                   {user && user?.first_name + " " + user?.surname}
                 </p>
-                <p className={classes["profile__title"]}>University lecturer</p>
+                <p className={classes["profile__title"]}>{user?.institution}</p>
               </div>
             </div>
           </div>
+        </div>
+
+
+
+
+
+
+
+
+        <div className={classes["mobile_top__navbar"]}>
+        <img className="logo" width={'100px'} src={logo} alt="page-logo" />
+    
+    <div className={classes["right"]}>
+
+        <button className={classes["mobile_search__logo"]}>
+              <img src={search} alt="Search-logo" />
+            </button>
+           <button  className={classes["mobile_button_upload"]}>
+
+              <img
+                className={classes["mobile_button__logo"]}
+                src={upload}
+                alt="Upload-logo"
+                />
+                </button>
+
+                <div className={classes["mobile_profile__picture-container"]}>
+                <img
+                  className={classes["mobile_profile__picture"]}
+                  src={user?.image}
+                  alt="Profile-picture"
+                />
+                <img
+                  className={classes["mobile_verified-icon"]}
+                  src={verifiedIcon}
+                  alt="Verified-icon"
+                />
+              </div>
+              
+                </div>
+            
+       
+            
+       
         </div>
       </>
     </>
