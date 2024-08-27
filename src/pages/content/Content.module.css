@@ -69,9 +69,77 @@
   height: 64px;
   border-radius: 4px;
 }
+.light_btn{
+  cursor: pointer;
+}
 
+.drop_mneus{
+  position: absolute;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 0 12px lightgray;
+  display: flex;
+  min-width: 240px;
+  flex-direction: column;
+  gap: 30px;
+  left: 280px;
+  z-index: 100;
+}
+
+.info_card{
+ width: 120px;
+ border-radius: 5px;
+ border: 0.9px solid rgba(181, 181, 181, 1);
+ height: 50px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ flex-direction: column;
+ }
+
+.info_card input{
+ width: 100%;
+ height: auto;
+ padding: 0;
+ text-align: center;
+ border: none;
+ font-size: 17px;
+ margin: 0;
+
+}
+.info_pane{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.buttons_pane{
+display: flex;
+justify-content: flex-end;
+gap: 20px;
+}
+
+.buttons_pane button{
+  background:none;
+  padding: 10px;
+  border: none ;
+  cursor: pointer;
+  font-size: 16px;
+  color: rgba(83, 83, 170, 1);
+}
+
+.drop_mneus_item{
+  font-weight: 500;
+  font-size: 14px;
+  color: rgba(96, 96, 96, 1);
+  cursor: pointer;
+  align-items: center;
+  display: flex;
+  gap: 15px;
+}
 .existing__user-title {
   display: flex;
+
   flex-direction: column;
   gap: 6px;
 }
@@ -96,6 +164,7 @@
 
 .existing__user-date {
   display: flex;
+  flex-direction: column;
   gap: 4px;
 }
 
@@ -107,4 +176,93 @@
 .existing__user-comments {
   position: absolute;
   left: 670px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.mobile_existing__user-container{
+  display: none;
+ 
+}
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+
+  .home {
+   height: 100vh;
+   overflow: auto;
+  }
+  
+  .main__pane {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+  }
+  .main__container {
+   
+    overflow: auto;
+    flex: 1;
+  }
+  .existing__user-container{
+    display: none;
+  }
+
+  .mobile_existing__user-container{
+    display: flex;
+
+    border-bottom: 1px solid lightgray;
+  }
+
+
+  .content__heading-titles {
+   display: none;
+  }
+
+  .content__info {
+    display: block ;
+   width: 100%;
+   top: 100px;
+   left: 0;
+  }
+
+  .content__container {
+    width: 100%;
+    height: 400px;
+    margin-top: 10px;
+    border-radius: 8px;
+    overflow: auto;
+    
+  }
 }

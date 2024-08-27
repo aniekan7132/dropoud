@@ -2,7 +2,7 @@
 import React from "react";
 
 type ButtonProps = {
-  size?: "sm" | "md" | "lg" | "bigsm" | "smlg";
+  size?: "sm" | "md" | "lg" | "bigsm" | "smlg"|"mobile";
   color?: "primary" | "secondary";
   children?: string;
   type?: "submit" | "button";
@@ -14,13 +14,13 @@ type ButtonProps = {
 
 function Button({size = "sm", color = "primary", children, type, className, disabled, onClick}: ButtonProps) {
   const functionForSize = (size: string) => {
-    if(size === "sm") {
+    if(size === "mobile") {
     return {
       height: "45px",
-      width: "142px",
+      width: "100%",
       borderRadius: "16px",
       border: "1px solid #5353AA",
-      color: "#5353AA",
+      color: "white",
       fontWeight: "400",
       fontSize: "16px",
       lineHeight: "20px",
@@ -28,6 +28,20 @@ function Button({size = "sm", color = "primary", children, type, className, disa
       padding: "0px 20px px 20px",
     };
     }
+    if(size === "sm") {
+      return {
+        height: "45px",
+        width: "142px",
+        borderRadius: "16px",
+        border: "1px solid #5353AA",
+        color: "#5353AA",
+        fontWeight: "400",
+        fontSize: "16px",
+        lineHeight: "20px",
+        cursor: "pointer",
+        padding: "0px 20px px 20px",
+      };
+      }
     if(size === 'md'){
       return {
         height: "56px",

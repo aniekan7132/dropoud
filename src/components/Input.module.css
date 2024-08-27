@@ -32,6 +32,6 @@ input:focus {
 
 @media (max-width: 768px) {
 	input {
-		width: 360px;
+		width: 100%;
 	}
 }

@@ -23,6 +23,7 @@ import SideNavbar from "../../components/SideNavbar";
 import TopSearchBar from "../../components/TopSearchBar";
 import axios from "../../axios/axios";
 import { Dashboard } from "../../types";
+import { baseUrl } from "../../utilities/baseUrl";
 
 const Home = () => {
   const [inputModal, setInputModal] = useState(false);
@@ -55,8 +56,8 @@ const Home = () => {
                       {follower.fullname}
                     </p>
                     <p className={classes["overview__followers-school"]}>
-                      {follower.campus.charAt(0).toUpperCase() +
-                        follower.campus.slice(1)}
+                      {follower?.campus?.charAt(0).toUpperCase() +
+                        follower?.campus?.slice(1)}
                     </p>
                   </div>
                 </div>
@@ -105,7 +106,7 @@ const Home = () => {
 
   const fetchDashboardData = () => {
     axios
-      .get(`${DASHBOARD_URL}`, {
+      .get(`${localBaseUrl}${DASHBOARD_URL}`, {
         headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
       })
       .then((response) => {

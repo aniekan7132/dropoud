@@ -86,3 +86,33 @@
 .red {
   color: #FF5656;
 }
+
+
+@media (max-width: 768px) {
+  .signup__section{
+    display: flex;
+    flex-direction: column;
+ overflow: auto;
+ height: 100vh;
+  }
+
+.section__right img {
+  width: 100%;
+}
+
+.logo {
+  width: 100px;
+  height: 27px;
+}
+
+.section__left {
+  padding: 16px;
+}
+.text__sm-policy {
+ 
+  
+  width: 100%;
+  
+}
+
+  }

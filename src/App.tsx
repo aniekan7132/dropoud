@@ -19,8 +19,6 @@ import axios from "./axios/axios.tsx";
 import { useDispatch, useSelector } from "react-redux";
 import userSlice, { login, selectUser } from "./features/userSlice.ts";
 import Modal from "./components/Modal.tsx";
-import SucessUploadScreen from "./components/SucessUploadScreen.tsx";
-import FailedUploadScreen from "./components/FailedUploadScreen.tsx";
 // import PopUp from "./components/PopUp";
 // import PopUpInput from "./components/PopUpInput";
 // import Button from "./components/ButtonComponent";
@@ -34,13 +32,13 @@ const App: FC = () => {
 
   const loadUser = () => {
     axios
-      .get(`/api/v1/users/me`, {
+      .get(`${localBaseUrl}/api/v1/users/me`, {
         headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
       })
       .then((response) => dispatch(login(response.data?.data)))
       .catch(() => {
         if (location.pathname !== "/sign-in") {
-          window.location.href = "http://localhost:5173/sign-in";
+          window.location.href = "/sign-in";
         }
       });
   };

@@ -8,6 +8,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import classes from "./SignUp.module.css";
 import HeaderTwo from "../components/HeaderTwo";
+import Error from "../components/Error";
 
 interface DefaultState {
   user: {
@@ -37,7 +38,7 @@ interface SignupError {
 
 const baseUrl = "http://drop-apis.firsta.tech";
 const temBaseurl = "https://dropoud-api.onrender.com";
-const localBaseUrl = "http://192.168.0.101:7070";
+const localBaseUrl = "http://192.168.0.102:7070";
 
 const SignUp = () => {
   const [formData, setFormData] = useState<DefaultState>({
@@ -49,8 +50,12 @@ const SignUp = () => {
       phone: "",
     },
   });
+  const [errorState, setErrorState] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
-  // const navigate = useNavigate();
+const [loading, setLoading] = useState(false)
+
+  const navigate = useNavigate();
 
   const formRef = useRef(null);
   const [error, setError] = useState<SignupError>(defaultErrorState);
@@ -87,7 +92,7 @@ const SignUp = () => {
     if (formData.user.phone === "") {
       setError({ ...error, phoneError: "Phone number is required." });
     }
-
+setLoading(true)
     axios
       .post(`${localBaseUrl}/api/v1/users`, {
         ...formData.user,
@@ -96,11 +101,15 @@ const SignUp = () => {
       })
       .then((response) => {
         console.log("Posting data", response.data);
-        //navigate("/email-verification/" + formData.user.email);
+        navigate("/email-verification/" + formData.user.email);
       })
       .catch((error) => {
         console.log(error);
-      });
+        setErrorState(true)
+        setErrorMessage(error?.response?error.response.data.message:'Network error')
+      }).finally(()=>{
+        setLoading(false)
+      })
 
     //   sessionStorage.setItem("email", JSON.stringify(formData.user.email));
     //   if(formData.user.first_name && formData.user.surname && formData.user.email && formData.user.password && formData.user.phone) {
@@ -114,10 +123,17 @@ const SignUp = () => {
   return (
     <div className={classes["signup__section"]}>
       <div className={classes["section__left"]}>
+
         <h1 className={classes["section__logo"]}>
           <img className="logo" src={logo} alt="page-logo" />
         </h1>
         <div className={classes["section__content"]}>
+        {errorState && (
+          <Error
+            errorMsg={errorMessage}
+            className={classes["error__message"]}
+          />
+        )}
           <HeaderTwo text="Create Account" />
           <p className={classes["text__sm"]}>
             Already have an account? <Link to="/sign-in">Log in</Link>
@@ -187,8 +203,8 @@ const SignUp = () => {
                 {error.passwordError}
               </p>
             )}
-            <Button color="primary" size="lg" type="submit" onClick={onSubmit}>
-              Create Account
+            <Button color="primary" size="mobile" type="submit" onClick={onSubmit}>
+             {loading?'Please wait...':'Create Account'}
             </Button>
           </form>
           <p className={classes["text__sm-policy"]}>

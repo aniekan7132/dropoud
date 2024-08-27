@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SideNavbar from "../../components/SideNavbar";
 import TopSearchBar from "../../components/TopSearchBar";
 import classes from "./Content.module.css";
@@ -17,12 +17,37 @@ import schoolLogo from "../../assets/school-logo.svg";
 import DeleteModal from "../../components/DeleteModal";
 import WithdrawalSuccessful from "../../components/WithdrawalSuccessful";
 import UploadConatiner from "../../components/UploadConatiner";
+import { Lecture } from "../../types";
+import axios from "../../axios/axios";
+import { baseUrl } from "../../utilities/baseUrl";
+import ContentCard from "./ContentCard";
+import { useDispatch, useSelector } from "react-redux";
+import { selectLectures, setLectures } from "../../features/lectureSlice";
 
 interface Props {
   onClick: () => {};
 }
 const Content = () => {
   const [uploadVideos, setUploadVideos] = useState(false);
+  const lectures=useSelector(selectLectures)
+const dispatch=useDispatch()
+
+  const loadLectures=()=>{
+    axios.get(`${baseUrl}/api/v1/lectures/by/me`, {
+      headers:{
+        Authorization:'Bearer '+sessionStorage.getItem('token')
+      }
+    }).then((response)=>{
+dispatch(setLectures(response.data.data))
+console.log('my vids', response.data)
+    }).catch((error)=>{
+      console.log(error)
+    })
+  }
+
+  useEffect(()=>{
+loadLectures()
+  }, [])
 
   return (
     <>
@@ -30,7 +55,7 @@ const Content = () => {
       <div className={classes.home}>
         <SideNavbar />
         <main className={classes["main__pane"]}>
-          <TopSearchBar />
+          <TopSearchBar onUpload={()=> setUploadVideos(true)} /> 
           <div className={classes["main__container"]}>
             <HeaderTwo text="Content" />
             <div className={classes["content__container"]}>
@@ -40,7 +65,7 @@ const Content = () => {
                 <HeaderFour text="Views" />
                 <HeaderFour text="Comments" />
               </div>
-              {
+              { lectures.length===0 &&
                 <div className={classes["content__info"]}>
                   <HeaderFive text="No Content Available" />
                   <Button
@@ -56,88 +81,12 @@ const Content = () => {
                   </Button>
                 </div>
               }
-              {/* <div className={classes["existing__user-container"]}>
-                <div className={classes["existing__user-content_div"]}>
-                  <div>
-                    <img
-                      className={classes["existing__user-content_thumbnail"]}
-                      src={videoContentBox}
-                      alt="Video-content-box"
-                    />
-                  </div>
-                  <div className={classes["existing__user-title"]}>
-                    <HeaderSix text="Creases Patterns" />
-                    <div>
-                      <div className={classes["existing__user-logo"]}>
-                        <img src={schoolLogo} alt="School-logo" />
-                        <HeaderSeven text="PHY 111" />
-                      </div>
-                      <div>
-                        <p className={classes["dots"]}>...</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+             { lectures.map((lecture)=>{
 
-                <div className={classes["existing__user-date_views-comment"]}>
-                  <div className={classes["existing__user-date"]}>
-                    {// <span>Apr</span>
-                    <span>9,</span>
-                    //<span>2024</span> }
-                    <HeaderSeven text="Apr" />
-                    <HeaderSeven text="9," />
-                    <HeaderSeven text="2024" />
-                  </div>
+              return <ContentCard lecture={lecture}/>
+             })  }
 
-                  <div className={classes["existing__user-views"]}>
-                    {// <p>44</p> }
-                    <HeaderSeven text="44" />
-                  </div>
-
-                  <div className={classes["existing__user-comments"]}>
-                    <HeaderSeven text="56" />
-                  </div>
-                </div>
-              </div> */}
-
-              {/* <div className={classes["existing__user-container"]}>
-                <div className={classes["existing__user-content_div"]}>
-                  <div>
-                    <img
-                      className={classes["existing__user-content_thumbnail"]}
-                      src={videoContentBox}
-                      alt="Video-content-box"
-                    />
-                  </div>
-                  <div className={classes["existing__user-title"]}>
-                    <HeaderSix text="Creases Patterns" />
-                    <div className={classes["existing__user-logo"]}>
-                      <img src={schoolLogo} alt="School-logo" />
-                      <HeaderSeven text="PHY 111" />
-                    </div>
-                  </div>
-                </div>
-
-                <div className={classes["existing__user-date_views-comment"]}>
-                  <div className={classes["existing__user-date"]}>
-                    {/* <span>Apr</span>
-                    <span>9,</span>
-                    //<span>2024</span> }
-                    <HeaderSeven text="Apr" />
-                    <HeaderSeven text="9," />
-                    <HeaderSeven text="2024" />
-                  </div>
-
-                  <div className={classes["existing__user-views"]}>
-                    {// <p>44</p> }
-                    <HeaderSeven text="44" />
-                  </div>
-
-                  <div className={classes["existing__user-comments"]}>
-                    <HeaderSeven text="56" />
-                  </div>
-                </div>
-              </div> */}
+             
             </div>
           </div>
         </main>
