@@ -4,7 +4,7 @@ import classes from "./SuccessUploadScreen.module.css";
 import succesful from "../assets/sucessful.svg";
 import { useNavigate } from "react-router-dom";
 
-const SucessUploadScreen = () => {
+const BankSucessScreen = () => {
   // const progressBar = document.getElementById("progress") as HTMLElement;
   const navigate = useNavigate();
 
@@ -22,7 +22,7 @@ const SucessUploadScreen = () => {
               <img src={succesful} alt="Successful--icon" />
             </div>
             <p className={classes["progress__bar-successful_text"]}>
-              You have successfully Uploaded your video
+              You have successfully added your bank
             </p>
             <Link
               className={classes["progress__bar-successful_link"]}
@@ -37,4 +37,4 @@ const SucessUploadScreen = () => {
   );
 };
 
-export default SucessUploadScreen;
+export default BankSucessScreen;

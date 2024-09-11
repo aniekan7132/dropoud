@@ -2,14 +2,11 @@ import React from "react";
 import errorIcon from "../assets/errorIcon.svg";
 import classes from "./Error.module.css";
 
-type ErrorMsgProp = {
-  errorMsg?: null | string;
-  className?: string;
-  border?: string;
-  padding?: string
+interface Props {
+  errorMsg?: string | null;
 };
 
-const Error = ({ errorMsg}: ErrorMsgProp) => {
+const Error = ({ errorMsg }: Props) => {
   return (
     <div className={classes["error__container"]}>
       <div className={classes["error__container-sub"]}>

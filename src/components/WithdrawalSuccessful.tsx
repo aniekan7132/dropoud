@@ -5,13 +5,28 @@ import HeaderThree from "./HeaderThree";
 import HeaderFour from "./HeaderFour";
 import iconSuccessful from "../assets/icon-successful.svg";
 import Button from "./ButtonComponent";
+import { useNavigate } from "react-router-dom";
+
+interface sessionStorageValues {
+  amount: number;
+  account_name: string;
+  account_number: number;
+  bank: string;
+  response: string;
+}
+
+const withdrawalValue = sessionStorage.getItem("withdrawal-data");
+const jsonValue = JSON.parse(withdrawalValue!) as sessionStorageValues;
 
 const WithdrawalSuccessful = () => {
-  const withdrawalSuccessfulModal = document.getElementById(
-    "successful-withdrawal"
-  ) as HTMLElement;
+  const navigate = useNavigate();
 
-  return(
+  const handleNavigation = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    navigate("/dashboard");
+  };
+
+  return (
     <>
       <div className={classes["modal__background"]}></div>
       <div className={classes["withdrawal__successful-container"]}>
@@ -26,34 +41,41 @@ const WithdrawalSuccessful = () => {
         <div className={classes["withdrawal__successful-div"]}>
           <div className={classes["withdrawal__successful-header"]}>
             <HeaderThree text="Withdrawal Successful" />
-            <HeaderFour text="A transaction receipt has been sent to your email address" />
+            <HeaderFour text={jsonValue?.response} />
           </div>
           <div className={classes["withdrawal__successful-details"]}>
             <div className={classes["confirm__transaction-details"]}>
               <p className={classes["confirm__transaction-to"]}>Amount</p>
-              <p className={classes["confirm__transaction-name"]}>₦65,000.85</p>
+              <p className={classes["confirm__transaction-name"]}>
+                ₦{jsonValue?.amount}
+              </p>
             </div>
             <div className={classes["confirm__transaction-details"]}>
               <p className={classes["confirm__transaction-to"]}>To</p>
               <p className={classes["confirm__transaction-name"]}>
-                Ehrim Emmanuel Otioh
+                {jsonValue?.account_name}
               </p>
             </div>
             <div className={classes["confirm__transaction-details"]}>
               <p className={classes["confirm__transaction-to"]}>Bank</p>
               <p className={classes["confirm__transaction-name"]}>
-                Stanbic Bank
+                {jsonValue?.bank}
               </p>
             </div>
             <div className={classes["confirm__transaction-details"]}>
               <p className={classes["confirm__transaction-to"]}>Status</p>
-              <p className={classes["confirm__transaction-name"]}>Successful</p>
+              <p
+                className={`${classes["confirm__transaction-name"]} 
+                ${classes["transaction__successful"]}`}
+              >
+                Successful
+              </p>
             </div>
             <div className={classes["confirm__transaction-details"]}>
               <p className={classes["confirm__transaction-to"]}>
                 Estimated Time
               </p>
-              <p className={classes["confirm__transaction-name"]}>5 minutes</p>
+              <p className={classes["confirm__transaction-name"]}>30 seconds</p>
             </div>
           </div>
 
@@ -61,6 +83,7 @@ const WithdrawalSuccessful = () => {
             <Button
               className={classes["withdrawal__succesful-button"]}
               size="bigsm"
+              onClick={handleNavigation}
             >
               Back To Home
             </Button>
@@ -68,7 +91,6 @@ const WithdrawalSuccessful = () => {
         </div>
       </div>
     </>
-    
   );
 };
 

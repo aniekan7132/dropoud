@@ -1,34 +1,43 @@
 // import { FC } from "react";
 import React from "react";
+import classes from "./WithdrawMoney.module.css";
 
 type ButtonProps = {
-  size?: "sm" | "md" | "lg" | "bigsm" | "smlg"|"mobile";
+  size?: "sm" | "md" | "lg" | "bigsm" | "smlg" | "mobile";
   color?: "primary" | "secondary";
   children?: string;
   type?: "submit" | "button";
   onClick?: (e: any) => void;
-  className?: string
-  textColor?: string
-  disabled?: boolean
+  className?: string;
+  textColor?: string;
+  disabled?: boolean;
 };
 
-function Button({size = "sm", color = "primary", children, type, className, disabled, onClick}: ButtonProps) {
+function Button({
+  size = "sm",
+  color = "primary",
+  children,
+  type,
+  className,
+  disabled,
+  onClick,
+}: ButtonProps) {
   const functionForSize = (size: string) => {
-    if(size === "mobile") {
-    return {
-      height: "45px",
-      width: "100%",
-      borderRadius: "16px",
-      border: "1px solid #5353AA",
-      color: "white",
-      fontWeight: "400",
-      fontSize: "16px",
-      lineHeight: "20px",
-      cursor: "pointer",
-      padding: "0px 20px px 20px",
-    };
+    if (size === "mobile") {
+      return {
+        height: "45px",
+        width: "100%",
+        borderRadius: "16px",
+        border: "1px solid #5353AA",
+        color: "white",
+        fontWeight: "400",
+        fontSize: "16px",
+        lineHeight: "20px",
+        cursor: "pointer",
+        padding: "0px 20px px 20px",
+      };
     }
-    if(size === "sm") {
+    if (size === "sm") {
       return {
         height: "45px",
         width: "142px",
@@ -41,29 +50,29 @@ function Button({size = "sm", color = "primary", children, type, className, disa
         cursor: "pointer",
         padding: "0px 20px px 20px",
       };
-      }
-    if(size === 'md'){
+    }
+    if (size === "md") {
       return {
         height: "56px",
         width: "452px",
         borderRadius: "16px",
         border: "1px solid #5353AA",
         color: "#F8F8F8",
-        cursor: "pointer"
+        cursor: "pointer",
       };
     }
-    if(size === "lg"){
+    if (size === "lg") {
       return {
         height: "46px",
         width: "460px",
         borderRadius: "16px",
         border: "1px solid #5353AA",
         color: "#F8F8F8",
-        cursor: 'pointer',
+        cursor: "pointer",
         fontSize: "16px",
         lineHeight: "20px",
         fontWeight: "400",
-        outline: "none"
+        outline: "none",
       };
     }
     if (size === "bigsm") {
@@ -94,23 +103,35 @@ function Button({size = "sm", color = "primary", children, type, className, disa
         cursor: "pointer",
       };
     }
-  }
+  };
 
   const functionForColor = (color: "primary" | "secondary") => {
-    if(color === "primary") {
+    if (color === "primary") {
       return {
-        backgroundColor: "#5353AA"
-      }
+        backgroundColor: "#5353AA",
+      };
     }
-    if(color === "secondary") {
+    if (color === "secondary") {
       return {
         backgroundColor: "#FFFFFF",
       };
     }
-  }
+  };
 
   return (
-    <button type={type} disabled={disabled} className={className ? className : "btn"} style={{...functionForSize(size), ...functionForColor(color)}} onClick={onClick}>
+    <button
+      type={type}
+      disabled={disabled}
+      className={
+        disabled
+          ? `${classes[""]}`
+          : className
+          ? className
+          : `${classes[""]}`
+      }
+      style={{ ...functionForSize(size), ...functionForColor(color) }}
+      onClick={onClick}
+    >
       {children}
     </button>
   );

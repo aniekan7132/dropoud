@@ -1,5 +1,5 @@
 import React from "react";
-import "./Input.module.css";
+import classes from "./Input.module.css";
 
 type Props = React.DetailedHTMLProps<
   React.InputHTMLAttributes<HTMLInputElement>,
@@ -14,7 +14,7 @@ interface InputProps extends Props {
 const Input = (props: Props, {className, width}: InputProps) => {
   return (
     <>
-      <input {...props} width={width ? width : ""} />
+      <input className={classes.input}  {...props} width={width ? width : ""} />
     </>
   );   
 

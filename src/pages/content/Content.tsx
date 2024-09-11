@@ -23,39 +23,42 @@ import { baseUrl } from "../../utilities/baseUrl";
 import ContentCard from "./ContentCard";
 import { useDispatch, useSelector } from "react-redux";
 import { selectLectures, setLectures } from "../../features/lectureSlice";
+import { setUploadModal } from "../../features/generalSlice";
 
 interface Props {
   onClick: () => {};
 }
 const Content = () => {
-  const [uploadVideos, setUploadVideos] = useState(false);
-  const lectures=useSelector(selectLectures)
-const dispatch=useDispatch()
+  const lectures = useSelector(selectLectures);
+  const dispatch = useDispatch();
 
-  const loadLectures=()=>{
-    axios.get(`${baseUrl}/api/v1/lectures/by/me`, {
-      headers:{
-        Authorization:'Bearer '+sessionStorage.getItem('token')
-      }
-    }).then((response)=>{
-dispatch(setLectures(response.data.data))
-console.log('my vids', response.data)
-    }).catch((error)=>{
-      console.log(error)
-    })
-  }
+  const loadLectures = () => {
+    axios
+      .get(`/api/v1/lectures/by/me`, {
+        headers: {
+          Authorization: "Bearer " + sessionStorage.getItem("token"),
+        },
+      })
+      .then((response) => {
+        dispatch(setLectures(response.data.data));
+        console.log("my vids", response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
-  useEffect(()=>{
-loadLectures()
-  }, [])
+  useEffect(() => {
+    loadLectures();
+  }, []);
 
   return (
     <>
-      {uploadVideos && <UploadConatiner setUploadVideos={setUploadVideos} />}
+      {/* {uploadVideos && <UploadConatiner />} */}
       <div className={classes.home}>
         <SideNavbar />
         <main className={classes["main__pane"]}>
-          <TopSearchBar onUpload={()=> setUploadVideos(true)} /> 
+          <TopSearchBar />
           <div className={classes["main__container"]}>
             <HeaderTwo text="Content" />
             <div className={classes["content__container"]}>
@@ -65,7 +68,7 @@ loadLectures()
                 <HeaderFour text="Views" />
                 <HeaderFour text="Comments" />
               </div>
-              { lectures.length===0 &&
+              {lectures.length === 0 && (
                 <div className={classes["content__info"]}>
                   <HeaderFive text="No Content Available" />
                   <Button
@@ -73,20 +76,16 @@ loadLectures()
                     size="smlg"
                     type="submit"
                     onClick={() => {
-                      setUploadVideos(true);
-                      console.log("clicked");
+                      dispatch(setUploadModal(true));
                     }}
                   >
                     Upload Now
                   </Button>
                 </div>
-              }
-             { lectures.map((lecture)=>{
-
-              return <ContentCard lecture={lecture}/>
-             })  }
-
-             
+              )}
+              {lectures.map((lecture) => {
+                return <ContentCard lecture={lecture} />;
+              })}
             </div>
           </div>
         </main>

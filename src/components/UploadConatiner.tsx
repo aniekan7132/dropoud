@@ -1,17 +1,23 @@
 import React, { useState } from "react";
 import UploadVideos from "./UploadVideos";
 import ModalDetails from "./ModalDetails";
+import { useDispatch } from "react-redux";
+import { setUploadModal } from "../features/generalSlice";
 
-interface Props {
-  setUploadVideos: (picked: boolean) => void;
-}
+// interface Props {
+//   setUploadVideos: (picked: boolean) => void;
+// }
 
-function UploadConatiner({ setUploadVideos }: Props) {
+// { setUploadVideos }: Props
+
+function UploadConatiner() {
   const [file, setFile] = useState<File | null>(null);
 
   const [filePicked, setFilePicked] = useState(false);
+
+  const dispatch = useDispatch()
   const closeModal = () => {
-    setUploadVideos(false);
+    dispatch(setUploadModal(false))
   };
 
   return filePicked ? (

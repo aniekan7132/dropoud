@@ -72,7 +72,7 @@
 }
 
 .progress__bar-successful_text {
-  width: 200px;
+  /* width: 200px; */
   font-weight: 400;
   font-size: 16px;
   line-height: 20px;
@@ -87,4 +87,12 @@
   color: #5353aa;
   cursor: pointer;
   text-decoration: none;
+}
+
+.progress__bar-successful_link {
+  text-decoration: none;
+  color: #5353AA;
+  font-weight: 400;
+  size: 16px;
+  line-height: 20px;
 }

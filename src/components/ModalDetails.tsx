@@ -194,7 +194,7 @@ const ModalDetails = ({ closeModal, file }: Props) => {
         >
           <div className={classes["progress__bar-container"]}>
             <div className={classes["progress__bar-div"]}>
-              <p>Uploading.......</p>
+              <p>Uploading......</p>
               <div className={classes["progress__bar-uploading"]}>
                 <div
                   className={classes["progress__bar-moving"]}

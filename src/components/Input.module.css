@@ -1,4 +1,4 @@
-input {
+.input {
   width: 460px;
   height: 46px;
   border-radius: 16px;
@@ -7,7 +7,7 @@ input {
   color: #606060;
 }
 
-input::placeholder {
+.input::placeholder {
 	color: #929292;
 	font-weight: 400;
 	font-size: 16px;
@@ -15,7 +15,7 @@ input::placeholder {
 	font-family: "Lato", sans-serif;
 }
 
-input:focus {
+.input:focus {
 	outline: none;
 	border: 1px solid #5353aa;
 }
@@ -31,7 +31,7 @@ input:focus {
 }
 
 @media (max-width: 768px) {
-	input {
+	.input {
 		width: 100%;
 	}
 }

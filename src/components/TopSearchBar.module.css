@@ -6,12 +6,12 @@
 }
 
 .search__bar {
-  width: 685px;
-  height: 26px;
+  width: 730px;
   position: absolute;
-  top: 12px;
+  top: 15px;
   left: 28px;
   display: flex;
+  align-items: center;
   gap: 16px;
 }
 
@@ -29,6 +29,7 @@
 .top__bar-input {
   border: none;
   width: 730px;
+  height: 46px;
   border-radius: 16px;
   background-color: none;
   background: #f8f8f8;
@@ -36,7 +37,8 @@
 }
 
 .top__bar-input:focus {
-  border: none;
+  /* border: none; */
+  outline: none;
 }
 
 .top__right-nav {
