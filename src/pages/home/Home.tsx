@@ -21,18 +21,31 @@ import HeaderThree from "../../components/HeaderThree";
 import InputModal from "../../components/InputModal";
 import SideNavbar from "../../components/SideNavbar";
 import TopSearchBar from "../../components/TopSearchBar";
+import Profile from "../../components/Profile";
+import UploadVideos from "../../components/UploadVideos";
+import UploadConatiner from "../../components/UploadConatiner";
 import axios from "../../axios/axios";
 import { Dashboard } from "../../types";
-import { baseUrl } from "../../utilities/baseUrl";
+import { useDispatch } from "react-redux";
+import { setUploadModal } from "../../features/generalSlice";
 
 const Home = () => {
-  const [inputModal, setInputModal] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [inputModal, setInputModal] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<string>("");
   const [dashboardData, setDashboardData] = useState<Dashboard | null>(null);
+  const [showUpload, setShowUpload] = useState<boolean>(false);
+
+  const dispatch = useDispatch()
 
   const temBaseurl = "https://dropoud-api.onrender.com";
   const DASHBOARD_URL = "/api/v1/users/my/dashboard";
   const localBaseUrl = "http://192.168.0.102:7070";
+
+  const handleUpload = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+
+    dispatch(setUploadModal(true));
+  };
 
   const followersData = dashboardData?.followers?.data?.map(
     (follower, index) => {
@@ -88,13 +101,49 @@ const Home = () => {
                   {view.fullname}
                 </p>
                 <p className={classes["overview__followers-school"]}>
-                  {view.campus.charAt(0).toUpperCase() +
-                    view.campus.slice(1)}
+                  {view.campus.charAt(0).toUpperCase() + view.campus.slice(1)}
                 </p>
               </div>
             </div>
           </div>
-          <p className={classes["overview__followed"]}>Followed you</p>
+          <p className={classes["overview__followed"]}>Just Viewed</p>
+        </div>
+      </div>
+    );
+  });
+
+  const CommentsData = dashboardData?.comments.data.map((comment, index) => {
+    return (
+      <div className={classes["overview__comments-sub_container"]}>
+        <div className={classes["overview__comments-sub_container--profile"]}>
+          <Profile />
+          <div className={classes["overview__comments-reply_cont"]}>
+            <p className={classes["overview__comment"]}>{comment.comment}</p>
+            <p className={classes["overview__comments-reply"]}>
+              Reply <span>1 reply</span>
+            </p>
+          </div>
+        </div>
+        <div className={classes["overview__comments-reply_right--cont"]}>
+          <p className={classes["overview__comment-reply_days"]}>2days ago</p>
+          <img
+            className={classes["overview__comments-picture"]}
+            src={comment.lecture.thumbnail}
+            alt="Comment-picture"
+          />
+          <div className={classes["overview__comments-course_code-cont"]}>
+            <h4>{comment.lecture.topic.toLowerCase()}</h4>
+            <div className={classes["overview__comments-school_logo--cont"]}>
+              <img
+                className={classes["overvieww__comment-school_logo"]}
+                src={followersPictureOne}
+                alt="Comments-school-logo"
+              />
+              <p className={classes["overview__video-code"]}>
+                {comment.lecture.course}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     );
@@ -106,7 +155,7 @@ const Home = () => {
 
   const fetchDashboardData = () => {
     axios
-      .get(`${baseUrl}${DASHBOARD_URL}`, {
+      .get(`${DASHBOARD_URL}`, {
         headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
       })
       .then((response) => {
@@ -293,7 +342,12 @@ const Home = () => {
                       and publish a video to begin
                     </p>
                     <div className={classes["button__empty"]}>
-                      <Button color="primary" size="smlg" type="submit">
+                      <Button
+                        color="primary"
+                        size="smlg"
+                        type="submit"
+                        onClick={handleUpload}
+                      >
                         Upload Now
                       </Button>
                     </div>
@@ -331,15 +385,12 @@ const Home = () => {
               >
                 <HeaderThree text="Views" />
                 {dashboardData?.views.data.length === 0 ? (
-                  <div>
+                  <div className={classes["cont__no-views_yet"]}>
                     <p>No Views at the moment </p>
                   </div>
                 ) : (
                   viewsData
                 )}
-                {/*<div>
-                  <p>No Views at the moment </p>
-                </div> */}
 
                 {/* <div className={classes["overview__name-school_container"]}>
                   <div
@@ -554,15 +605,19 @@ const Home = () => {
 
               <div className={classes["grid__col-span_2"]}>
                 <div className={classes["overview__comments-container"]}>
-                  {/* <div className={classes["overview__comments-header_view"]}>
+                  <div className={classes["overview__comments-header_view"]}>
                     <h3 className={classes["overview__header"]}>Comments</h3>
                     <Link to="">View all</Link>
-                  </div> */}
+                  </div>
 
                   <div className={classes["overview__comments"]}>
-                    {/* <div className={classes["no__views"]}>
-                      <p>No Comments Found</p>
-                    </div> */}
+                    {dashboardData?.comments?.data?.length === 0 ? (
+                      <div className={classes["no__comment"]}>
+                        <p>No Comments Found</p>
+                      </div>
+                    ) : (
+                      CommentsData
+                    )}
 
                     {/* <div className={classes["overview__comments-sub_container"]}>
                     <div
@@ -687,172 +742,3 @@ const Home = () => {
 };
 
 export default Home;
-
-{
-  /* <div className={classes["overview__header-padding"]}>
-                  <HeaderThree text="Followers" />
-                </div>
-
-                <div className={classes["overview__followers"]}>
-                  <div className={classes["overview__followers-details"]}>
-                    <div className={classes["overview__name-school_container"]}>
-                      <div
-                        className={
-                          classes["overview__name-school_container--sub"]
-                        }
-                      >
-                        <div className={classes["overview__name-school_image"]}>
-                          <img
-                            className={classes["overview__followers-picture"]}
-                            src={followersPictureOne}
-                            alt="Followers-image"
-                          />
-                          <div
-                            className={
-                              classes[
-                                "overview__followers-name_school--wrapper"
-                              ]
-                            }
-                          >
-                            <p className={classes["overview__followers-name"]}>
-                              Carlos Martin
-                            </p>
-                            <p
-                              className={classes["overview__followers-school"]}
-                            >
-                              University of calabar
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                      <p className={classes["overview__followed"]}>
-                        Followed you
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className={classes["overview__name-school_container"]}>
-                    <div
-                      className={
-                        classes["overview__name-school_container--sub"]
-                      }
-                    >
-                      <div className={classes["overview__name-school_image"]}>
-                        <img
-                          className={classes["overview__followers-picture"]}
-                          src={followersPictureTwo}
-                          alt="Followers-image"
-                        />
-                        <div
-                          className={
-                            classes["overview__followers-name_school--wrapper"]
-                          }
-                        >
-                          <p className={classes["overview__followers-name"]}>
-                            Barbara Gordon
-                          </p>
-                          <p className={classes["overview__followers-school"]}>
-                            Imo sate university
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <p className={classes["overview__followed"]}>
-                      Followed you
-                    </p>
-                  </div>
-
-                  <div className={classes["overview__name-school_container"]}>
-                    <div
-                      className={
-                        classes["overview__name-school_container--sub"]
-                      }
-                    >
-                      <div className={classes["overview__name-school_image"]}>
-                        <img
-                          className={classes["overview__followers-picture"]}
-                          src={followersPictureThree}
-                          alt="Followers-image"
-                        />
-                        <div
-                          className={
-                            classes["overview__followers-name_school--wrapper"]
-                          }
-                        >
-                          <p className={classes["overview__followers-name"]}>
-                            Wanda Maximoff
-                          </p>
-                          <p className={classes["overview__followers-school"]}>
-                            University of technology owerri
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <p className={classes["overview__followed"]}>
-                      Followed you
-                    </p>
-                  </div>
-
-                  <div className={classes["overview__name-school_container"]}>
-                    <div
-                      className={
-                        classes["overview__name-school_container--sub"]
-                      }
-                    >
-                      <div className={classes["overview__name-school_image"]}>
-                        <img
-                          className={classes["overview__followers-picture"]}
-                          src={followersPictureThree}
-                          alt="Followers-image"
-                        />
-                        <div
-                          className={
-                            classes["overview__followers-name_school--wrapper"]
-                          }
-                        >
-                          <p className={classes["overview__followers-name"]}>
-                            Wanda Maximoff
-                          </p>
-                          <p className={classes["overview__followers-school"]}>
-                            University of technology owerri
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <p className={classes["overview__followed"]}>
-                      Followed you
-                    </p>
-                  </div>
-
-                  <div className={classes["overview__name-school_container"]}>
-                    <div
-                      className={
-                        classes["overview__name-school_container--sub"]
-                      }
-                    >
-                      <div className={classes["overview__name-school_image"]}>
-                        <img
-                          className={classes["overview__followers-picture"]}
-                          src={followersPictureThree}
-                          alt="Followers-image"
-                        />
-                        <div
-                          className={
-                            classes["overview__followers-name_school--wrapper"]
-                          }
-                        >
-                          <p className={classes["overview__followers-name"]}>
-                            Wanda Maximoff
-                          </p>
-                          <p className={classes["overview__followers-school"]}>
-                            University of technology owerri
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <p className={classes["overview__followed"]}>
-                      Followed you
-                    </p>
-                  </div>
-                </div> */
-}

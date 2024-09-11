@@ -1,14 +1,16 @@
-import logo from "../assets/dropoud-logo.svg";
+import React, { useState } from "react";
+import axios from "../axios/axios";
 import dropoudBanner from "../assets/dropoud-banner.svg";
 import Input from "../components/Input";
 import Button from "../components/ButtonComponent";
-import { FormEvent, useEffect, useRef, useState } from "react";
-import axios from "axios";
-import React from "react";
+import { FormEvent, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import classes from "./SignUp.module.css";
 import HeaderTwo from "../components/HeaderTwo";
 import Error from "../components/Error";
+import { useDispatch } from "react-redux";
+import { login } from "../features/userSlice";
+import logo from "../assets/dropoud-logo.svg";
 
 interface DefaultState {
   user: {
@@ -53,15 +55,17 @@ const Login = () => {
   const [errorState, setErrorState] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const formRef = useRef(null);
   const [error, setError] = useState<SignupError>(defaultErrorState);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setError(defaultErrorState);
+    setErrorState(false);
     setFormData({
       user: {
         ...formData.user,
@@ -73,47 +77,43 @@ const [loading, setLoading] = useState(false)
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
 
-setLoading(true)
+    setLoading(true);
     axios
-      .post(`${baseUrl}/api/v1/auth/login`, {
-        ...formData.user,
+      .post(`/api/v1/auth/login`, {
+        email: formData.user.email,
+        password: formData.user.password,
       })
       .then((response) => {
-        console.log("Posting data", response.data);
-        sessionStorage.setItem('token', response.data.data.token)
+        console.log(response);
+        sessionStorage.setItem("token", response.data?.data.token);
+        dispatch(login(response.data?.data));
         navigate("/dashboard");
       })
       .catch((error) => {
         console.log(error);
-        setErrorState(true)
-        setErrorMessage(error?.response?error.response.data.message:'Network error')
-      }).finally(()=>{
-        setLoading(false)
-      })
-
-    //   sessionStorage.setItem("email", JSON.stringify(formData.user.email));
-    //   if(formData.user.first_name && formData.user.surname && formData.user.email && formData.user.password && formData.user.phone) {
-    //     //navigate("/email-verification");
-    //   } else {
-    //     setError(error);
-    //   }
-    //navigate("/email-verification/" + formData.user.email);
+        setErrorState(true);
+        setErrorMessage(
+          error.response ? error.response?.data?.message : error.message
+        );
+        setLoading(false);
+      });
   };
 
   return (
     <div className={classes["signup__section"]}>
       <div className={classes["section__left"]}>
-
         <h1 className={classes["section__logo"]}>
           <img className="logo" src={logo} alt="page-logo" />
         </h1>
-        <div className={classes["section__content"]}>
-        {errorState && (
-          <Error
-            errorMsg={errorMessage}
-            className={classes["error__message"]}
-          />
-        )}
+        <div
+          className={`${classes["section__content"]} ${classes["section__content-login"]}`}
+        >
+          {errorState && (
+            <Error
+              errorMsg={errorMessage}
+              // className={classes["error__message"]}
+            />
+          )}
           <HeaderTwo text="Login" />
           <p className={classes["text__sm"]}>
             Are you new? <Link to="/">Signup</Link>
@@ -123,7 +123,6 @@ setLoading(true)
             onSubmit={(e) => onSubmit(e)}
             className={classes["section__form"]}
           >
-         
             <Input
               type="email"
               placeholder="Email"
@@ -149,9 +148,16 @@ setLoading(true)
                 {error.passwordError}
               </p>
             )}
-            <Button color="primary" size="mobile" type="submit" onClick={onSubmit}>
-             {loading?'Please wait...':'Login'}
-            </Button>
+            <div className={classes["button__max-width"]}>
+              <Button
+                color="primary"
+                size="mobile"
+                type="submit"
+                onClick={onSubmit}
+              >
+                {loading ? "Please wait..." : "Login"}
+              </Button>
+            </div>
           </form>
           <p className={classes["text__sm-policy"]}>
             Signing up for a Dropoud account means you agree to
@@ -169,4 +175,3 @@ setLoading(true)
 };
 
 export default Login;
-

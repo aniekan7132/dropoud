@@ -1,12 +1,27 @@
+.home {
+  display: flex;
+}
+
+.main__pane {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .withdraw__money-overall_container {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  background: #f8f8f8;
+  width: 1184px;
+  height: 85vh;
+  /* flex: 1; */
 }
 
 .withdraw__money {
   display: flex;
   gap: 16px;
+  margin: 30px 0 0 50px;
 }
 
 .arrow__back {
@@ -16,10 +31,11 @@
 }
 
 .withdraw__money_input-container {
-  background: green;
+  background: #FFFFFF;
   width: 509px;
   padding: 24px 32px;
   border-radius: 8px;
+  margin-left: 50px;
 }
 
 .withdraw__money-input_label {
@@ -29,9 +45,19 @@
   color: #414141;
 }
 
+.withdraw__money-input:focus {
+	outline: none;
+	border: 1px solid #5353aa;
+}
+
 .withdraw__money-input {
   width: 445px;
   margin-top: 1.5rem;
+  height: 46px;
+  border-radius: 16px;
+  border: 1px solid #b5b5b5;
+  padding: 16px;
+  color: #606060;
 }
 
 .withdraw__money-balance {
@@ -53,4 +79,18 @@
   width: 445px;
   border-radius: 16px;
   margin-top: 1.3rem;
+  background: #B0B0D8;
+}
+
+.link__an-account {
+  margin-top: 10px;
+}
+.disabled {
+  /* background: #B0B0D8; */
+  /* color: #ffffff;
+  background: green; */
+}
+
+.error__div {
+  margin-left: 50px;
 }

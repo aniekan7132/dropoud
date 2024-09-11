@@ -352,7 +352,7 @@
   display: flex;
   gap: 4px;
   align-items: center;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
 }
 
 .school__logo-div p {
@@ -505,6 +505,21 @@
   overflow-x: hidden;
 }
 
+.cont__no-views_yet {
+  position: absolute;
+  top: 250px;
+  left: 98px;
+}
+
+.cont__no-views_yet p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #606060;
+  width: 167px;
+  text-align: center;
+}
+
 .overview__views-container div {
   /* position: absolute;
   top: 250px;
@@ -553,20 +568,29 @@
   flex-direction: column;
   gap: 24px;
   position: relative;
+  overflow-y: auto;
 }
 
 .no__views {
-  position: absolute;
+  /* position: absolute;
   top: 80px;
-  left: 300px;
+  left: 300px; */
 }
 
-.no__views {
+.no__comment {
+  width: 100%;
+  height: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.no__comment p {
   font-weight: 400;
   font-size: 16px;
   line-height: 20px;
   color: #606060;
-  width: 150px;
+  width: 120px;
   text-align: center;
 }
 
@@ -587,6 +611,7 @@
   font-size: 16px;
   line-height: 16px;
   color: #414141;
+  width: 160px;
 }
 
 .overview__comments-school_logo--cont {
@@ -604,6 +629,7 @@
   font-size: 12px;
   line-height: 16px;
   color: #414141;
+  width: 150px;
 }
 
 .overview__comments-reply {
@@ -616,6 +642,8 @@
 .overview__comments-reply_right--cont {
   display: flex;
   gap: 8px;
+  flex: 1;
+  max-width: 420px;
 }
 
 .overview__comments-reply span {
@@ -631,6 +659,7 @@
   font-size: 14px;
   line-height: 16px;
   color: #606060;
+  width: 68px;
 }
 
 .overview__video-code {
@@ -650,6 +679,7 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+  flex: 1;
 }
 
 .overview__comments-reply_cont {

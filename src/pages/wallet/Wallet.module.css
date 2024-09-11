@@ -47,8 +47,16 @@
 
 .wallet__no-transaction {
   position: absolute;
-  top: 320px;
-  left: 148px;
+  top: 100px;
+  left: 108px;
+  width: 280px;
+}
+
+.wallet__no-transaction p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #606060;
 }
 
 .wallet__balance-div {
@@ -85,8 +93,14 @@
 
 .withdrawal__button {
   width: 192px;
-  color: #f8f8f8;
+  /* color: #f8f8f8; */
+  /* color: #ffffff; */
   border-radius: 16px;
+  padding: 16px 24px 16px 24px;
+  background: #5353AA;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
 }
 
 .wallet__withdrawal-transaction_history {
@@ -95,9 +109,9 @@
   left: 32px;
 }
 
-.wallet__withdrawa-no_transaction {
+.wallet__withdrawal-no_transaction {
   position: absolute;
-  top: 320px;
+  top: 260px;
   left: 148px;
 }
 

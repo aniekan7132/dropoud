@@ -14,30 +14,32 @@ import Home from "./pages/home/Home";
 import Content from "./pages/content/Content";
 import Notification from "./pages/Notification/Notification.tsx";
 import Wallet from "./pages/wallet/Wallet";
-import ModalDetails from "./components/ModalDetails.tsx";
 import axios from "./axios/axios.tsx";
 import { useDispatch, useSelector } from "react-redux";
-import userSlice, { login, selectUser } from "./features/userSlice.ts";
-import Modal from "./components/Modal.tsx";
-import { baseUrl } from "./utilities/baseUrl.ts";
-// import PopUp from "./components/PopUp";
-// import PopUpInput from "./components/PopUpInput";
-// import Button from "./components/ButtonComponent";
-// import Input from "./components/Input";
-// import { BrowserRouter } from "react-router-dom";
+import { login } from "./features/userSlice.ts";
+import SucessUploadScreen from "./components/SucessUploadScreen.tsx";
+import FailedUploadScreen from "./components/FailedUploadScreen.tsx";
+import WithdrawMoney from "./components/WithdrawMoney.tsx";
+import BankName from "./components/BankName.tsx";
+import WithdrawalSuccessful from "./components/WithdrawalSuccessful.tsx";
+import BankSucessScreen from "./components/BankSucessScreen.tsx";
+import generalSlice, { selectGeneral, setUploadModal } from "./features/generalSlice.ts";
+import UploadConatiner from "./components/UploadConatiner.tsx";
+
 
 const App: FC = () => {
   const localBaseUrl = "http://192.168.0.102:7070";
+  const general = useSelector(selectGeneral);
 
   const dispatch = useDispatch();
 
   const loadUser = () => {
     axios
-      .get(`${baseUrl}/api/v1/users/me`, {
+      .get(`/api/v1/users/me`, {
         headers: { Authorization: "Bearer " + sessionStorage.getItem("token") },
       })
       .then((response) => dispatch(login(response.data?.data)))
-      .catch((err) => {
+      .catch(() => {
         if (location.pathname !== "/sign-in") {
           window.location.href = "/sign-in";
         }
@@ -48,9 +50,12 @@ const App: FC = () => {
     loadUser();
   }, []);
 
+  console.log(general)
+
   return (
     // <EmailVerification />
     <>
+    {general.uploadModal &&  <UploadConatiner />}
       <Router>
         <Routes>
           <Route path="/dashboard" element={<Home />} />
@@ -61,13 +66,24 @@ const App: FC = () => {
             element={<EmailVerification />}
           />
           <Route path="thank" element={<ThankYou />} />
-          <Route path="forgotpassword?" element={<ForgotPassword />} />
-          <Route path="newpassword" element={<NewPassword />} />
-          <Route path="success" element={<SuccessScreen />} />
+          <Route path="/forgotpassword?" element={<ForgotPassword />} />
+          <Route path="/newpassword" element={<NewPassword />} />
+          <Route path="/success-screen" element={<SuccessScreen />} />
           <Route path="/notification" element={<Notification />} />
           <Route path="/content" element={<Content />} />
           <Route path="/wallet" element={<Wallet />} />
-          {/* <Route path="/upload-content" element={<ModalDetails />} /> */}
+          <Route path="/upload-successful" element={<SucessUploadScreen />} />
+          <Route path="/upload-failed" element={<FailedUploadScreen />} />
+          <Route path="/withdraw-money" element={<WithdrawMoney />} />
+          <Route path="/bank-name" element={<BankName />} />
+          <Route
+            path="/withdrawal-successful"
+            element={<WithdrawalSuccessful />}
+          />
+          <Route
+            path="/successfully-added-bank"
+            element={<BankSucessScreen />}
+          />
         </Routes>
       </Router>
     </>

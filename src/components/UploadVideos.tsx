@@ -1,15 +1,8 @@
 import React, { useState } from "react";
-import ReactDOM from "react-dom";
-import { Link, useNavigate } from "react-router-dom";
 import classes from "./UploadVideos.module.css";
-import HeaderFive from "./HeaderFive";
 import cancelIcon from "../assets/cancel.svg";
 import upload from "../assets/upload.svg";
 import Button from "./ButtonComponent";
-import Input from "./Input";
-import Modal from "./Modal";
-import { useDispatch, useSelector } from "react-redux";
-import { selectFile, setFile } from "../features/generalSlice";
 
 interface UploadModal {
   onClick?: void;
@@ -26,7 +19,6 @@ interface Props {
 }
 
 const UploadVideos = ({ setFilePicked, closeModal, setFile }: Props) => {
-  const navigate = useNavigate();
 
   const uploadModal = document.getElementById("upload") as HTMLElement;
 
@@ -76,7 +68,7 @@ const UploadVideos = ({ setFilePicked, closeModal, setFile }: Props) => {
               <label htmlFor="file" className={classes["select__files"]}>
                 Select Files
               </label>
-              <Link to="">Check guidlines</Link>
+            {/* <Button>Check guidlines</Button> */}
             </div>
           </div>
         </div>

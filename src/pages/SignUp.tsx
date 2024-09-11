@@ -53,7 +53,7 @@ const SignUp = () => {
   const [errorState, setErrorState] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -62,6 +62,7 @@ const [loading, setLoading] = useState(false)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setError(defaultErrorState);
+    setErrorState(false);
     setFormData({
       user: {
         ...formData.user,
@@ -92,7 +93,7 @@ const [loading, setLoading] = useState(false)
     if (formData.user.phone === "") {
       setError({ ...error, phoneError: "Phone number is required." });
     }
-setLoading(true)
+    setLoading(true);
     axios
       .post(`${localBaseUrl}/api/v1/users`, {
         ...formData.user,
@@ -105,35 +106,29 @@ setLoading(true)
       })
       .catch((error) => {
         console.log(error);
-        setErrorState(true)
-        setErrorMessage(error?.response?error.response.data.message:'Network error')
-      }).finally(()=>{
-        setLoading(false)
+        setErrorState(true);
+        setErrorMessage(
+          error?.response ? error.response.data.message : "Network error"
+        );
       })
-
-    //   sessionStorage.setItem("email", JSON.stringify(formData.user.email));
-    //   if(formData.user.first_name && formData.user.surname && formData.user.email && formData.user.password && formData.user.phone) {
-    //     //navigate("/email-verification");
-    //   } else {
-    //     setError(error);
-    //   }
-    //navigate("/email-verification/" + formData.user.email);
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   return (
     <div className={classes["signup__section"]}>
       <div className={classes["section__left"]}>
-
         <h1 className={classes["section__logo"]}>
           <img className="logo" src={logo} alt="page-logo" />
         </h1>
         <div className={classes["section__content"]}>
-        {errorState && (
-          <Error
-            errorMsg={errorMessage}
-            className={classes["error__message"]}
-          />
-        )}
+          {errorState && (
+            <Error
+              errorMsg={errorMessage}
+              // className={classes["error__message"]}
+            />
+          )}
           <HeaderTwo text="Create Account" />
           <p className={classes["text__sm"]}>
             Already have an account? <Link to="/sign-in">Log in</Link>
@@ -203,8 +198,13 @@ setLoading(true)
                 {error.passwordError}
               </p>
             )}
-            <Button color="primary" size="mobile" type="submit" onClick={onSubmit}>
-             {loading?'Please wait...':'Create Account'}
+            <Button
+              color="primary"
+              size="mobile"
+              type="submit"
+              onClick={onSubmit}
+            >
+              {loading ? "Please wait..." : "Create Account"}
             </Button>
           </form>
           <p className={classes["text__sm-policy"]}>
@@ -223,4 +223,3 @@ setLoading(true)
 };
 
 export default SignUp;
-

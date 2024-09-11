@@ -24,6 +24,7 @@
   padding: 8px 24px 8px 24px;
   display: flex;
   gap: 10px;
+  text-decoration: none;
 }
 
 .nav__links img {
@@ -31,12 +32,17 @@
 }
 
 .nav__link-item {
-  text-decoration: none;
+  /* text-decoration: none; */
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
   text-align: center;
   color: #ffffff;
+}
+
+.nav__links.active {
+  border-left: 5px solid #5353AA;
+  background: rgba(248, 248, 248, 0.1);
 }
 
 .nav__links-2 {
@@ -57,6 +63,10 @@
   height: 1px;
   background: #b5b5b5;
   margin-top: 2rem;
+}
+
+.border__bottom-2 {
+  margin-bottom: 2rem;
 }
 
 

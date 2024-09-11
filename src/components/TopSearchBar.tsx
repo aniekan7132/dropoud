@@ -6,16 +6,17 @@ import logo from "../assets/dropoud-logo.svg";
 import search from "../assets/search.svg";
 import upload from "../assets/upload.svg";
 import verifiedIcon from "../assets/verified-icon.svg";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../features/userSlice";
+import { setUploadModal } from "../features/generalSlice";
 
-interface Props{
-  onUpload?:()=>void
-}
-
-const TopSearchBar = ({onUpload}:Props) => {
+const TopSearchBar = () => {
   const user = useSelector(selectUser);
-  console.log(user);
+  const dispatch = useDispatch();
+
+  const hanldeUploadToggle = () => {
+    dispatch(setUploadModal(true));
+  };
 
   return (
     <>
@@ -29,7 +30,6 @@ const TopSearchBar = ({onUpload}:Props) => {
             <Input
               placeholder="Search..."
               className={classes["top__bar-input"]}
-              // onClick={() => setInputModal(true)}
             />
           </div>
 
@@ -40,7 +40,12 @@ const TopSearchBar = ({onUpload}:Props) => {
                 src={upload}
                 alt="Upload-logo"
               />
-              <Button color="secondary" size="sm" type="submit" onClick={onUpload}>
+              <Button
+                color="secondary"
+                size="sm"
+                type="submit"
+                onClick={hanldeUploadToggle}
+              >
                 Upload
               </Button>
             </div>
@@ -68,48 +73,37 @@ const TopSearchBar = ({onUpload}:Props) => {
           </div>
         </div>
 
-
-
-
-
-
-
-
         <div className={classes["mobile_top__navbar"]}>
-        <img className="logo" width={'100px'} src={logo} alt="page-logo" />
-    
-    <div className={classes["right"]}>
+          <img className="logo" width={"100px"} src={logo} alt="page-logo" />
 
-        <button className={classes["mobile_search__logo"]}>
+          <div className={classes["right"]}>
+            <button className={classes["mobile_search__logo"]}>
               <img src={search} alt="Search-logo" />
             </button>
-           <button  className={classes["mobile_button_upload"]}>
-
+            <button
+              className={classes["mobile_button_upload"]}
+              onClick={hanldeUploadToggle}
+            >
               <img
                 className={classes["mobile_button__logo"]}
                 src={upload}
                 alt="Upload-logo"
-                />
-                </button>
+              />
+            </button>
 
-                <div className={classes["mobile_profile__picture-container"]}>
-                <img
-                  className={classes["mobile_profile__picture"]}
-                  src={user?.image}
-                  alt="Profile-picture"
-                />
-                <img
-                  className={classes["mobile_verified-icon"]}
-                  src={verifiedIcon}
-                  alt="Verified-icon"
-                />
-              </div>
-              
-                </div>
-            
-       
-            
-       
+            <div className={classes["mobile_profile__picture-container"]}>
+              <img
+                className={classes["mobile_profile__picture"]}
+                src={user?.image}
+                alt="Profile-picture"
+              />
+              <img
+                className={classes["mobile_verified-icon"]}
+                src={verifiedIcon}
+                alt="Verified-icon"
+              />
+            </div>
+          </div>
         </div>
       </>
     </>
