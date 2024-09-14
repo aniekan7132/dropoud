@@ -35,7 +35,7 @@ const Home = () => {
   const [dashboardData, setDashboardData] = useState<Dashboard | null>(null);
   const [showUpload, setShowUpload] = useState<boolean>(false);
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const temBaseurl = "https://dropoud-api.onrender.com";
   const DASHBOARD_URL = "/api/v1/users/my/dashboard";
@@ -115,17 +115,20 @@ const Home = () => {
   const CommentsData = dashboardData?.comments.data.map((comment, index) => {
     return (
       <div className={classes["overview__comments-sub_container"]}>
-        <div className={classes["overview__comments-sub_container--profile"]}>
-          <Profile />
-          <div className={classes["overview__comments-reply_cont"]}>
-            <p className={classes["overview__comment"]}>{comment.comment}</p>
-            <p className={classes["overview__comments-reply"]}>
-              Reply <span>1 reply</span>
-            </p>
+        <div className={classes["overview__comment-container_left"]}>
+          <div className={classes["overview__comments-sub_container--profile"]}>
+            <Profile />
+            <div className={classes["overview__comments-reply_cont"]}>
+              <p className={classes["overview__comment"]}>{comment.comment}</p>
+              <p className={classes["overview__comments-reply"]}>
+                Reply <span>1 reply</span>
+              </p>
+            </div>
           </div>
+          <p className={classes["overview__comment-reply_days"]}>2days ago</p>
         </div>
         <div className={classes["overview__comments-reply_right--cont"]}>
-          <p className={classes["overview__comment-reply_days"]}>2days ago</p>
+          {/* <p className={classes["overview__comment-reply_days"]}>2days ago</p> */}
           <img
             className={classes["overview__comments-picture"]}
             src={comment.lecture.thumbnail}
@@ -185,10 +188,6 @@ const Home = () => {
             </h2>
 
             <div className={classes["overview__container"]}>
-              {/* <GridFirstRow />
-              <GridFirstRow />
-              <GridFirstRow /> */}
-              {/* <div className={classes["overview__container-top"]}> */}
               <div className={classes["sub__overview-container-sub"]}>
                 <h3 className={classes["overview__header"]}>Total Followers</h3>
                 <p className={classes["overview__score"]}>
@@ -391,216 +390,6 @@ const Home = () => {
                 ) : (
                   viewsData
                 )}
-
-                {/* <div className={classes["overview__name-school_container"]}>
-                  <div
-                    className={classes["overview__name-school_container--sub"]}
-                  >
-                    <div className={classes["overview__name-school_image"]}>
-                      <img
-                        className={classes["overview__followers-picture"]}
-                        src={followersPictureTwo}
-                        alt="Followers-image"
-                      />
-                      <div
-                        className={
-                          classes["overview__followers-name_school--wrapper"]
-                        }
-                      >
-                        <p className={classes["overview__followers-name"]}>
-                          Barbara Gordon
-                        </p>
-                        <p className={classes["overview__followers-school"]}>
-                          Imo sate university
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <p className={classes["overview__followed"]}>Just Viewed</p>
-                </div>
-
-                <div className={classes["overview__name-school_container"]}>
-                  <div
-                    className={classes["overview__name-school_container--sub"]}
-                  >
-                    <div className={classes["overview__name-school_image"]}>
-                      <img
-                        className={classes["overview__followers-picture"]}
-                        src={followersPictureTwo}
-                        alt="Followers-image"
-                      />
-                      <div
-                        className={
-                          classes["overview__followers-name_school--wrapper"]
-                        }
-                      >
-                        <p className={classes["overview__followers-name"]}>
-                          Barbara Gordon
-                        </p>
-                        <p className={classes["overview__followers-school"]}>
-                          Imo sate university
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <p className={classes["overview__followed"]}>Just Viewed</p>
-                </div>
-                <div className={classes["overview__name-school_container"]}>
-                  <div
-                    className={classes["overview__name-school_container--sub"]}
-                  >
-                    <div className={classes["overview__name-school_image"]}>
-                      <img
-                        className={classes["overview__followers-picture"]}
-                        src={followersPictureTwo}
-                        alt="Followers-image"
-                      />
-                      <div
-                        className={
-                          classes["overview__followers-name_school--wrapper"]
-                        }
-                      >
-                        <p className={classes["overview__followers-name"]}>
-                          Barbara Gordon
-                        </p>
-                        <p className={classes["overview__followers-school"]}>
-                          Imo sate university
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <p className={classes["overview__followed"]}>Just Viewed</p>
-                </div>
-                <div className={classes["overview__name-school_container"]}>
-                  <div
-                    className={classes["overview__name-school_container--sub"]}
-                  >
-                    <div className={classes["overview__name-school_image"]}>
-                      <img
-                        className={classes["overview__followers-picture"]}
-                        src={followersPictureTwo}
-                        alt="Followers-image"
-                      />
-                      <div
-                        className={
-                          classes["overview__followers-name_school--wrapper"]
-                        }
-                      >
-                        <p className={classes["overview__followers-name"]}>
-                          Barbara Gordon
-                        </p>
-                        <p className={classes["overview__followers-school"]}>
-                          Imo sate university
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <p className={classes["overview__followed"]}>Just Viewed</p>
-                </div>
-                <div className={classes["overview__name-school_container"]}>
-                  <div
-                    className={classes["overview__name-school_container--sub"]}
-                  >
-                    <div className={classes["overview__name-school_image"]}>
-                      <img
-                        className={classes["overview__followers-picture"]}
-                        src={followersPictureTwo}
-                        alt="Followers-image"
-                      />
-                      <div
-                        className={
-                          classes["overview__followers-name_school--wrapper"]
-                        }
-                      >
-                        <p className={classes["overview__followers-name"]}>
-                          Barbara Gordon
-                        </p>
-                        <p className={classes["overview__followers-school"]}>
-                          Imo sate university
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <p className={classes["overview__followed"]}>Just Viewed</p>
-                </div>
-                <div className={classes["overview__name-school_container"]}>
-                  <div
-                    className={classes["overview__name-school_container--sub"]}
-                  >
-                    <div className={classes["overview__name-school_image"]}>
-                      <img
-                        className={classes["overview__followers-picture"]}
-                        src={followersPictureTwo}
-                        alt="Followers-image"
-                      />
-                      <div
-                        className={
-                          classes["overview__followers-name_school--wrapper"]
-                        }
-                      >
-                        <p className={classes["overview__followers-name"]}>
-                          Barbara Gordon
-                        </p>
-                        <p className={classes["overview__followers-school"]}>
-                          Imo sate university
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <p className={classes["overview__followed"]}>Just Viewed</p>
-                </div>
-                <div className={classes["overview__name-school_container"]}>
-                  <div
-                    className={classes["overview__name-school_container--sub"]}
-                  >
-                    <div className={classes["overview__name-school_image"]}>
-                      <img
-                        className={classes["overview__followers-picture"]}
-                        src={followersPictureTwo}
-                        alt="Followers-image"
-                      />
-                      <div
-                        className={
-                          classes["overview__followers-name_school--wrapper"]
-                        }
-                      >
-                        <p className={classes["overview__followers-name"]}>
-                          Barbara Gordon
-                        </p>
-                        <p className={classes["overview__followers-school"]}>
-                          Imo sate university
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <p className={classes["overview__followed"]}>Just Viewed</p>
-                </div>
-                <div className={classes["overview__name-school_container"]}>
-                  <div
-                    className={classes["overview__name-school_container--sub"]}
-                  >
-                    <div className={classes["overview__name-school_image"]}>
-                      <img
-                        className={classes["overview__followers-picture"]}
-                        src={followersPictureTwo}
-                        alt="Followers-image"
-                      />
-                      <div
-                        className={
-                          classes["overview__followers-name_school--wrapper"]
-                        }
-                      >
-                        <p className={classes["overview__followers-name"]}>
-                          Barbara Gordon
-                        </p>
-                        <p className={classes["overview__followers-school"]}>
-                          Imo sate university
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <p className={classes["overview__followed"]}>Just Viewed</p>
-                </div>*/}
               </div>
 
               <div className={classes["grid__col-span_2"]}>
@@ -733,8 +522,269 @@ const Home = () => {
                 </div>
               </div>
             </div>
+
+            {/* OVERVIEW CONTAINER MOBILE CONTAINER VIEW */}
+            <div className={classes["overview__container-mobile"]}>
+              <div className={classes["mobile__sub-overview"]}>
+                <div className={classes["sub__overview-container-sub"]}>
+                  <h3 className={classes["overview__header"]}>
+                    Total Followers
+                  </h3>
+                  <p className={classes["overview__score"]}>
+                    {dashboardData?.followers?.totalFollowers}
+                  </p>
+                  <div className={classes["main__arrow-container"]}>
+                    <div
+                      className={
+                        dashboardData?.followers?.increased
+                          ? `${classes["arrow__container-increased"]}`
+                          : `${classes["arrow__container-decreased"]}`
+                      }
+                    >
+                      <img
+                        className={classes.arrow}
+                        src={
+                          dashboardData?.followers?.increased
+                            ? arrowUp
+                            : arrowDown
+                        }
+                        alt="Arrow-up"
+                      />
+                    </div>
+                    <p
+                      className={
+                        dashboardData?.followers?.increased
+                          ? `${classes["percentage__increased"]}`
+                          : `${classes["percentage__decreased"]}`
+                      }
+                    >
+                      + {dashboardData?.followers?.percentage}{" "}
+                      <span className={classes["percentage__span"]}>
+                        than last login
+                      </span>
+                    </p>
+                  </div>
+                </div>
+
+                <div className={classes["sub__overview-container-sub"]}>
+                  <h3 className={classes["overview__header"]}>Total View</h3>
+                  <p className={classes["overview__score"]}>
+                    {dashboardData?.views?.totalViews}
+                  </p>
+                  <div className={classes["main__arrow-container"]}>
+                    <div
+                      className={
+                        dashboardData?.views?.increased
+                          ? `${classes["arrow__container-increased"]}`
+                          : `${classes["arrow__container-decreased"]}`
+                      }
+                    >
+                      <img
+                        className={classes.arrow}
+                        src={
+                          dashboardData?.views?.increased ? arrowUp : arrowDown
+                        }
+                        alt="Arrow-up"
+                      />
+                    </div>
+                    <p
+                      className={
+                        dashboardData?.views?.increased
+                          ? `${classes["percentage__increased"]}`
+                          : `${classes["percentage__decreased"]}`
+                      }
+                    >
+                      + {dashboardData?.views?.percentage}{" "}
+                      <span className={classes["percentage__span"]}>
+                        than last login
+                      </span>
+                    </p>
+                  </div>
+                </div>
+
+                <div className={classes["sub__overview-container-sub"]}>
+                  <h3 className={classes["overview__header"]}>
+                    Total Comments
+                  </h3>
+                  <p className={classes["overview__score"]}>
+                    {dashboardData?.comments?.totalComments}
+                  </p>
+                  <div className={classes["main__arrow-container"]}>
+                    <div
+                      className={
+                        dashboardData?.comments?.increased
+                          ? `${classes["arrow__container-increased"]}`
+                          : `${classes["arrow__container-decreased"]}`
+                      }
+                    >
+                      <img
+                        className={classes.arrow}
+                        src={
+                          dashboardData?.comments?.increased
+                            ? arrowUp
+                            : arrowDown
+                        }
+                        alt="Arrow-down"
+                      />
+                    </div>
+                    <p
+                      className={
+                        dashboardData?.comments?.increased
+                          ? `${classes["percentage__increased"]}`
+                          : `${classes["percentage__decreased"]}`
+                      }
+                    >
+                      + {dashboardData?.comments?.percentage}{" "}
+                      <span className={classes["percentage__span"]}>
+                        than last login
+                      </span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* MOBILE LATEST VIDEO UPLOAD */}
+              <div className={classes["mobile__overview-video_section"]}>
+                <div className={classes["overview__video-section"]}>
+                  <HeaderThree text="Latest Video You Upload" />
+
+                  {dashboardData?.video ? (
+                    <>
+                      <div>
+                        <img
+                          src={sideView}
+                          alt="Image-of-video"
+                          className={classes["overview__video-image"]}
+                        />
+                      </div>
+                      <div className={classes["overview__video-title_section"]}>
+                        <div>
+                          <h4 className={classes["overview__video-title"]}>
+                            {dashboardData?.video?.topic}
+                          </h4>
+                          <div className={classes["school__logo-div"]}>
+                            <img
+                              className={classes["university__logo"]}
+                              src={schoolLogo}
+                              alt="University-Logo"
+                            />
+                            <p>{dashboardData?.video?.course}</p>
+                          </div>
+                        </div>
+                        <div className={classes["overview__views-comments"]}>
+                          <p className={classes["overview__video-views"]}>
+                            Views ({dashboardData?.video?.view_count})
+                          </p>
+                          <p className={classes["overview__video-comment"]}>
+                            Comments ({dashboardData?.video?.comment_count})
+                          </p>
+                        </div>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <p className={classes[""]}>
+                        Do you want to view metrics on your recent video? Upload
+                        and publish a video to begin
+                      </p>
+                      <div className={classes["button__empty"]}>
+                        <Button
+                          color="primary"
+                          size="smlg"
+                          type="submit"
+                          onClick={handleUpload}
+                        >
+                          Upload Now
+                        </Button>
+                      </div>
+                    </>
+                  )}
+                </div>
+
+                {/* MOBILE ACTIVE FOLLOWERS */}
+                <div className={classes["overview__followers-container"]}>
+                  {dashboardData?.followers.data.length === 0 ? (
+                    <div className={classes["no__active-follower"]}>
+                      <p>No Active Follower</p>
+                    </div>
+                  ) : (
+                    <>
+                      <div className={classes["overview__header-padding"]}>
+                        <HeaderThree text="Followers" />
+                      </div>
+
+                      {followersData}
+                    </>
+                  )}
+
+                  <Button
+                    className={classes["button__follower"]}
+                    color="primary"
+                    size="bigsm"
+                    type="submit"
+                  >
+                    View All
+                  </Button>
+                </div>
+              </div>
+              {/* END OF ACTIVE FOLLOERS */}
+
+              {/* END OF MOBILE LATEST VIDEO UPLOAD */}
+
+              {/* MOBILE OVERVIEW VIEWS CONTAINER */}
+              <div className={classes[""]}>
+                <div className={`${classes["overview__views-container"]}`}>
+                  <HeaderThree text="Views" />
+                  {dashboardData?.views.data.length === 0 ? (
+                    <div className={classes["cont__no-views_yet"]}>
+                      <p>No Views at the moment </p>
+                    </div>
+                  ) : (
+                    viewsData
+                  )}
+                </div>
+              </div>
+
+              {/* MOBILE OVERVIEW VIEW COMMENT */}
+              <div className={classes["overview__comments-container"]}>
+                <div className={classes["overview__comments-header_view"]}>
+                  <h3 className={classes["overview__header"]}>Comments</h3>
+                  <Link to="">View all</Link>
+                </div>
+
+                <div className={classes["overview__comments"]}>
+                  {dashboardData?.comments?.data?.length === 0 ? (
+                    <div className={classes["no__comment"]}>
+                      <p>No Comments Found</p>
+                    </div>
+                  ) : (
+                    CommentsData
+                  )}
+                </div>
+              </div>
+            </div>
+            {/* END MOBILE OVERVIEWS VIEWS CONTAINER  */}
+
+            {/* MOBILE OVERVIEW VIEW COMMENT */}
+            {/* <div className={classes["overview__comments-container"]}>
+              <div className={classes["overview__comments-header_view"]}>
+                <h3 className={classes["overview__header"]}>Comments</h3>
+                <Link to="">View all</Link>
+              </div>
+
+              <div className={classes["overview__comments"]}>
+                {dashboardData?.comments?.data?.length === 0 ? (
+                  <div className={classes["no__comment"]}>
+                    <p>No Comments Found</p>
+                  </div>
+                ) : (
+                  CommentsData
+                )}
+              </div>
+            </div> */}
+
+            {/* END OF OVERVIEW CONTAINER MOBILE VIEW */}
           </div>
-          {/* </div> */}
         </main>
       </div>
     </>
