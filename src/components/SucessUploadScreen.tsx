@@ -2,15 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 import classes from "./SuccessUploadScreen.module.css";
 import succesful from "../assets/sucessful.svg";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 const SucessUploadScreen = () => {
   // const progressBar = document.getElementById("progress") as HTMLElement;
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const handleOverlayClick = () => {
-    navigate("/content");
-  };
+  // const handleOverlayClick = () => {
+  //   navigate("/content");
+  // };
 
   return (
     <>

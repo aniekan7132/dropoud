@@ -13,7 +13,6 @@ import axios from "../axios/axios";
 import { v4 as uuidv4 } from "uuid";
 import { useSelector } from "react-redux";
 import { selectUser } from "../features/userSlice";
-import { useNavigate } from "react-router-dom";
 import { AxiosProgressEvent } from "axios";
 
 interface DefaultUploadState {
@@ -59,7 +58,6 @@ const ModalDetails = ({ closeModal, file }: Props) => {
 
   const user = useSelector(selectUser);
   const lecture_id = `${user.campus}${lectureid}`;
-  const navigate = useNavigate();
 
   // converting blob thumbnail file(image) to Url
   useEffect(() => {
@@ -160,11 +158,11 @@ const ModalDetails = ({ closeModal, file }: Props) => {
       .then((response) => {
         console.log(response);
         setShowProgress(true);
-        navigate("/upload-successful");
+        location.href="/upload-successful";
       })
       .catch((error) => {
         console.log(error);
-        navigate("/upload-failed");
+        location.href="/upload-failed";
       });
 
     setShowProgress(true);
@@ -183,7 +181,6 @@ const ModalDetails = ({ closeModal, file }: Props) => {
       .catch((error) => console.log("Failed to copy text", error));
   };
 
-  const upload = document.getElementById("upload") as HTMLElement;
 
   return (
     <>
@@ -270,6 +267,7 @@ const ModalDetails = ({ closeModal, file }: Props) => {
                   )}
                 </button>
                 <video
+              
                   ref={vidRef}
                   typeof="video/mp4"
                   controls={true}
@@ -283,8 +281,7 @@ const ModalDetails = ({ closeModal, file }: Props) => {
                   <p>Video link</p>
                   <div className={classes["link__div"]}>
                     <p>
-                      https://dropoud.com/video/{user.campus}
-                      {lecture_id}
+                      https://dropoud.com/video /{user.campus}{lecture_id}
                     </p>
                     {isCopied ? (
                       <p className={classes.copied}>

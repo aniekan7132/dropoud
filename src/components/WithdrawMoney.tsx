@@ -10,7 +10,7 @@ import TopSearchBar from "./TopSearchBar";
 import { useSelector } from "react-redux";
 import { selectUser } from "../features/userSlice";
 import ConfirmTransaction from "./ConfirmTransaction";
-import Error from "./Error";
+// import Error from "./Error";
 import axios from "../axios/axios";
 
 const intitialErrorState = {
@@ -144,7 +144,7 @@ const WithdrawMoney = () => {
               <ConfirmTransaction
                 onClick={withdrawalRequsest}
                 errorState={errorState}
-                bank={user?.bank!}
+                bank={user.bank!}
                 withdrawalInput={withdrawalAmount}
                 full_name={full_name}
                 value={password}

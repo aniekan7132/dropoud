@@ -1,6 +1,6 @@
-import React, { ReactNode } from "react";
+import  { ReactNode } from "react";
 import ReactDOM from "react-dom";
-import classes from "./Modal.module.css";
+// import classes from "./Modal.module.css";
 
 const modalRootEl = document.getElementById("modal-root") as HTMLElement;
 

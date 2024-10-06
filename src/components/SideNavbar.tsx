@@ -181,7 +181,7 @@ const SideNavbar = () => {
               src={message}
               alt="Content-logo"
             />
-            <Link className={classes["mobile_nav__link-item"]} to="inbox">
+            <Link className={classes["mobile_nav__link-item"]} to="">
               More
             </Link>
           </div>

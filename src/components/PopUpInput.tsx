@@ -1,6 +1,6 @@
 import React from 'react'
 import Input from './Input';
-import Button from './ButtonComponent';
+// import Button from './ButtonComponent';
 import classes from "./PopUpInput.module.css"
 
 const PopUpInput = () => {

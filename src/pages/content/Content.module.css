@@ -84,6 +84,7 @@
   gap: 30px;
   left: 280px;
   z-index: 100;
+  bottom: 100px;
 }
 
 .info_card{
@@ -113,6 +114,12 @@
   justify-content: space-evenly;
 }
 
+.mobile_info_pane{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
 .buttons_pane{
 display: flex;
 justify-content: flex-end;
@@ -127,6 +134,21 @@ gap: 20px;
   font-size: 16px;
   color: rgba(83, 83, 170, 1);
 }
+
+.mobile_buttons_pane{
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+  }
+  
+  .mobile_buttons_pane button{
+    background:none;
+    padding: 10px;
+    border: none ;
+    cursor: pointer;
+    font-size: 16px;
+    color: rgba(83, 83, 170, 1);
+  }
 
 .drop_mneus_item{
   font-weight: 500;
@@ -209,6 +231,102 @@ gap: 20px;
 }
 
 
+.mobile_existing__user-content_thumbnail{
+  width: 100%;
+  border-radius: 4px;
+}
+
+
+.mobile_existing__user-content_div{
+  display: flex;
+}
+
+
+.mobile_existing__user-title{
+  flex: 1;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+
+.mobile_existing__user-logo{
+  display: flex;
+  gap: 10px;
+}
+
+
+
+.mobile_existing__user-date_views-comment{
+  display: flex;
+}
+
+
+
+.mobile_existing__user-count{
+  display: flex;
+  gap:5px;
+}
+
+
+.mobile_light_btn{
+  align-self: flex-end;
+
+  justify-content: flex-end;
+  display: flex;
+  font-size: x-large;
+}
+
+
+.mobile_drop_mneus{
+  background-color: white;
+  position: fixed;
+  z-index: 100;
+  width: 88%;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 20px;
+  box-shadow: 0 0 114px lightgray;
+  top: 240px;
+}
+
+
+
+.mobile_details__container{
+
+}
+
+
+
+
+.mobile_drop_mneus_item{
+  display: flex;
+align-items: center;
+gap: 10px;
+}
+
+.mobile_drop_mneus-edit{
+  background-color: red;
+  position: fixed;
+  top: 100px;
+  z-index: 100;
+  left: 0;
+  width: 200px;
+
+}
+
+.mobile_drop_mneus{
+  display: none;
+}
+
+
+
+
+
+
 
 
 
@@ -224,7 +342,7 @@ gap: 20px;
    height: 100vh;
    overflow: auto;
   }
-  
+  content__container
   .main__pane {
     width: 100vw;
     display: flex;
@@ -245,6 +363,11 @@ gap: 20px;
     border-bottom: 1px solid lightgray;
   }
 
+  .mobile_existing__user-holder{
+    flex: 1;
+    padding: 10px;
+  }
+
 
   .content__heading-titles {
    display: none;
@@ -258,11 +381,18 @@ gap: 20px;
   }
 
   .content__container {
-    width: 100%;
-    height: 400px;
+    width: 86vw;
+    height: 85%;
     margin-top: 10px;
     border-radius: 8px;
     overflow: auto;
-    
   }
+
+  .drop_mneus{
+    display: none;
+  }
+  .mobile_drop_mneus{
+    display: flex;
+  }
+  
 }

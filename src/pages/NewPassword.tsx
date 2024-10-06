@@ -14,7 +14,7 @@ const NewPassword = () => {
 	const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e:any) => {
         e.preventDefault();
 		setIsLoading(true);
 
@@ -29,13 +29,13 @@ const NewPassword = () => {
             });
 
             if (response.data.success) {
-                dropoudToast.success("Password updated successfully");
+                // dropoudToast.success("Password updated successfully");
                 navigate("/login"); // Redirect to login or any other appropriate page
             } else {
-                dropoudToast.error("An error occurred. Please try again.");
+                // dropoudToast.error("An error occurred. Please try again.");
             }
         } catch (error) {
-            dropoudToast.error(error.response?.data?.message || "An error occurred. Please try again.");
+            // dropoudToast.error(error.response?.data?.message || "An error occurred. Please try again.");
             console.log(error);
         } finally {
 			setIsLoading(false);

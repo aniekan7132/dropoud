@@ -2,13 +2,14 @@ import logo from "../assets/dropoud-logo.svg";
 import dropoudBanner from "../assets/dropoud-banner.svg";
 import Input from "../components/Input";
 import Button from "../components/ButtonComponent";
-import { FormEvent, useEffect, useRef, useState } from "react";
-import axios from "axios";
+import { FormEvent, useRef, useState } from "react";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import classes from "./SignUp.module.css";
 import HeaderTwo from "../components/HeaderTwo";
 import Error from "../components/Error";
+import { baseUrl } from "../utilities/baseUrl";
+import axios from "../axios/axios";
 
 interface DefaultState {
   user: {
@@ -36,9 +37,7 @@ interface SignupError {
   phoneError: null | string;
 }
 
-const baseUrl = "http://drop-apis.firsta.tech";
-const temBaseurl = "https://dropoud-api.onrender.com";
-const localBaseUrl = "http://192.168.0.102:7070";
+
 
 const SignUp = () => {
   const [formData, setFormData] = useState<DefaultState>({
@@ -52,8 +51,7 @@ const SignUp = () => {
   });
   const [errorState, setErrorState] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-
-  const [loading, setLoading] = useState(false);
+const [loading, setLoading] = useState(false)
 
   const navigate = useNavigate();
 
@@ -62,7 +60,6 @@ const SignUp = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setError(defaultErrorState);
-    setErrorState(false);
     setFormData({
       user: {
         ...formData.user,
@@ -93,9 +90,9 @@ const SignUp = () => {
     if (formData.user.phone === "") {
       setError({ ...error, phoneError: "Phone number is required." });
     }
-    setLoading(true);
+setLoading(true)
     axios
-      .post(`${localBaseUrl}/api/v1/users`, {
+      .post(`${baseUrl}/api/v1/users`, {
         ...formData.user,
         account_type: "Lecturer",
         title: "",
@@ -106,29 +103,35 @@ const SignUp = () => {
       })
       .catch((error) => {
         console.log(error);
-        setErrorState(true);
-        setErrorMessage(
-          error?.response ? error.response.data.message : "Network error"
-        );
+        setErrorState(true)
+        setErrorMessage(error?.response?error.response.data.message:'Network error')
+      }).finally(()=>{
+        setLoading(false)
       })
-      .finally(() => {
-        setLoading(false);
-      });
+
+    //   sessionStorage.setItem("email", JSON.stringify(formData.user.email));
+    //   if(formData.user.first_name && formData.user.surname && formData.user.email && formData.user.password && formData.user.phone) {
+    //     //navigate("/email-verification");
+    //   } else {
+    //     setError(error);
+    //   }
+    //navigate("/email-verification/" + formData.user.email);
   };
 
   return (
     <div className={classes["signup__section"]}>
       <div className={classes["section__left"]}>
+
         <h1 className={classes["section__logo"]}>
           <img className="logo" src={logo} alt="page-logo" />
         </h1>
         <div className={classes["section__content"]}>
-          {errorState && (
-            <Error
-              errorMsg={errorMessage}
-              // className={classes["error__message"]}
-            />
-          )}
+        {errorState && (
+          <Error
+            errorMsg={errorMessage}
+            // className={classes["error__message"]}
+          />
+        )}
           <HeaderTwo text="Create Account" />
           <p className={classes["text__sm"]}>
             Already have an account? <Link to="/sign-in">Log in</Link>
@@ -198,19 +201,14 @@ const SignUp = () => {
                 {error.passwordError}
               </p>
             )}
-            <Button
-              color="primary"
-              size="mobile"
-              type="submit"
-              onClick={onSubmit}
-            >
-              {loading ? "Please wait..." : "Create Account"}
+            <Button color="primary" size="mobile" type="submit" onClick={onSubmit}>
+             {loading?'Please wait...':'Create Account'}
             </Button>
           </form>
           <p className={classes["text__sm-policy"]}>
             Signing up for a Dropoud account means you agree to
-            <Link to=""> Privacy Policy </Link>
-            and <Link to="">Terms of Services</Link>
+            <Link to="https://dropoud.com/privacy-policy.html"> Privacy Policy </Link>
+            and <Link to="https://dropoud.com/terms-and-condition.html">Terms of Services</Link>
           </p>
         </div>
       </div>
@@ -223,3 +221,4 @@ const SignUp = () => {
 };
 
 export default SignUp;
+
