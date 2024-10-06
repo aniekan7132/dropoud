@@ -28,6 +28,7 @@ import { setUploadModal } from "../../features/generalSlice";
 interface Props {
   onClick: () => {};
 }
+
 const Content = () => {
   const lectures = useSelector(selectLectures);
   const dispatch = useDispatch();

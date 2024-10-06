@@ -97,7 +97,7 @@
   /* color: #ffffff; */
   border-radius: 16px;
   padding: 16px 24px 16px 24px;
-  background: #5353AA;
+  background: #5353aa;
   text-decoration: none;
   display: inline-block;
   text-align: center;
@@ -143,10 +143,105 @@
 }
 
 .wallet__transaction-withdrawn {
-  color: #FF5656; 
+  color: #ff5656;
 }
 
 .wallet__transaction-date {
   display: flex;
   gap: 4px;
+}
+
+.mobile__toggle-div {
+  display: none;
+}
+
+.mobile__tab-content {
+  display: none;
+}
+
+.mobile__wallet-transaction_history {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .main__container {
+    padding: 1rem 1rem;
+  }
+
+  .wallet__figure-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* hide balance and withdrawal container of desktop */
+  .wallet__balance-container {
+    display: none;
+  }
+
+  .wallet__withdrawal-container {
+    display: none;
+  }
+  /* bot containers eends here */
+
+  .mobile__toggle-div {
+    display: block;
+    width: 343px;
+    height: 48px;
+    background: #ffffff;
+    border-radius: 32px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+  }
+
+  .mobile__toggle-button {
+    width: 163px;
+    height: 40px;
+    border-radius: 20px;
+    padding: 9px 32px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .mobile__toggle-button.active {
+    background: #5353aa;
+    color: #ffffff;
+    transition: all 0.2s;
+    border: none;
+    outline: none;
+  }
+
+  .mobile__tab-content {
+    display: block;
+    background: #ffffff;
+    width: 343px;
+    height: 100vh;
+    padding: 0 16px;
+  }
+
+  .mobile__balance-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .mobile__wallet-no_transaction {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #606060;
+    margin-top: 5rem;
+  }
+
+  .mobile__wallet-withdrawal_no-transaction {
+    margin-top: 3rem;
+  }
+
+  .mobile__wallet-transaction_history {
+    display: block;
+    width: 343px;
+  }
 }

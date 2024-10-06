@@ -28,7 +28,6 @@ import UploadConatiner from "./components/UploadConatiner.tsx";
 
 
 const App: FC = () => {
-  const localBaseUrl = "http://192.168.0.102:7070";
   const general = useSelector(selectGeneral);
 
   const dispatch = useDispatch();
@@ -53,7 +52,7 @@ const App: FC = () => {
   console.log(general)
 
   return (
-    // <EmailVerification />
+    // <Wallet />
     <>
     {general.uploadModal &&  <UploadConatiner />}
       <Router>
