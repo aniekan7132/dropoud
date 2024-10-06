@@ -6,7 +6,6 @@ import axios from "axios";
 import Spinner from "../components/Spinner";
 import HeaderTwo from "../components/HeaderTwo";
 
-const baseurl = "https://drop-apis.firsta.tech";
 
 const ForgotPassword: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);

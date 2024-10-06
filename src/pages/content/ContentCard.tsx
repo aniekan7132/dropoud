@@ -11,7 +11,6 @@ import HeaderSeven from "../../components/HeaderSeven";
 import Input from "../../components/Input";
 import InfoCard from "./InfoCard";
 import axios from "../../axios/axios";
-import { baseUrl } from "../../utilities/baseUrl";
 import DeleteLecture from "../../components/DeleteLecture";
 
 interface Props {
@@ -34,19 +33,28 @@ function ContentCard({ lecture }: Props) {
     setdropping(false);
   };
 
-  // useEffect(() => {
-  //   function handleClickOutside(event) {
-  //     if (divRef.current && !divRef.current.contains(event.target)) {
-  //       onOutsideClick();
-  //     }
-  //   }
+  useEffect(() => {
+    //@ts-ignore
+    function handleClickOutside(event) {
+        //@ts-ignore
+      if (divRef.current && !divRef.current.contains(event.target)) {
+        onOutsideClick();
+      }
+        //@ts-ignore
+      if (mobileDivRef.current && !mobileDivRef.current.contains(event.target)) {
+        onOutsideClick();
+      }
+    }
 
-  //   document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
 
-  //   return () => {
-  //     document.removeEventListener("mousedown", handleClickOutside);
-  //   };
-  // }, [onOutsideClick]);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [onOutsideClick]);
+
+
+
 
   const handleValueChange = (
     e:
@@ -124,8 +132,65 @@ function ContentCard({ lecture }: Props) {
             <HeaderSeven text={`${lecture.comment_count}`} />
           </div>
         </div>
-        {dropping && (
-          <div className={classes["drop_mneus"]} ref={divRef}>
+        
+      </div>
+
+      <div className={classes["mobile_existing__user-container"]}>
+        <div className={classes["mobile_existing__user-content_div"]}>
+          <div className={classes["mobile_existing__user-holder"]}>
+            <img
+              className={classes["mobile_existing__user-content_thumbnail"]}
+              src={lecture.thumbnail}
+              alt="Video-content-box"
+            />
+          </div>
+
+          {deleting && <DeleteLecture onCancel={() => setDeleting(false)} />}
+          <div className={classes["mobile_existing__user-title"]}>
+            <HeaderSix text={lecture.topic} />
+            <div>
+              <div className={classes["mobile_existing__user-logo"]}>
+                <img src={schoolLogo} alt="School-logo" />
+                <HeaderSeven text={lecture.course} />
+              </div>
+              
+            </div>
+
+        <div className={classes["mobile_existing__user-date_views-comment"]}>
+          <div className={classes["mobile_existing__user-date"]}>
+            <HeaderSeven text={lecture.date.substring(0, 15)} />
+           
+          </div>
+
+          
+        </div>
+        <div  className={classes["mobile_existing__user-count"]}>
+        <div className={classes["mobile_existing__user-views"]}>
+            <HeaderSeven text={`${lecture.view_count} Views`} />
+          </div>
+
+          <div className={classes["mobile_existing__user-comments"]}>
+            <HeaderSeven text={`${lecture.comment_count} Comments`} />
+          </div>
+        </div>
+        <div
+                className={classes["mobile_light_btn"]}
+                onClick={() => setdropping(true)}
+              >
+                <p className={classes["mobile_dots"]}>...</p>
+              </div>
+          </div>
+        </div>
+
+             </div>
+
+
+{
+  <>
+   {dropping && (
+    <div ref={divRef}>
+    <div className={classes["drop_mneus"]} >
+      
             <div
               className={classes["drop_mneus_item"]}
               onClick={() => {
@@ -148,10 +213,38 @@ function ContentCard({ lecture }: Props) {
               <span>Delete forever</span>
             </div>
           </div>
+
+
+          <div className={classes["mobile_drop_mneus"]}>
+       
+            <div
+              className={classes["mobile_drop_mneus_item"]}
+              onClick={() => {
+                setLectureSelected(lecture);
+                setediting(true);
+              }}
+            >
+              <img src={edit} />
+              <span>Edit content</span>
+            </div>
+            <div className={classes["mobile_drop_mneus_item"]}>
+              <img src={share} />
+              <span>Get shareable link</span>
+            </div>
+            <div
+              className={classes["mobile_drop_mneus_item"]}
+              onClick={() => setDeleting(true)}
+            >
+              <img src={deleteIcon} />
+              <span>Delete forever</span>
+            </div>
+          </div>
+          </div>
         )}
 
         {editing && (
-          <div className={classes["drop_mneus"]}>
+          <>
+         <div className={classes["drop_mneus"]}>
             <div className={modalClasses["details__container"]}>
               <div
                 className={modalClasses["title__div"]}
@@ -224,78 +317,7 @@ function ContentCard({ lecture }: Props) {
               </div>
             </div>
           </div>
-        )}
-      </div>
 
-      <div className={classes["mobile_existing__user-container"]}>
-        <div className={classes["mobile_existing__user-content_div"]}>
-          <div>
-            <img
-              className={classes["mobile_existing__user-content_thumbnail"]}
-              src={lecture.thumbnail}
-              alt="Video-content-box"
-            />
-          </div>
-
-          {deleting && <DeleteLecture onCancel={() => setDeleting(false)} />}
-          <div className={classes["mobile_existing__user-title"]}>
-            <HeaderSix text={lecture.topic} />
-            <div>
-              <div className={classes["mobile_existing__user-logo"]}>
-                <img src={schoolLogo} alt="School-logo" />
-                <HeaderSeven text={lecture.course} />
-              </div>
-              <div
-                className={classes["mobile_light_btn"]}
-                onClick={() => setdropping(true)}
-              >
-                <p className={classes["mobile_dots"]}>...</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className={classes["mobile_existing__user-date_views-comment"]}>
-          <div className={classes["mobile_existing__user-date"]}>
-            <HeaderSeven text={lecture.date.substring(0, 15)} />
-            <HeaderSeven text={lecture.status} />
-          </div>
-
-          <div className={classes["mobile_existing__user-views"]}>
-            <HeaderSeven text={`${lecture.view_count}`} />
-          </div>
-
-          <div className={classes["mobile_existing__user-comments"]}>
-            <HeaderSeven text={`${lecture.comment_count}`} />
-          </div>
-        </div>
-        {dropping && (
-          <div className={classes["mobile_drop_mneus"]} ref={mobileDivRef}>
-            <div
-              className={classes["mobile_drop_mneus_item"]}
-              onClick={() => {
-                setLectureSelected(lecture);
-                setediting(true);
-              }}
-            >
-              <img src={edit} />
-              <span>Edit content</span>
-            </div>
-            <div className={classes["mobile_drop_mneus_item"]}>
-              <img src={share} />
-              <span>Get shareable link</span>
-            </div>
-            <div
-              className={classes["mobile_drop_mneus_item"]}
-              onClick={() => setDeleting(true)}
-            >
-              <img src={deleteIcon} />
-              <span>Delete forever</span>
-            </div>
-          </div>
-        )}
-
-        {editing && (
           <div className={classes["mobile_drop_mneus"]}>
             <div className={modalClasses["mobile_details__container"]}>
               <div
@@ -369,8 +391,16 @@ function ContentCard({ lecture }: Props) {
               </div>
             </div>
           </div>
+          </>
         )}
-      </div>
+
+  </>
+}
+
+
+
+
+
     </>
   );
 }

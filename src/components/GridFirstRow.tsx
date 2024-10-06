@@ -8,6 +8,7 @@ interface Props {
 }
 
 const GridFirstRow = ({dashboardData}: Props) => {
+  console.log(dashboardData)
   return (
     <>
       <div className={classes["sub__overview-container-sub"]}>

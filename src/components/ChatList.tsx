@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./ChatList.module.css";
-import SearchBar from "./SearchBar";
+// import SearchBar from "./SearchBar";
 import HeaderSix from "./HeaderSix"
 import search from "../assets/search.svg";
 import Input from "./Input";

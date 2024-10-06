@@ -146,11 +146,12 @@ const EmailVerification = () => {
       <div className={classes["sub__container"]}>
         <h5>Enter the 4 digit code</h5>
         <p className={classes["otp__text-bg"]}>
-          We've sent a verification code to {`${emailUrl}`}. Please check your
+          We've sent a verification code to{`${emailUrl}`}. Please check your
           email, including the spam folder
         </p>
 
         <div className={classes["input__container"]}>
+        {/*@ts-ignore */}
           <form onSubmit={(e) => onOtpSubmit(e)} className={classes["otp__form"]}>
             <input
               type="text"

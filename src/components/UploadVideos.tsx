@@ -1,16 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import classes from "./UploadVideos.module.css";
 import cancelIcon from "../assets/cancel.svg";
 import upload from "../assets/upload.svg";
-import Button from "./ButtonComponent";
+// import Button from "./ButtonComponent";
 
-interface UploadModal {
-  onClick?: void;
-}
+// interface UploadModal {
+//   onClick?: void;
+// }
 
-interface InitialState {
-  openModal: boolean;
-}
+// interface InitialState {
+//   openModal: boolean;
+// }
 
 interface Props {
   setFilePicked: (picked: boolean) => void;
@@ -20,7 +20,7 @@ interface Props {
 
 const UploadVideos = ({ setFilePicked, closeModal, setFile }: Props) => {
 
-  const uploadModal = document.getElementById("upload") as HTMLElement;
+  // const uploadModal = document.getElementById("upload") as HTMLElement;
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
