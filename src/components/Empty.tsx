@@ -1,17 +1,17 @@
 import React from "react";
-import GridFirstRow from "./GridFirstRow";
-import HeaderThree from "./HeaderThree";
+// import GridFirstRow from "./GridFirstRow";
+// import HeaderThree from "./HeaderThree";
 import Button from "./ButtonComponent";
 import classes from "./Empty.module.css";
 
 const Empty = () => {
   return (
     <>
+      {/* <GridFirstRow />
       <GridFirstRow />
-      <GridFirstRow />
-      <GridFirstRow />
+      <GridFirstRow /> */}
       <div className={classes["overview__video-section"]}>
-        <HeaderThree />
+        {/* <HeaderThree /> */}
         <p className={classes["upload__video"]}>
           Do you want to view metrics on your recent video? Upload and publish a
           video to begin

@@ -23,7 +23,7 @@ import WithdrawMoney from "./components/WithdrawMoney.tsx";
 import BankName from "./components/BankName.tsx";
 import WithdrawalSuccessful from "./components/WithdrawalSuccessful.tsx";
 import BankSucessScreen from "./components/BankSucessScreen.tsx";
-import generalSlice, { selectGeneral, setUploadModal } from "./features/generalSlice.ts";
+import { selectGeneral } from "./features/generalSlice.ts";
 import UploadConatiner from "./components/UploadConatiner.tsx";
 
 
@@ -90,5 +90,3 @@ const App: FC = () => {
 };
 
 export default App;
-
-//{user ? <Login /> : <Logout />}

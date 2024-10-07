@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import classes from "./InputModal.module.css";
 import search from "../assets/search.svg";
 import Input from "./Input";
-import Profile from "./Profile";
+// import Profile from "./Profile";
 import Viewers from "./Viewers";
 import HeaderThree from "./HeaderThree";
 

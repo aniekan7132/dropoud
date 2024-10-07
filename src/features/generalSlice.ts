@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { User } from "../types";
+
 
 interface State {
   general: { videoFile: File | null; uploadModal: boolean };

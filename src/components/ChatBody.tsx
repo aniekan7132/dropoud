@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./ChatBody.module.css";
 import ChatList from "./ChatList";
-import UserProfile from "./UserProfile";
+// import UserProfile from "./UserProfile";
 import ChatContent from "./ChatContent";
 
 const ChatBody = () => {

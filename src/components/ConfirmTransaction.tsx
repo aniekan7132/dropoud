@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import classes from "./ConfirmTransaction.module.css";
 import HeaderTwo from "./HeaderTwo";
 import HeaderFour from "./HeaderFour";
 import Input from "./Input";
 import Button from "./ButtonComponent";
 import Error from "./Error";
-import arrowBack from "../assets/arrow-back.svg";
+// import arrowBack from "../assets/arrow-back.svg";
 
 interface Props {
   full_name: string;

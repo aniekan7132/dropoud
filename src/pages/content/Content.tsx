@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import SideNavbar from "../../components/SideNavbar";
 import TopSearchBar from "../../components/TopSearchBar";
 import classes from "./Content.module.css";
@@ -6,29 +6,19 @@ import HeaderTwo from "../../components/HeaderTwo";
 import HeaderFour from "../../components/HeaderFour";
 import HeaderFive from "../../components/HeaderFive";
 import Button from "../../components/ButtonComponent";
-import UploadVideos from "../../components/UploadVideos";
-import ModalDetails from "../../components/ModalDetails";
-import ProgressBar from "../../components/SucessUploadScreen";
-import Profile from "../../components/Profile";
-import videoContentBox from "../../assets/video-box-content.svg";
-import HeaderSix from "../../components/HeaderSix";
-import HeaderSeven from "../../components/HeaderSeven";
-import schoolLogo from "../../assets/school-logo.svg";
-import DeleteModal from "../../components/DeleteModal";
-import WithdrawalSuccessful from "../../components/WithdrawalSuccessful";
-import UploadConatiner from "../../components/UploadConatiner";
-import { Lecture } from "../../types";
 import axios from "../../axios/axios";
-import { baseUrl } from "../../utilities/baseUrl";
 import ContentCard from "./ContentCard";
 import { useDispatch, useSelector } from "react-redux";
 import { selectLectures, setLectures } from "../../features/lectureSlice";
 import { setUploadModal } from "../../features/generalSlice";
 
+<<<<<<< HEAD
 interface Props {
   onClick: () => {};
 }
 
+=======
+>>>>>>> c23597f2bd10f1dd44ce8dcd1fcff25e6876cf16
 const Content = () => {
   const lectures = useSelector(selectLectures);
   const dispatch = useDispatch();

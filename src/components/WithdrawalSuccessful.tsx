@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+// import ReactDOM from "react-dom";
 import classes from "./WithdrawalSuccessful.module.css";
 import HeaderThree from "./HeaderThree";
 import HeaderFour from "./HeaderFour";
