@@ -2,7 +2,7 @@ import React from "react";
 import Input from "./Input";
 import classes from "./Message.module.css";
 import horizontalOption from "../assets/horizontal-option.svg";
-import search from "../assets/search.svg";
+// import search from "../assets/search.svg";
 import attahFile from "../assets/attach-online.svg";
 import send from "../assets/send.svg";
 

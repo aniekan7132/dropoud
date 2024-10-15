@@ -23,12 +23,11 @@ import WithdrawMoney from "./components/WithdrawMoney.tsx";
 import BankName from "./components/BankName.tsx";
 import WithdrawalSuccessful from "./components/WithdrawalSuccessful.tsx";
 import BankSucessScreen from "./components/BankSucessScreen.tsx";
-import generalSlice, { selectGeneral, setUploadModal } from "./features/generalSlice.ts";
+import { selectGeneral } from "./features/generalSlice.ts";
 import UploadConatiner from "./components/UploadConatiner.tsx";
 
 
 const App: FC = () => {
-  const localBaseUrl = "http://192.168.0.102:7070";
   const general = useSelector(selectGeneral);
 
   const dispatch = useDispatch();
@@ -53,7 +52,7 @@ const App: FC = () => {
   console.log(general)
 
   return (
-    // <EmailVerification />
+    // <Wallet />
     <>
     {general.uploadModal &&  <UploadConatiner />}
       <Router>
@@ -91,5 +90,3 @@ const App: FC = () => {
 };
 
 export default App;
-
-//{user ? <Login /> : <Logout />}
