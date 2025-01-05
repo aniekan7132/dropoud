@@ -12,13 +12,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectLectures, setLectures } from "../../features/lectureSlice";
 import { setUploadModal } from "../../features/generalSlice";
 
-<<<<<<< HEAD
-interface Props {
-  onClick: () => {};
-}
+// interface Props {
+//   onClick: () => {};
+// }
 
-=======
->>>>>>> c23597f2bd10f1dd44ce8dcd1fcff25e6876cf16
 const Content = () => {
   const lectures = useSelector(selectLectures);
   const dispatch = useDispatch();
