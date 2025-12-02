@@ -1,0 +1,42 @@
+name: Build and Zip React App
+
+on:
+  push:
+    branches:
+      - main # Trigger on pushes to the main branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Checkout the repository
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # Step 2: Set up Node.js
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18 # Use the version you specified in your project
+
+    # Step 3: Install dependencies
+    - name: Install dependencies
+      run: npm install
+
+    # Step 4: Build the app
+    - name: Build the app
+      run: npm run build
+
+    # Step 5: Zip the `dist` folder
+    - name: Zip the dist folder
+      run: |
+        cd dist
+        zip -r ../dist.zip ./
+    
+    # Step 6: Upload the ZIP file as an artifact
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: dist-zip
+        path: dist.zip

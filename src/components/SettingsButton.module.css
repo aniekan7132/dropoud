@@ -1,0 +1,33 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid #5353aa;
+  color: #5353aa;
+  background: none;
+}
+
+
+.button__secondary {
+  border-radius: 16px;
+  background: #5353aa;
+  color: #ffffff;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.add__file-img {
+  width: 12px;
+  height: 12px;
+}
+
+@media(max-width: 768px) {
+  .button__secondary {
+    width: 310px;
+  }
+}

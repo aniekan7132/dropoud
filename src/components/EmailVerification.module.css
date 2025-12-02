@@ -1,0 +1,104 @@
+.main__container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.sub__container {
+  width: 537px;
+  height: 268px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  text-align: center;
+  position: relative;
+}
+
+
+h5 {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  color: #414141;
+  margin-right: -70px;
+}
+
+.otp__text-bg {
+  width: 483px;
+  height: 40px;
+  weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center; 
+  color: #606060;
+  position: absolute;
+  top: 50px;
+  left: 30px;
+}
+
+.container__sm-text {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.otp__text-sm {
+  weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #929292;
+}
+
+.otp__text-sm span {
+  color: #5353aa;
+}
+
+.otp__text-sm button {
+  color: #5353aa;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+
+.input__container{
+  /* width: 224px;
+  height: 112px; */
+  position: absolute;
+  top: 120px;
+  left: 160px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.otp__form {
+  width: 208px;
+  height: 40px;
+  display: flex;
+  gap: 16px;
+} 
+
+.otp__input {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  border: 1px solid #b5b5b5;
+  text-align: center;
+  padding: 4px;
+}
+
+.otp__input:focus {
+  outline: none;
+  text-align: center;
+  border: 1px solid #5353AA;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+

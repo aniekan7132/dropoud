@@ -1,0 +1,28 @@
+.error__container {
+  max-width: max-content;
+  display: flex;
+  gap: 8px;
+  padding: 8px 24px 8px 24px;
+  background: #e84747;
+}
+
+.error__container div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.error__text {
+  color: #ffffff;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+@media (max-width: 768px) {
+  .error__container {
+    width: 100%;
+    max-width: 100%;
+  }
+}

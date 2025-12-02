@@ -1,0 +1,147 @@
+// import { FC } from "react";
+import React from "react";
+import classes from "./WithdrawMoney.module.css";
+
+type ButtonProps = {
+  size?: "sm" | "md" | "lg" | "bigsm" | "smlg" | "mobile";
+  color?: "primary" | "secondary" | "tertiary";
+  children?: string;
+  type?: "submit" | "button";
+  onClick?: (e: any) => void;
+  className?: string;
+  textColor?: string;
+  disabled?: boolean;
+};
+
+function Button({
+  size = "sm",
+  color = "primary",
+  children,
+  type,
+  className,
+  disabled,
+  onClick,
+}: ButtonProps) {
+  const functionForSize = (size: string) => {
+    if (size === "mobile") {
+      return {
+        height: "45px",
+        width: "100%",
+        borderRadius: "16px",
+        border: "1px solid #5353AA",
+        color: "white",
+        fontWeight: "400",
+        fontSize: "16px",
+        lineHeight: "20px",
+        cursor: "pointer",
+        padding: "0px 20px px 20px",
+        maxWidth: "460px"
+      };
+    }
+    if (size === "sm") {
+      return {
+        height: "45px",
+        width: "142px",
+        borderRadius: "16px",
+        border: "1px solid #5353AA",
+        color: "#5353AA",
+        fontWeight: "400",
+        fontSize: "16px",
+        lineHeight: "20px",
+        cursor: "pointer",
+        padding: "0px 20px px 20px",
+      };
+    }
+    if (size === "md") {
+      return {
+        height: "56px",
+        width: "452px",
+        borderRadius: "16px",
+        border: "1px solid #5353AA",
+        color: "#F8F8F8",
+        cursor: "pointer",
+      };
+    }
+    if (size === "lg") {
+      return {
+        height: "46px",
+        width: "460px",
+        borderRadius: "16px",
+        border: "1px solid #5353AA",
+        color: "#F8F8F8",
+        cursor: "pointer",
+        fontSize: "16px",
+        lineHeight: "20px",
+        fontWeight: "400",
+        outline: "none",
+      };
+    }
+    if (size === "bigsm") {
+      return {
+        height: "48px",
+        // width: "213px",
+        // borderRadius: "16px",
+        // border: "1px solid #5353AA",
+        border: "none",
+        color: "#ffffff",
+        fontWeight: "400",
+        fontSize: "16px",
+        lineHeight: "20px",
+        padding: "16px 24px 16px 24px",
+        cursor: "pointer",
+      };
+    }
+    if (size === "smlg") {
+      return {
+        height: "56px",
+        width: "213px",
+        borderRadius: "16px",
+        border: "1px solid #5353AA",
+        color: "#ffffff",
+        fontWeight: "400",
+        fontSize: "16px",
+        lineHeight: "20px",
+        padding: "16px 24px 16px 24px",
+        cursor: "pointer",
+      };
+    }
+  };
+
+  const functionForColor = (color: "primary" | "secondary" | "tertiary") => {
+    if (color === "primary") {
+      return {
+        backgroundColor: "#5353AA",
+      };
+    }
+    if (color === "secondary") {
+      return {
+        backgroundColor: "#FFFFFF",
+      };
+    }
+    if (color === "tertiary") {
+      return {
+        backgroundColor: "#FF5656",
+      };
+    }
+  };
+
+  return (
+    <button
+      type={type}
+      disabled={disabled}
+      className={
+        disabled
+          ? `${classes[""]}`
+          : className
+          ? className
+          : `${classes[""]}`
+      }
+      style={{ ...functionForSize(size), ...functionForColor(color) }}
+      onClick={onClick}
+    >
+      {children}
+    </button>
+  );
+}
+
+export default Button;

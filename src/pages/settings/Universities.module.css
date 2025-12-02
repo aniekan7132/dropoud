@@ -1,0 +1,104 @@
+.unviersities__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.unviersities__list-container {
+  width: 445px;
+  height: 464px;
+  border-radius: 16px;
+  background: #ffffff;
+  padding: 24px;
+  /* overflow: auto; */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.universities__cancel-icon {
+  display: flex;
+  justify-content: end;
+  cursor: pointer;
+}
+
+.chat__bar {
+  width: 397px;
+  display: flex;
+  gap: 8px;
+  border-radius: 16px;
+  background: #f8f8f8;
+  padding: 0.5rem;
+}
+
+.chatbar__button-logo {
+  border: none;
+  background: none;
+}
+
+.chatbar__button-logo img {
+  width: 20px;
+  height: 20px;
+}
+
+.chatbar__input {
+  border: none;
+  padding: 5px;
+  height: 25px;
+  border-radius: 16px;
+  background: none;
+  color: #929292;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.universities__list-details {
+  overflow: auto;
+  height: 340px;
+  width: 100%;
+}
+
+.universities__list-details ul {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 95%;
+}
+
+.universities__list-details ul li {
+  list-style: none;
+  border-bottom: 2px solid #f6f6f6;
+}
+
+.universities__list-details ul li label {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  margin-bottom: 4px;
+}
+
+.universities__list-details ul li label p {
+  font-size: 16px;
+  line-height: 20px;
+  color: #606060;
+}
+
+.chatbar__input:focus {
+  outline: none;
+}
+
+.campus__modal-radio_input {
+  width: 12px;
+  height: 12px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .unviersities__list-container {
+    width: 90%;
+  }
+}

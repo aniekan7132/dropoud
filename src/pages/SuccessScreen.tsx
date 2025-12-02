@@ -1,0 +1,21 @@
+import React from "react";
+// import classes from "../../Newpassword.module.css";
+import classes from "../pages/newPassword/Newpassword.module.css";
+import { Link } from "react-router-dom";
+
+const SuccessScreen = () => {
+	return (
+		<div className={classes["new__container"]}>
+			<div className={classes["success"]}>
+				<h3 className={classes["sub"]}>
+					You have successfully signed up
+				</h3>
+				<Link to='/sign-in' className={classes["text__sub"]}>
+					Click here to Log in
+				</Link>
+			</div>
+		</div>
+	);
+};
+
+export default SuccessScreen;

@@ -1,0 +1,18 @@
+.home {
+  display: flex;
+}
+
+.main__pane {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main__container {
+  background: #f8f8f8;
+  padding: 1rem 2rem;
+  overflow: hidden;
+  flex: 1;
+  width: 1180px;
+}
+

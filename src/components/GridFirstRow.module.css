@@ -1,0 +1,51 @@
+.sub__overview-container-sub {
+  width: 362px;
+  border-radius: 8px;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: .7rem;
+  height: 140px;
+}
+
+.overview__header {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: #606060;
+}
+
+.overview__score {
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 40px;
+  color: #414141;
+}
+
+.main__arrow-container {
+  display: flex;
+  gap: 8px;
+}
+
+.sub__arrow-container {
+  width: 24px;
+  height: 24px;
+  background: #72cb72;
+  border-radius: 50%;
+  position: relative;
+}
+
+.arrow {
+  position: absolute;
+  top: 6px;
+  left: 7px;
+  color: #ffffff;
+}
+
+.percentage {
+  font-weight: 400;
+  font-weight: 16px;
+  color: #72CB72;
+  line-height: 20px;
+}

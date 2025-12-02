@@ -1,0 +1,327 @@
+.setting__page {
+  display: flex;
+  width: 100%;
+}
+
+.mane__pane {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 87%;
+}
+
+.main__container {
+  flex: 1;
+  background: #f8f8f8;
+  padding: 1rem 2rem;
+}
+
+.settings__container {
+  width: 640px;
+  height: 450px;
+  background: white;
+  margin-top: 16px;
+  border-radius: 8px;
+  padding: 20px 15px;
+  overflow-y: scroll;
+}
+
+.settings__tab-cont {
+  display: flex;
+  justify-content: space-between;
+}
+
+.account__activetab-overall {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.account__profile-cont {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 20px;
+}
+
+.change__image-pic {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.change__img-btn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid #5353aa;
+  color: #5353aa;
+  background: none;
+}
+
+.change__img-btn label {
+  cursor: pointer;
+}
+
+.change__image-text {
+  width: 156px;
+}
+
+.change__image-text p {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #606060;
+}
+
+/* Styles for SettingsHeaderButton */
+.settings__header-tab {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #414141;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.settings__header-tab.active {
+  color: #5353aa;
+}
+
+/*End of Styles for SettingsHeaderButton */
+
+.account__verification-cont {
+  display: flex;
+  flex-direction: column;
+  padding: 48px 0;
+}
+
+.account__verification-text {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  color: #111111;
+}
+
+.account__upgrade-cont {
+  display: flex;
+  gap: 256px;
+  align-items: center;
+}
+
+.account__upgrade-text {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  color: #606060;
+}
+
+.account__info-cont {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  height: 280px;
+}
+
+.account__form-container {
+  display: flex;
+  flex-direction: column;
+  width: 360px;
+}
+
+.account__form-container div {
+  display: flex;
+  flex-direction: column;
+}
+
+.account__form-label {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #414141;
+}
+
+.account__form-input {
+  margin: 16px 0;
+  padding: 0 0 8px 0;
+  border: none;
+  border-bottom: 1px solid #b5b5b5;
+  color: #606060;
+}
+
+.account__form-input:focus {
+  outline: none;
+  border-bottom: 1px solid #5353aa;
+}
+
+.account__form-input::placeholder {
+  color: #929292;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  font-family: "Lato", sans-serif;
+}
+
+.account__info-bio_section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 20px;
+  width: 360px;
+}
+
+.account__info-text_area {
+  width: 360px;
+  height: 96px;
+  color: #606060;
+  resize: none;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #b5b5b5;
+}
+
+.account__info-text_area:focus {
+  outline: none;
+  border: 1px solid #5353aa;
+}
+
+.account__info-text_area::placeholder {
+  color: #929292;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  font-family: "Lato", sans-serif;
+}
+
+.account__info-save_button {
+  display: flex;
+  justify-content: right;
+}
+
+.payment__activetab-overall {
+  padding: 48px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.payment__activetab-buttons {
+  display: flex;
+  gap: 48px;
+}
+
+.payment__delete-btn {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 8px;
+  background: #F8F8F8;
+  padding: 8px 16px;
+}
+
+.payment__bank-logo {
+  width: 20px;
+}
+
+.payment__delete-text {
+  font-weight: 400;
+  font-size: 12px;
+  color: #606060;
+}
+
+.payment__delete-num {
+  display: block;
+}
+
+.payment__delete-name {
+  display: block;
+}
+
+.payment__delete-icon {
+  width: 19px;
+  cursor: pointer;
+}
+
+.mobile__view-veriy_btn {
+  display: none;
+}
+
+@media(max-width: 768px) {
+  .main__container {
+    width: 360px;
+    padding: 2rem 10px;
+  }
+
+  .settings__container {
+    width: 100%;
+    /* overflow-x: hidden; */
+  }
+
+  .settings__tab-cont {
+    width: 100%;
+  }
+
+  .account__profile-cont {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .change__img-btn {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  .account__verification-cont {
+    padding: 10px 0;
+    gap: 32px;
+  }
+
+  .account__upgrade-cont {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 24px;
+  }
+
+  .mobile__upgrade-btn_div {
+    flex: 1;
+  }
+
+  .desktop__view-veriy_btn {
+    display: none;
+  }
+
+  .mobile__view-veriy_btn {
+    display: block;
+    background: pink;
+    padding: 8px 16px;
+    color: #ffffff;
+    background: #5353AA;
+    width: 310px;
+    border: none;
+    outline: none;
+    border-radius: 16px;
+  }
+
+  .account__form-container {
+    width: 100%;
+  }
+
+  .payment__activetab-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .account__info-bio_section {
+    width: 100%;
+  }
+
+  .account__info-text_area {
+    width: 100%;
+  }
+}
