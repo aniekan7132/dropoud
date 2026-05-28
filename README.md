@@ -44,12 +44,10 @@ The platform was built with a focus on performance, clean design, scalability, a
 
 ## Tech Stack Used
 
-- Tailwind CSS
+- CSS Modules
 - React
 - TypeScript
-- Nx Monorepo
-- Swagger Documentation
-- ShadCN UI
+- Postman Documentation
 
 ---
 
